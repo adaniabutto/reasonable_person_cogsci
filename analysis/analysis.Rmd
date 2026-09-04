@@ -86,6 +86,7 @@ attention.key = read_csv(str_c(data_dir, 'attention_key.csv'))
 ```
 
 ## Rounding
+
 ```{r include = F}
 # round percentages ensuring they sum to 100% using largest remainder method
 round_percent = function(x) {
@@ -100,6 +101,7 @@ round_percent = function(x) {
 ```
 
 ## Demographics
+
 ```{r include = F}
 print_demographics = function(data) {
   # gender
@@ -127,6 +129,7 @@ print_demographics = function(data) {
 ```
 
 ## Process data
+
 ```{r}
 get_tense = function(condition) {
   feature_tense = case_when(
@@ -180,12 +183,12 @@ process_data = function(condition, data_dir, shift = 0) {
 }
 ```
 
-
 # Experiment 1
 
 ## Data
 
 ### Relevance
+
 ```{r}
 c(data.rel, data.rel.participants) %<-%
   process_data('relevance', str_c(data_dir, 'experiment1/'))
@@ -196,6 +199,7 @@ data.rel.participants %>%
 ```
 
 ### Controllability
+
 ```{r}
 c(data.ctrl, data.ctrl.participants) %<-%
   process_data('controllability', str_c(data_dir, 'experiment1/'), 50)
@@ -206,6 +210,7 @@ data.ctrl.participants %>%
 ```
 
 ### Normality
+
 ```{r}
 c(data.norm, data.norm.participants) %<-%
   process_data('normality', str_c(data_dir, 'experiment1/'), 100)
@@ -216,6 +221,7 @@ data.norm.participants %>%
 ```
 
 ## Demographics
+
 ```{r}
 print_demographics(data.ctrl.participants %>%
                      rbind(data.norm.participants) %>%
@@ -304,12 +310,12 @@ ggplot(data = predictor_summary_emm,
 #        width = 5, height = 3)
 ```
 
-
 # Experiment 2
 
 ## Data
 
 ### Undo
+
 ```{r}
 c(data.undo, data.undo.participants) %<-%
   process_data('undo', str_c(data_dir, 'experiment2/'))
@@ -320,6 +326,7 @@ data.undo.participants %>%
 ```
 
 ### Same
+
 ```{r}
 c(data.same, data.same.participants) %<-%
   process_data('same', str_c(data_dir, 'experiment2/'), 50)
@@ -330,6 +337,7 @@ data.same.participants %>%
 ```
 
 ### Different
+
 ```{r}
 c(data.diff, data.diff.participants) %<-%
   process_data('different', str_c(data_dir, 'experiment2/'), 100)
@@ -340,6 +348,7 @@ data.diff.participants %>%
 ```
 
 ### Endorse
+
 ```{r}
 c(data.endorse, data.endorse.participants) %<-%
   process_data('endorse', str_c(data_dir, 'experiment2/'), 150)
@@ -350,6 +359,7 @@ data.endorse.participants %>%
 ```
 
 ## Demographics
+
 ```{r}
 print_demographics(data.undo.participants %>%
                      rbind(data.same.participants) %>%
@@ -362,6 +372,7 @@ print_demographics(data.undo.participants %>%
 ### Descriptive statistics
 
 Selection rates (undo, same, different):
+
 ```{r}
 data.selection_total = bind_rows(data.undo, data.same, data.diff) %>%
   mutate(condition = factor(condition, levels = conditions)) %>%
@@ -372,6 +383,7 @@ data.selection_total
 ```
 
 Selection distribution by feature type:
+
 ```{r}
 data.selection_prop = bind_rows(data.undo, data.same, data.diff) %>%
   mutate(condition = factor(condition, levels = conditions)) %>%
@@ -385,6 +397,7 @@ data.selection_prop
 ```
 
 Pairwise correlations:
+
 ```{r}
 selection_rates = bind_rows(data.undo, data.same, data.diff) %>%
   group_by(condition, story, feature_key) %>%
@@ -404,6 +417,7 @@ round(cor(selection_rates$same, selection_rates$different, use = "complete.obs")
 ```
 
 Agreement ratings (endorse):
+
 ```{r}
 data.endorse %>%
   group_by(feature_type) %>%
@@ -510,6 +524,7 @@ CI_95_all
 ```
 
 #### Model predictions
+
 ```{r}
 get_binary_pred_actual = function(fit, condition_name) {
   pred = fitted(fit, summary = TRUE)[, "Estimate"]
@@ -555,12 +570,12 @@ model_metrics = model_predictions %>%
   mutate(label = sprintf("RMSE = %.2f\nR = %.2f", rmse, r))
 ```
 
-
 ## Figures
 
 ### Example (Nadia)
 
 Aesthetics:
+
 ```{r fig.width = 11, fig.height = 5}
 nadia_ft_map = data.undo %>%
   rbind(data.endorse) %>%
@@ -599,6 +614,7 @@ nadia_levels = rev(names(nadia_labels))
 ```
 
 Helper functions:
+
 ```{r}
 # shared theme for individual condition panels
 nadia_theme = theme(
@@ -733,6 +749,7 @@ p1 + p2 + p3 + p4 + p5 + p6 + p7 +
 #### Selection barplots
 
 For undo, same, and different conditions only.
+
 ```{r}
 all_colors = c(feature_type_colors,
                'selected' = 'gray75',
@@ -742,6 +759,7 @@ bar_height = 0.3  # half-height of each bar
 ```
 
 Top bars: selected (dark gray) vs not selected (light gray)
+
 ```{r}
 data.top_bar = data.selection_total %>%
   rowwise() %>%
@@ -772,6 +790,7 @@ top_bar_labels = tibble(
 ```
 
 Bottom bars: feature type breakdown
+
 ```{r}
 data.bottom_bar = data.selection_prop %>%
   mutate(category = as.character(feature_type),
@@ -793,6 +812,7 @@ bottom_bar_labels = data.selection_prop %>%
 ```
 
 Zoom lines:
+
 ```{r}
 # left edge (0, top) to (0, bottom)
 # right edge (selected, top) to (1, bottom)
@@ -803,6 +823,7 @@ data.zoom = data.selection_total %>%
 ```
 
 Generating plot:
+
 ```{r}
 p_selections = ggplot() +
   # top bars
@@ -894,6 +915,7 @@ p_selections = ggplot() +
 ```
 
 #### Endorse density plot
+
 ```{r}
 data.endorse.summary = as.data.frame(
   emmeans(lmer(response ~ feature_type + (1 | id),
@@ -942,6 +964,7 @@ p_endorse = ggplot(data.endorse,
 #### Coefficient plots
 
 Odds ratios (for undo, same, and different):
+
 ```{r}
 p_odds = ggplot(CI_95_all %>%
                   filter(condition != "endorse"),
@@ -977,6 +1000,7 @@ p_odds = ggplot(CI_95_all %>%
 ```
 
 Coefficients (for endorse):
+
 ```{r}
 p_coeff = ggplot(CI_95_all %>%
                    filter(condition == "endorse"),
@@ -1015,6 +1039,7 @@ p_coeff = ggplot(CI_95_all %>%
 #### Model scatterplots
 
 Undo, same, and different conditions:
+
 ```{r}
 p_scatter_left = ggplot(model_predictions %>%
                           filter(condition != "endorse"),
@@ -1048,6 +1073,7 @@ p_scatter_left = ggplot(model_predictions %>%
 ```
 
 Endorse condition:
+
 ```{r}
 p_scatter_right = ggplot(model_predictions %>%
                            filter(condition == "endorse"),
@@ -1080,6 +1106,7 @@ p_scatter_right = ggplot(model_predictions %>%
 ```
 
 #### Combining plots
+
 ```{r fig.height = 6, fig.width = 11}
 (p_selections + (p_endorse / plot_spacer() + plot_layout(heights = c(20, 1))) +
   plot_layout(nrow = 1, widths = c(3.5, 1))) /
@@ -1093,8 +1120,262 @@ p_scatter_right = ggplot(model_predictions %>%
 #        width = 11, height = 6)
 ```
 
+# Exploratory
+
+## Child Story (Chris)
+
+```{r}
+
+data.chris =
+  data.ctrl %>%
+  filter(story == "Chris") %>%
+  mutate(feature_type = factor(feature_type,
+                               levels = names(feature_type_colors))) %>%
+  arrange(feature_type, feature_key) %>%
+  mutate(feature_key = fct_rev(fct_inorder(feature_key)))
+
+```
+
+```{r}
+
+Hmisc::describe(data.chris)
+
+```
+
+## Controllability Plot
+
+```{r}
+
+data.chris_plot =
+  data.chris %>% 
+  group_by(feature_key, feature_type) %>%
+  summarise(mean_rating = mean(response),
+            sd = sd(response))
+
+data.chris_plot
+
+```
+
+```{r fig.width = 9, fig.height = 8}
+
+ggplot(data = data.chris,
+       aes(x = feature_key,
+           y = response,
+           color = feature_type)) +
+  stat_summary(fun.data = "mean_cl_boot", geom = "pointrange", 
+               size = 1,   
+               shape = 18) +
+  # facet_wrap(~ feature_type, scales = 'free_y',
+  #            labeller = as_labeller(condition_labels),
+  #            strip.position = "top") +
+  scale_y_continuous(name = "Controllability rating",
+                     limits = c(1, 7),
+                     breaks = 1:7,
+                     labels = c("1", "", "",
+                                "4", "", "",
+                                "7")) +
+  scale_color_manual(values = feature_type_colors) +
+  coord_flip() + 
+  theme(text = element_text(size = 18),
+        legend.position = "top",
+        axis.title.y = element_blank())
+
+# theme(text = element_text(size = 12),
+  #       legend.position = 'inside',
+  #       legend.position.inside = c(0.5, -0.18),
+  #       legend.direction = "horizontal",
+  #       legend.title = element_blank(),
+  #       legend.text = element_text(
+  #         size = 12, margin = margin(0)),
+  #       axis.title.x = element_blank(),
+  #       axis.text.x = element_blank(),
+  #       axis.text.y = element_text(size = 12),
+  #       strip.background = element_blank(),
+  #       strip.placement = "outside",
+  #       strip.text = element_text(
+  #         size = 12, face = 'bold',
+  #         margin = margin(t = 0, b = 0.1, unit = "cm")),
+  #       panel.grid.major.y = element_line(),
+  #       plot.margin = margin(t = 0.1, b = 0.8, unit = "cm"))
+
+```
+
+## Overall Plot
+
+```{r}
+
+chris_ft_map = data.undo %>%
+  rbind(data.endorse) %>%
+  filter(story == 'Chris') %>%
+  distinct(feature_key, feature_type) %>%
+  mutate(color = feature_type_colors[as.numeric(feature_type)])
+
+chris_ft_colors = setNames(chris_ft_map$color, chris_ft_map$feature_key)
+
+chris_labels_plain = c(
+  'generic' = '(generic)',
+  'male' = 'male',
+  'white' = 'White',
+  '10 years old' = '10 years old',
+  'weigh 70 lbs' = 'weighs 70 lbs',
+  'average iq' = 'average iq',
+  'admire their father' = 'admires father',
+  'curious personality' = 'curious',
+  'enjoy play hide-and-seek' = 'enjoys hide-and-seek',
+  'enjoy swimming' = 'enjoys swimming',
+  'picky eater' = 'picky eater',
+  'invite friends over to play' = 'invited friends over to play',
+  'hide in hall closet' = 'hid in hall closet',
+  'find key in their father jacket pocket' = 'found key in fathers jacket pocket',
+  'open gun cabinet with key' = 'opened gun cabinet with key',
+  'pick up pistol to play with' = 'picked up pistol to play with')
+
+# colored labels using element_markdown
+chris_labels = setNames(
+  paste0('<span style="color:',
+         chris_ft_colors[names(chris_labels_plain)],
+         '">**', chris_labels_plain, '**</span>'),
+  names(chris_labels_plain))
+
+chris_levels = rev(names(chris_labels))
+
+```
+
+```{r}
+
+# shared theme for individual condition panels
+chris_theme = theme(
+  text = element_text(size = 12),
+  plot.title = element_markdown(size = 12, hjust = 0.5),
+  legend.position = "none",
+  axis.title.y = element_blank(),
+  axis.text.y = element_blank(),
+  axis.ticks.y = element_blank(),
+  axis.text.x = element_text(size = 12),
+  panel.grid.major = element_line(linewidth = 0.3, color = "grey90"),
+  plot.margin = margin(0))
+
+# for relevance, controllability, and normality
+chris_pred_panel = function(data, cond) {
+  d = data %>%
+    filter(story == 'Chris', condition == cond) %>%
+    group_by(feature_key) %>%
+    summarise(mean = mean(response),
+              ci_low = mean_cl_boot(response)$ymin,
+              ci_high = mean_cl_boot(response)$ymax,
+              .groups = 'drop') %>%
+    mutate(feature_key = factor(feature_key, levels = chris_levels))
+  
+  ggplot(d, aes(x = mean, y = feature_key,
+                color = feature_key)) +
+    geom_pointrange(aes(xmin = ci_low, xmax = ci_high),
+                    size = 0.3, linewidth = 0.7) +
+    scale_x_continuous(name = "rating", limits = c(0.5, 7.5),
+                       breaks = c(1, 4, 7)) +
+    scale_y_discrete(limits = chris_levels,
+                     labels = chris_labels,
+                     drop = FALSE) +
+    scale_color_manual(values = chris_ft_colors) +
+    ggtitle(condition_titles[cond]) +
+    chris_theme
+}
+
+# for undo, same, and different
+chris_sel_panel = function(data, cond) {
+  d = data %>%
+    filter(story == 'Chris', condition == cond) %>%
+    group_by(feature_key) %>%
+    summarise(mean = mean(response),
+              ci_low = mean_cl_boot(response)$ymin,
+              ci_high = mean_cl_boot(response)$ymax,
+              .groups = 'drop') %>%
+    mutate(feature_key = factor(feature_key, levels = chris_levels))
+  
+  ggplot(d, aes(x = mean,
+                y = feature_key,
+                fill = feature_key,
+                color = feature_key)) +
+    geom_col(alpha = 0.5, width = 0.7) +
+    geom_linerange(aes(xmin = ci_low, xmax = ci_high),
+                   linewidth = 0.7) +
+    scale_x_continuous(name = "selection",
+                       limits = c(-0.1, 1.1),
+                       breaks = c(0, 0.5, 1),
+                       labels = c(0, 0.5, 1)) +
+    scale_y_discrete(limits = chris_levels,
+                     labels = chris_labels,
+                     drop = FALSE) +
+    scale_fill_manual(values = chris_ft_colors) +
+    scale_color_manual(values = chris_ft_colors) +
+    ggtitle(condition_titles[cond]) +
+    chris_theme
+}
+
+```
+
+```{r}
+
+legend_data = tibble(
+  feature_type = factor(feature_types[2:4], levels = feature_types[2:4]),
+  x = 1, y = 3:1
+)
+
+p_legend = ggplot(legend_data,
+                  aes(x = x, y = y,
+                      color = feature_type)) +
+  geom_point(size = 2) +
+  geom_text(aes(label = feature_type),
+            hjust = 0,
+            nudge_x = 0.15,
+            size = 4) +
+  scale_color_manual(values = feature_type_colors) +
+  scale_x_continuous(limits = c(0.9, 2.5)) +
+  scale_y_continuous(limits = c(0.5, 3.5)) +
+  theme_void() +
+  theme(legend.position = "none")
+
+p1 = chris_pred_panel(data.rel, "relevance") +
+  theme(axis.text.y = element_markdown(size = 12)) +
+  inset_element(p_legend, left = -2.7, bottom = 0.85, right = -1, top = 1)
+p2 = chris_pred_panel(data.ctrl, "controllability")
+p3 = chris_pred_panel(data.norm, "normality")
+
+p4 = chris_sel_panel(data.undo, "undo")
+p5 = chris_sel_panel(data.same, "same")
+p6 = chris_sel_panel(data.diff, "different")
+
+p7 = ggplot(data.endorse %>%
+              filter(story == 'Chris') %>%
+              group_by(feature_key) %>%
+              summarise(mean = mean(response),
+                        ci_low = mean_cl_boot(response)$ymin,
+                        ci_high = mean_cl_boot(response)$ymax,
+                        .groups = 'drop') %>%
+              mutate(feature_key = factor(feature_key, levels = chris_levels)),
+            aes(x = mean, y = feature_key,
+                color = feature_key)) +
+  geom_pointrange(aes(xmin = ci_low, xmax = ci_high),
+                  size = 0.3, linewidth = 0.7) +
+  scale_x_continuous(name = "agreement",
+                     limits = c(-10, 110),
+                     breaks = c(0, 50, 100)) +
+  scale_y_discrete(limits = chris_levels,
+                   labels = chris_labels,
+                   drop = FALSE) +
+  scale_color_manual(values = chris_ft_colors) +
+  ggtitle(condition_titles["endorse"]) +
+  chris_theme
+
+p1 + p2 + p3 + p4 + p5 + p6 + p7 +
+  plot_layout(nrow = 1, widths = rep(1, 7))
+
+ggsave(str_c(figures_dir, "example_chris.pdf"),
+       width = 11, height = 5)
+
+```
+
 # Session info
+
 ```{r}
 sessionInfo()
 ```
-
