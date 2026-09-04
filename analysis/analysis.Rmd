@@ -1142,7 +1142,7 @@ Hmisc::describe(data.chris)
 
 ```
 
-## Controllability Plot
+## Controllability Plot (Figure 2)
 
 ```{r}
 
@@ -1200,7 +1200,7 @@ ggplot(data = data.chris,
 
 ```
 
-## Overall Plot
+## Overall Plot (Figure 3)
 
 ```{r}
 
@@ -1372,6 +1372,388 @@ p1 + p2 + p3 + p4 + p5 + p6 + p7 +
 ggsave(str_c(figures_dir, "example_chris.pdf"),
        width = 11, height = 5)
 
+```
+
+## Model plot (Figure 4)
+
+For undo, same, and different conditions only.
+
+```{r}
+all_colors = c(feature_type_colors,
+               'selected' = 'gray75',
+               'not selected' = 'gray95')
+
+bar_height = 0.3  # half-height of each bar
+```
+
+Top bars: selected (dark gray) vs not selected (light gray)
+
+```{r}
+
+data.chris_selection = bind_rows(data.undo, data.same, data.diff) %>%
+  filter(story == "Chris")
+
+data.chris_selection_total = data.chris_selection %>%
+  group_by(condition) %>%
+  summarise(prop_selected = mean(response), .groups = "drop")
+
+data.chris_selection_prop = data.chris_selection %>%
+  filter(response == 1) %>%
+  count(condition, feature_type) %>%
+  group_by(condition) %>%
+  mutate(prop = n / sum(n)) %>%
+  ungroup()
+
+```
+
+```{r}
+data.top_bar = data.chris_selection_total %>%
+  rowwise() %>%
+  reframe(condition = condition,
+          category = c("selected", "not selected"),
+          prop = c(prop_selected, 1 - prop_selected)) %>%
+  mutate(condition = factor(condition, levels = conditions),
+         ypos = 2) %>%
+  arrange(condition, desc(category == "selected")) %>%
+  group_by(condition) %>%
+  mutate(xmax = cumsum(prop),
+         xmin = xmax - prop,
+         xmid = (xmin + xmax) / 2) %>%
+  ungroup()
+
+top_bar_labels = tibble(
+  condition = factor(c("undo", "undo",
+                       "same", "same",
+                       "different", "different"),
+                     levels = conditions),
+  label = c("CHANGED", "NOT CHANGED",
+            "SAME", "NOT THE SAME",
+            "DIFFERENT", "NOT DIFFERENT"),
+  x = c(0, 1, 0, 1, 0, 1),
+  hjust = c(0, 1, 0, 1, 0, 1),
+  label_color = rep(c("gray50", "gray75"), 3)
+)
+```
+
+Bottom bars: feature type breakdown
+
+```{r}
+data.bottom_bar = data.chris_selection_prop %>%
+  mutate(category = as.character(feature_type),
+         ypos = 1) %>%
+  arrange(condition, feature_type) %>%
+  group_by(condition) %>%
+  mutate(xmax = cumsum(prop),
+         xmin = xmax - prop,
+         xmid = (xmin + xmax) / 2,
+         pct_label = round_percent(prop)) %>%
+  ungroup()
+
+bottom_bar_labels = data.bottom_bar %>%
+  filter(condition == "same") %>%
+  mutate(xlabel = xmid,
+         label_color = feature_type_colors[as.character(feature_type)])
+```
+
+Zoom lines:
+
+```{r}
+# left edge (0, top) to (0, bottom)
+# right edge (selected, top) to (1, bottom)
+data.zoom = data.chris_selection_total %>%
+  transmute(condition,
+            x_right = prop_selected,
+            x_left = 0)
+```
+
+Generating plot:
+
+```{r}
+p_selections = ggplot() +
+  # top bars
+  geom_rect(data = data.top_bar,
+            aes(xmin = xmin,
+                xmax = xmax,
+                ymin = ypos - bar_height,
+                ymax = ypos + bar_height,
+                fill = category),
+            color = "gray70", 
+            linewidth = 0.4) +
+  geom_text_repel(data = data.top_bar,
+                  aes(x = xmid,
+                      y = ypos,
+                      label = percent(prop, accuracy = 1)),
+                  direction = "x",
+                  point.size = NA,
+                  box.padding = 0.1,
+                  size = 3.5,
+                  color = "black") +
+  # bottom bars
+  geom_rect(data = data.bottom_bar,
+            aes(xmin = xmin,
+                xmax = xmax,
+                ymin = ypos - bar_height,
+                ymax = ypos + bar_height,
+                fill = category),
+            color = "gray70",
+            linewidth = 0.4) +
+  geom_text_repel(data = data.bottom_bar,
+                  aes(x = xmid,
+                      y = ypos,
+                      label = pct_label),
+                  direction = "x",
+                  point.size = NA,
+                  box.padding = 0.1,
+                  size = 3.5) +
+  # zoom lines
+  geom_segment(data = data.zoom,
+               aes(x = x_left,
+                   xend = x_left,
+                   y = 2 - bar_height,
+                   yend = 1 + bar_height),
+               color = "gray70",
+               linewidth = 0.4) +
+  geom_segment(data = data.zoom,
+               aes(x = x_right,
+                   xend = 1,
+                   y = 2 - bar_height,
+                   yend = 1 + bar_height),
+               color = "gray70",
+               linewidth = 0.4) +
+  # top bar labels
+  geom_text(data = top_bar_labels,
+            aes(x = x,
+                y = 2 + bar_height + 0.08,
+                label = label,
+                hjust = hjust,
+                color = label_color),
+            vjust = 0,
+            size = 3,
+            fontface = "bold") +
+  # bottom bar labels
+  geom_text(data = bottom_bar_labels,
+            aes(x = xlabel,
+                y = 0.45,
+                label = toupper(feature_type),
+                color = label_color),
+            fontface = "bold",
+            size = 3) +
+  # formatting
+  facet_wrap(~ condition, nrow = 1,
+             labeller = as_labeller(condition_labels)) +
+  scale_fill_manual(values = all_colors) +
+  scale_color_identity() +
+  scale_y_continuous(limits = c(0.3, 2.7)) +
+  coord_cartesian(clip = "off") +
+  theme(legend.position = "none",
+        strip.background = element_blank(),
+        strip.text = element_markdown(
+          size = 12,
+          margin = margin(t = 0, b = 0.1, unit = "cm")),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_blank(),
+        plot.margin = margin(0, 0, 0, 0),
+        panel.spacing = unit(1, "lines"))
+```
+
+#### Endorse density plot
+
+```{r}
+data.endorse.summary = as.data.frame(
+  emmeans(lmer(response ~ feature_type + (1 | id),
+               data = data.endorse %>% filter(story == "Chris")),
+          ~ feature_type)) %>%
+  rename(mean = emmean, ci_low = lower.CL, ci_high = upper.CL) %>%
+  select(feature_type, mean, ci_low, ci_high)
+
+p_endorse = ggplot(data.endorse,
+                   aes(x = feature_type,
+                       y = response)) +
+  geom_violin(aes(fill = feature_type),
+              color = NA,
+              alpha = 0.3) +
+  geom_pointrange(data = data.endorse.summary,
+                  aes(y = mean,
+                      ymin = ci_low,
+                      ymax = ci_high,
+                      color = feature_type),
+                  size = 0.2,
+                  linewidth = 0.7) +
+  facet_wrap(~ "endorse",
+             labeller = as_labeller(condition_labels)) +
+  scale_fill_manual(values = feature_type_colors) +
+  scale_color_manual(values = feature_type_colors) +
+  scale_x_discrete(labels = c(
+    "generic" = "generic",
+    "demographics" = "demogr.",
+    "dispositions" = "dispos.")) +
+  scale_y_continuous(limits = c(0, 110),
+                     breaks = c(0, 50, 100)) +
+  coord_cartesian(ylim = c(0, 110)) +
+  theme(legend.position = "none",
+        strip.background = element_blank(),
+        strip.text = element_markdown(
+          size = 12,
+          margin = margin(t = 0, b = 0.1, unit = "cm")),
+        axis.title = element_blank(),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+        plot.margin = margin(0, 0, 0, 0.5, unit = "lines"))
+```
+
+#### Coefficient plots
+
+Odds ratios (for undo, same, and different):
+
+```{r}
+p_odds = ggplot(CI_95_all %>%
+                  filter(condition != "endorse"),
+                aes(x = predictor,
+                    y = mean)) +
+  geom_hline(yintercept = 1,
+             linetype = "dashed",
+             color = "grey50") +
+  geom_pointrange(aes(ymin = l95, ymax = u95),
+                  size = 0.3,
+                  linewidth = 0.7,
+                  color = 'gray30') +
+  coord_flip(clip = "off") +
+  facet_wrap(~ condition, nrow = 1,
+             labeller = as_labeller(condition_labels)) +
+  scale_y_continuous(name = "odds ratio",
+                     limits = c(-0.5, 5.25),
+                     breaks = seq(0, 5)) +
+  theme(element_text(size = 12),
+        legend.position = "none",
+        strip.background = element_blank(),
+        strip.text = element_blank(),
+        axis.title.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text = element_text(
+          size = 12, color = "black"),
+        panel.border = element_rect(
+          color = "black", fill = NA, linewidth = 0.4),
+        panel.grid.major.x = element_line(),
+        panel.grid.major.y = element_line(),
+        panel.spacing = unit(1, "lines"),
+        plot.margin = margin(0.3, 0, 0, 0, unit = "cm"))
+```
+
+Coefficients (for endorse):
+
+```{r}
+p_coeff = ggplot(CI_95_all %>%
+                   filter(condition == "endorse"),
+                 aes(x = predictor,
+                     y = mean)) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "grey50") +
+  geom_pointrange(aes(ymin = l95, ymax = u95),
+                  size = 0.3,
+                  linewidth = 0.7,
+                  color = 'gray30') +
+  coord_flip(clip = "off") +
+  facet_wrap(~ condition, nrow = 1,
+             labeller = as_labeller(condition_labels)) +
+  scale_y_continuous(name = "coefficient",
+                     limits = c(-2, 12.5),
+                     breaks = c(0, 3, 6, 9, 12)) +
+  theme(element_text(size = 12),
+        legend.position = "none",
+        strip.background = element_blank(),
+        strip.text = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.x = element_text(
+          size = 12, color = "black"),
+        panel.border = element_rect(
+          color = "black", fill = NA, linewidth = 0.4),
+        panel.grid.major.x = element_line(),
+        panel.grid.major.y = element_line(),
+        panel.spacing = unit(1, "lines"),
+        plot.margin = margin(0.3, 0, 0, 1, unit = "lines"))
+```
+
+#### Model scatterplots
+
+Undo, same, and different conditions:
+
+```{r}
+model_predictions.chris = model_predictions %>% filter(story == "Chris")
+
+model_metrics.chris = model_predictions.chris %>%
+  group_by(condition) %>%
+  summarise(r = cor(predicted, actual),
+            rmse = sqrt(mean((predicted - actual)^2)),
+            .groups = "drop") %>%
+  mutate(label = str_c("r = ", round(r, 2), "\nRMSE = ", round(rmse, 2)))
+
+p_scatter_left = ggplot(model_predictions.chris %>%
+                          filter(condition != "endorse"),
+                        aes(x = predicted, y = actual)) +
+  geom_abline(slope = 1, intercept = 0,
+              linetype = "dashed", color = "grey50") +
+  geom_point(alpha = 0.5, size = 1.5) +
+  geom_text(data = model_metrics.chris %>%
+              filter(condition != "endorse"),
+            aes(x = 0, y = 1.05, label = label),
+            hjust = 0, vjust = 1,
+            size = 3.5, lineheight = 0.9) +
+  facet_wrap2(~ condition, nrow = 1,
+              axes = "y", remove_labels = "x") +
+  scale_x_continuous(name = "predicted selection", breaks = c(0, 0.5, 1)) +
+  scale_y_continuous(name = "selection", breaks = c(0, 0.5, 1)) +
+  coord_fixed(ratio = 1, xlim = c(0, 1), ylim = c(0, 1), clip = "off") +
+  theme(text = element_text(size = 12),
+        strip.background = element_blank(),
+        strip.text = element_blank(),
+        plot.margin = margin(0.3, 0, 0, 0, unit = "cm"),
+        panel.spacing = unit(1, "lines"))
+
+```
+
+Endorse condition:
+
+```{r}
+p_scatter_right = ggplot(model_predictions.chris %>%
+                           filter(condition == "endorse"),
+                         aes(x = predicted, y = actual)) +
+  geom_abline(slope = 1, intercept = 0,
+              linetype = "dashed", color = "grey50") +
+  geom_point(alpha = 0.5, size = 1.5) +
+  geom_text(data = model_metrics.chris %>%
+              filter(condition == "endorse"),
+            aes(x = 0, y = 105, label = label),
+            hjust = 0, vjust = 1,
+            size = 3.5, lineheight = 0.9) +
+  facet_wrap(~ condition, nrow = 1) +
+  scale_x_continuous(name = "predicted agreement", breaks = c(0, 50, 100)) +
+  scale_y_continuous(name = "agreement", breaks = c(0, 50, 100)) +
+  coord_fixed(ratio = 1, xlim = c(0, 100), ylim = c(0, 100), clip = "off") +
+  theme(text = element_text(size = 12),
+        strip.background = element_blank(),
+        strip.text = element_blank(),
+        panel.spacing = unit(1, "lines"),
+        plot.margin = margin(0.3, 0, 0, 1, unit = "lines"))
+```
+
+#### Combining plots
+
+```{r fig.height = 6, fig.width = 11}
+(p_selections + (p_endorse / plot_spacer() + plot_layout(heights = c(20, 1))) +
+  plot_layout(nrow = 1, widths = c(3.5, 1))) /
+  (p_odds + p_coeff +
+    plot_layout(nrow = 1, widths = c(3, 1))) /
+  (p_scatter_left + p_scatter_right +
+    plot_layout(nrow = 1, widths = c(3.5, 1))) +
+  plot_layout(heights = c(1.25, 1, 2.5))
+
+ggsave(str_c(figures_dir, "exp2_chris.pdf"),
+       width = 11, height = 6)
 ```
 
 # Session info
