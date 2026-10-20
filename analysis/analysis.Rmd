@@ -1122,6 +1122,18 @@ p_scatter_right = ggplot(model_predictions %>%
 
 # Exploratory
 
+## Association between respondent features and defendant features
+
+There are 3 relevant features that vary within the vignettes:
+
+**Race/ethnicity:** asian, black, multiracial, native american, white
+
+**Gender:** female vs male
+
+**Age:** [minor]{.underline} (10 years old) vs [adult]{.underline} (19 years old, 24 years
+old, 26 years old, 27 years old, 32 years old, 34 years old, 43 years old, 45 years old)
+vs [senior *(*]{.underline}68 years old)
+
 ## Child Story (Chris)
 
 ```{r}
