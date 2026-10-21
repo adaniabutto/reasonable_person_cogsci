@@ -53,6 +53,18 @@ const feedback_demographics = {
             '<input name="ethnicity" type="radio" id="nonhisp" value=' +
                 '"Non-Hispanic" /> <label for="nonhisp"> Non-Hispanic' +
                 ' </label>' +
+            // jury duty eligibility
+            '<input name="Are you eligible for jury duty?" type="radio" id="juryelig" value=' +
+                '"Yes" /> <label for="elig"> Yes </label>' +
+            '<input name="Are you eligible for jury duty?" type="radio" id="notjuryelig" value=' +
+                '"No" /> <label for="notjuryelig"> No' +
+                ' </label>' +
+            // jury duty served
+            '<input name="Have you ever served jury duty?" type="radio" id="juryserved" value=' +
+                '"Yes" /> <label for="served"> Yes </label>' +
+            '<input name="Have you ever served jury duty?" type="radio" id="jurynotserved" value=' +
+                '"No" /> <label for="notserved"> No' +
+                ' </label>' +
         '</div> </div>' +
         '<p> Please press the finish button to complete the experiment. </p> </div>',
     button_label: 'Finish',
