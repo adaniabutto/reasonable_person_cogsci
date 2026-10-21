@@ -53,21 +53,23 @@ const feedback_demographics = {
             '<input name="ethnicity" type="radio" id="nonhisp" value=' +
                 '"Non-Hispanic" /> <label for="nonhisp"> Non-Hispanic' +
                 ' </label>' +
-            // jury duty eligibility
-            '<input name="Are you eligible for jury duty?" type="radio" id="juryelig" value=' +
-                '"Yes" /> <label for="elig"> Yes </label>' +
-            '<input name="Are you eligible for jury duty?" type="radio" id="notjuryelig" value=' +
-                '"No" /> <label for="notjuryelig"> No' +
-                ' </label>' +
-            // jury duty served
-            '<input name="Have you ever served jury duty?" type="radio" id="juryserved" value=' +
-                '"Yes" /> <label for="served"> Yes </label>' +
-            '<input name="Have you ever served jury duty?" type="radio" id="jurynotserved" value=' +
-                '"No" /> <label for="notserved"> No' +
-                ' </label>' +
         '</div> </div>' +
+        // jury duty questions
+        '<div style="text-align:left; display:inline-block; line-height:1.8em; margin-top:1em;">' +
+            '<p style="margin:0;">Are you eligible for jury duty?</p>' +
+            '<input name="jury_eligible" type="radio" id="jury_elig_yes" value="Yes" />' +
+                '<label for="jury_elig_yes"> Yes </label>' +
+            '<input name="jury_eligible" type="radio" id="jury_elig_no" value="No" />' +
+                '<label for="jury_elig_no"> No </label>' +
+            '<p style="margin:0.8em 0 0 0;">Have you ever served jury duty?</p>' +
+            '<input name="jury_served" type="radio" id="jury_served_yes" value="Yes" />' +
+                '<label for="jury_served_yes"> Yes </label>' +
+            '<input name="jury_served" type="radio" id="jury_served_no" value="No" />' +
+                '<label for="jury_served_no"> No </label>' +
+        '</div>' +
         '<p> Please press the finish button to complete the experiment. </p> </div>',
     button_label: 'Finish',
+    
     on_finish: function(data) {
 
         data.trial = 'demographics';
@@ -93,6 +95,8 @@ const feedback_demographics = {
         } else {
             response.ethnicity = data.response.ethnicity;
         }
+        response.jury_eligible = data.response.jury_eligible || '';
+        response.jury_served = data.response.jury_served || '';
         data.response = response;
     }
 };

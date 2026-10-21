@@ -250,9 +250,9 @@ var trial_info = [
                 ["being Asian", "is Asian", "been Asian"],
                 ["being asthmatic", "is asthmatic", "been asthmatic"],
                 ["being Christian", "is Christian", "been Christian"],
-                ["enjoying reading science fiction", "enjoys reading science finction", "enjoyed reading science fiction"],
+                ["enjoying reading science fiction", "enjoys reading science fiction", "enjoyed reading science fiction"],
                 ["occasionally doing some babysitting", "occasionally does some babysitting", "had occasionally done some babysitting"],
-                ["interacting well with children", "interacts well with. children", "interacted well with children"],
+                ["interacting well with children", "interacts well with children", "interacted well with children"],
                 ["having a calm personality", "has a calm personality", "had a calm personality"],
                 ["being organized", "is organized", "been organized"]
             ],
@@ -294,9 +294,9 @@ var trial_info = [
                 ["being Asian", "is Asian", "been Asian"],
                 ["being asthmatic", "is asthmatic", "been asthmatic"],
                 ["being Christian", "is Christian", "been Christian"],
-                ["enjoying reading science fiction", "enjoys reading science finction", "enjoyed reading science fiction"],
+                ["enjoying reading science fiction", "enjoys reading science fiction", "enjoyed reading science fiction"],
                 ["occasionally doing some babysitting", "occasionally does some babysitting", "had occasionally done some babysitting"],
-                ["interacting well with children", "interacts well with. children", "interacted well with children"],
+                ["interacting well with children", "interacts well with children", "interacted well with children"],
                 ["having a calm personality", "has a calm personality", "had a calm personality"],
                 ["being organized", "is organized", "been organized"]
             ],
@@ -338,9 +338,9 @@ var trial_info = [
                 ["being Asian", "is Asian", "been Asian"],
                 ["being asthmatic", "is asthmatic", "been asthmatic"],
                 ["being Christian", "is Christian", "been Christian"],
-                ["enjoying reading science fiction", "enjoys reading science finction", "enjoyed reading science fiction"],
+                ["enjoying reading science fiction", "enjoys reading science fiction", "enjoyed reading science fiction"],
                 ["occasionally doing some babysitting", "occasionally does some babysitting", "had occasionally done some babysitting"],
-                ["interacting well with children", "interacts well with. children", "interacted well with children"],
+                ["interacting well with children", "interacts well with children", "interacted well with children"],
                 ["having a calm personality", "has a calm personality", "had a calm personality"],
                 ["being organized", "is organized", "been organized"]
             ],
@@ -382,9 +382,9 @@ var trial_info = [
                 ["being Asian", "is Asian", "been Asian"],
                 ["being asthmatic", "is asthmatic", "been asthmatic"],
                 ["being Christian", "is Christian", "been Christian"],
-                ["enjoying reading science fiction", "enjoys reading science finction", "enjoyed reading science fiction"],
+                ["enjoying reading science fiction", "enjoys reading science fiction", "enjoyed reading science fiction"],
                 ["occasionally doing some babysitting", "occasionally does some babysitting", "had occasionally done some babysitting"],
-                ["interacting well with children", "interacts well with. children", "interacted well with children"],
+                ["interacting well with children", "interacts well with children", "interacted well with children"],
                 ["having a calm personality", "has a calm personality", "had a calm personality"],
                 ["being organized", "is organized", "been organized"]
             ],
@@ -404,7 +404,7 @@ var trial_info = [
         story: `<p>
             &emsp;&emsp;
             Kai enjoys reading science fiction and has a calm personality.
-            They are Asian, Christian, asthmatic, and an oragnized person who interacts well with children.
+            They are Asian, Christian, asthmatic, and an organized person who interacts well with children.
             <br> &emsp;&emsp;
             Kai occasionally does some babysitting for people who live in their neighborhood;
             one weekend, people who had recently purchased a house in the neighborhood asked
@@ -424,9 +424,9 @@ var trial_info = [
                 ["being Asian", "is Asian", "been Asian"],
                 ["being asthmatic", "is asthmatic", "been asthmatic"],
                 ["being Christian", "is Christian", "been Christian"],
-                ["enjoying reading science fiction", "enjoys reading science finction", "enjoyed reading science fiction"],
+                ["enjoying reading science fiction", "enjoys reading science fiction", "enjoyed reading science fiction"],
                 ["occasionally doing some babysitting", "occasionally does some babysitting", "had occasionally done some babysitting"],
-                ["interacting well with children", "interacts well with. children", "interacted well with children"],
+                ["interacting well with children", "interacts well with children", "interacted well with children"],
                 ["having a calm personality", "has a calm personality", "had a calm personality"],
                 ["being organized", "is organized", "been organized"]
             ],
