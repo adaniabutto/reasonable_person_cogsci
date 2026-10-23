@@ -7,7 +7,7 @@
 
     <!-- CSS -->
     <link href='css/jspsych.css' rel='stylesheet' type='text/css'></link>
-    <link href='css/plugin-normality.css' rel='stylesheet' type='text/css'></link>
+    <link href='css/plugin-controllability.css' rel='stylesheet' type='text/css'></link>
 
     <!-- JS libraries -->
     <script src='js/jquery.min.js'></script>
@@ -24,7 +24,7 @@
 
     <!-- My plugins/pages -->
     <script src="js/plugin-story.js"></script>
-    <script src="js/plugin-normality.js"></script>
+    <script src="js/plugin-controllability.js"></script>
 
     <script src='js/intro.js'></script>
     <script src='js/feedback-demographics.js'></script>
@@ -96,7 +96,7 @@
                 on_finish: updateProgress
             },
             {
-                type: jsPsychNormality,
+                type: jsPsychControllability,
                 name: jsPsych.timelineVariable('name'),
                 image: jsPsych.timelineVariable('image'),
                 story: jsPsych.timelineVariable('story'),
@@ -123,7 +123,7 @@
             let rows = [];
             let story_order = 0;
 
-            for (const trialPage of jsPsych.data.get().filter({ "trial_type": "normality" }).values()) {
+            for (const trialPage of jsPsych.data.get().filter({ "trial_type": "controllability" }).values()) {
                 // Get attention check response (if it exists)
                 let attention_response = '';
                 for (const attentionCheckPage of jsPsych.data.get().filter({ task: "attention_check", name: trialPage.name }).values()) {
@@ -174,8 +174,9 @@
                 time,
                 data.jury_eligible || "",
                 data.jury_served || ""
+                `"${data.hypothesis || ""}"`
             ].join(',');
-            const header = 'id,feedback,age,gender,race,ethnicity,time,jury_eligible,jury_served';
+            const header = 'id,feedback,age,gender,race,ethnicity,time,jury_eligible,jury_served,hypothesis';
             console.log(participant_csv);
             return participant_csv;
         }

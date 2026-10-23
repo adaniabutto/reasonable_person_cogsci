@@ -54,8 +54,26 @@ const feedback_demographics = {
                 '"Non-Hispanic" /> <label for="nonhisp"> Non-Hispanic' +
                 ' </label>' +
         '</div> </div>' +
+        // jury duty questions
+        '<div style="text-align:left; display:inline-block; line-height:1.8em; margin-top:1em;">' +
+            '<p style="margin:0;">Are you eligible for jury duty?</p>' +
+            '<input name="jury_eligible" type="radio" id="jury_elig_yes" value="Yes" />' +
+                '<label for="jury_elig_yes"> Yes </label>' +
+            '<input name="jury_eligible" type="radio" id="jury_elig_no" value="No" />' +
+                '<label for="jury_elig_no"> No </label>' +
+            '<p style="margin:0.8em 0 0 0;">Have you ever served jury duty?</p>' +
+            '<input name="jury_served" type="radio" id="jury_served_yes" value="Yes" />' +
+                '<label for="jury_served_yes"> Yes </label>' +
+            '<input name="jury_served" type="radio" id="jury_served_no" value="No" />' +
+                '<label for="jury_served_no"> No </label>' +
+        '</div>' +
+        // open-ended question about the study's purpose
+        '<p style="margin-top:1.5em;"><label for="hypothesis">What hypothesis or question' +
+            ' do you think this study was testing?</label></p>' +
+        '<textarea name="hypothesis" id="hypothesis" cols="40" rows="4"></textarea>' +
         '<p> Please press the finish button to complete the experiment. </p> </div>',
     button_label: 'Finish',
+    
     on_finish: function(data) {
 
         data.trial = 'demographics';
@@ -81,6 +99,9 @@ const feedback_demographics = {
         } else {
             response.ethnicity = data.response.ethnicity;
         }
+        response.jury_eligible = data.response.jury_eligible || '';
+        response.jury_served = data.response.jury_served || '';
+        response.hypothesis = (data.response.hypothesis || '').replace(/[\r\n,"]/g, ' ');
         data.response = response;
     }
 };

@@ -174,8 +174,9 @@
                 time,
                 data.jury_eligible || "",
                 data.jury_served || ""
+                `"${data.hypothesis || ""}"`
             ].join(',');
-            const header = 'id,feedback,age,gender,race,ethnicity,time,jury_eligible,jury_served';
+            const header = 'id,feedback,age,gender,race,ethnicity,time,jury_eligible,jury_served,hypothesis';
             console.log(participant_csv);
             return participant_csv;
         }

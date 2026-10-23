@@ -67,6 +67,10 @@ const feedback_demographics = {
             '<input name="jury_served" type="radio" id="jury_served_no" value="No" />' +
                 '<label for="jury_served_no"> No </label>' +
         '</div>' +
+        // open-ended question about the study's purpose
+        '<p style="margin-top:1.5em;"><label for="hypothesis">What hypothesis or question' +
+            ' do you think this study was testing?</label></p>' +
+        '<textarea name="hypothesis" id="hypothesis" cols="40" rows="4"></textarea>' +
         '<p> Please press the finish button to complete the experiment. </p> </div>',
     button_label: 'Finish',
     
@@ -97,6 +101,7 @@ const feedback_demographics = {
         }
         response.jury_eligible = data.response.jury_eligible || '';
         response.jury_served = data.response.jury_served || '';
+        response.hypothesis = (data.response.hypothesis || '').replace(/[\r\n,"]/g, ' ');
         data.response = response;
     }
 };
