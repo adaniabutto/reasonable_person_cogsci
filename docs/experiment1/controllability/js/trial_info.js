@@ -440,5 +440,238 @@ var trial_info = [
         },
         outcome: "the child drowned and was dead",
     },
+    {
+        name: "Robin_8",
+        image: "characters/Robin.png",
+        story: `<p>
+            &emsp;&emsp;
+            Robin is a Native American 8-year-old red-haired boy who is cheerful and
+            has a curious personality. He is opinionated sometimes and enjoys
+            browsing Twitter in his free time.
+            <br> &emsp;&emsp;
+            Robin embarked on a weekend skiing trip and told all his friends about it.
+            He was a beginner with limited experience and had never attempted a downhill
+            run before. Upon arrival at the ski skite, one of his trip companions--
+            a ski-patrol first aid advisor--recommended he do the beginners\'s slope first.
+            Robn obliged, but instead of taking the T-bar lift, he decided to walk up
+            part of the beginner\'s slope and began skiing down from there.
+            <br> &emsp;&emsp;
+            At the bottom of the slope, Robin encountered a sharp left turn. In attempting
+            to take the turn, he lost control over his momentum and direction. While losing
+            control, Robin spotted two girls in his trajectory, one being his ski-patrol advisor,
+            but Robin did not call out to the girls until he was almost upon them
+            <br> &emsp;&emsp;
+            The two girls tried to get out of Robin's way, but it was too late; Robin crashed
+            into them on his skis and knocked them down in the process. The impact injured
+            the ski patrol advisor.
+            </p>`,
+        "attention_check": "Robin had lots of prior skiing experience.<br><br>",
+        features: {
+            non_actions: [
+                ["being a boy", "is a boy", "been a boy"],
+                ["being 8 years old", "is 8 years old", "been 8 years old"],
+                ["being Native American", "is Native American", "been Native American"],
+                ["being red-haired", "is red-haired", "been red-haired"],
+                ["being cheerful", "was cheerful", "was cheerful"],
+                ["having a curious personality", "has a curious personality", "had a curious personality"],
+                ["being opinionated sometimes", "is opinionated sometimes", "was opinionated sometimes"],
+                ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
+            ],
+            actions: [
+                ["telling all his friends about it", "told all his friends about it", "told all his friends about it"],
+                ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
+                ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
+                ["losing control over his momentum and direction", "lost control over his momentum and direction", "lost control over his momentum and direction"],
+                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down"]
+            ]
+        },
+        outcome: "injuring the ski patrol advisor",
+    },
+    {
+        name: "Robin_13",
+        image: "characters/Robin.png",
+        story: `<p>
+            &emsp;&emsp;
+            Robin is a Native American 13-year-old red-haired boy who is cheerful and
+            has a curious personality. He is opinionated sometimes and enjoys
+            browsing Twitter in his free time.
+            <br> &emsp;&emsp;
+            Robin embarked on a weekend skiing trip and told all his friends about it.
+            He was a beginner with limited experience and had never attempted a downhill
+            run before. Upon arrival at the ski skite, one of his trip companions--
+            a ski-patrol first aid advisor--recommended he do the beginners\'s slope first.
+            Robn obliged, but instead of taking the T-bar lift, he decided to walk up
+            part of the beginner\'s slope and began skiing down from there.
+            <br> &emsp;&emsp;
+            At the bottom of the slope, Robin encountered a sharp left turn. In attempting
+            to take the turn, he lost control over his momentum and direction. While losing
+            control, Robin spotted two girls in his trajectory, one being his ski-patrol advisor,
+            but Robin did not call out to the girls until he was almost upon them
+            <br> &emsp;&emsp;
+            The two girls tried to get out of Robin's way, but it was too late; Robin crashed
+            into them on his skis and knocked them down in the process. The impact injured
+            the ski patrol advisor.
+            </p>`,
+        "attention_check": "Robin had lots of prior skiing experience.<br><br>",
+        features: {
+            non_actions: [
+                ["being a boy", "is a boy", "been a boy"],
+                ["being 13 years old", "is 13 years old", "been 13 years old"],
+                ["being Native American", "is Native American", "been Native American"],
+                ["being red-haired", "is red-haired", "been red-haired"],
+                ["being cheerful", "was cheerful", "was cheerful"],
+                ["having a curious personality", "has a curious personality", "had a curious personality"],
+                ["being opinionated sometimes", "is opinionated sometimes", "was opinionated sometimes"],
+                ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
+            ],
+            actions: [
+                ["telling all his friends about it", "told all his friends about it", "told all his friends about it"],
+                ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
+                ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
+                ["losing control over his momentum and direction", "lost control over his momentum and direction", "lost control over his momentum and direction"],
+                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down"]
+            ]
+        },
+        outcome: "injuring the ski patrol advisor",
+    },
+    {
+        name: "Robin_18",
+        image: "characters/Robin.png",
+        story: `<p>
+            &emsp;&emsp;
+            Robin is a Native American 18-year-old red-haired boy who is cheerful and
+            has a curious personality. He is opinionated sometimes and enjoys
+            browsing Twitter in his free time.
+            <br> &emsp;&emsp;
+            Robin embarked on a weekend skiing trip and told all his friends about it.
+            He was a beginner with limited experience and had never attempted a downhill
+            run before. Upon arrival at the ski skite, one of his trip companions--
+            a ski-patrol first aid advisor--recommended he do the beginners\'s slope first.
+            Robn obliged, but instead of taking the T-bar lift, he decided to walk up
+            part of the beginner\'s slope and began skiing down from there.
+            <br> &emsp;&emsp;
+            At the bottom of the slope, Robin encountered a sharp left turn. In attempting
+            to take the turn, he lost control over his momentum and direction. While losing
+            control, Robin spotted two girls in his trajectory, one being his ski-patrol advisor,
+            but Robin did not call out to the girls until he was almost upon them
+            <br> &emsp;&emsp;
+            The two girls tried to get out of Robin's way, but it was too late; Robin crashed
+            into them on his skis and knocked them down in the process. The impact injured
+            the ski patrol advisor.
+            </p>`,
+        "attention_check": "Robin had lots of prior skiing experience.<br><br>",
+        features: {
+            non_actions: [
+                ["being a boy", "is a boy", "been a boy"],
+                ["being 18 years old", "is 18 years old", "been 18 years old"],
+                ["being Native American", "is Native American", "been Native American"],
+                ["being red-haired", "is red-haired", "been red-haired"],
+                ["being cheerful", "was cheerful", "was cheerful"],
+                ["having a curious personality", "has a curious personality", "had a curious personality"],
+                ["being opinionated sometimes", "is opinionated sometimes", "was opinionated sometimes"],
+                ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
+            ],
+            actions: [
+                ["telling all his friends about it", "told all his friends about it", "told all his friends about it"],
+                ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
+                ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
+                ["losing control over his momentum and direction", "lost control over his momentum and direction", "lost control over his momentum and direction"],
+                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down"]
+            ]
+        },
+        outcome: "injuring the ski patrol advisor",
+    },
+    {
+        name: "Robin_18_female",
+        image: "characters/Robin.png",
+        story: `<p>
+            &emsp;&emsp;
+            Robin is a Native American 18-year-old red-haired girl who is cheerful and
+            has a curious personality. She is opinionated sometimes and enjoys
+            browsing Twitter in her free time.
+            <br> &emsp;&emsp;
+            Robin embarked on a weekend skiing trip and told all her friends about it.
+            She was a beginner with limited experience and had never attempted a downhill
+            run before. Upon arrival at the ski skite, one of her trip companions--
+            a ski-patrol first aid advisor--recommended she do the beginners\'s slope first.
+            Robn obliged, but instead of taking the T-bar lift, she decided to walk up
+            part of the beginner\'s slope and began skiing down from there.
+            <br> &emsp;&emsp;
+            At the bottom of the slope, Robin encountered a sharp left turn. In attempting
+            to take the turn, she lost control over her momentum and direction. While losing
+            control, Robin spotted two girls in her trajectory, one being her ski-patrol advisor,
+            but Robin did not call out to the girls until she was almost upon them.
+            <br> &emsp;&emsp;
+            The two girls tried to get out of Robin's way, but it was too late; Robin crashed
+            into them on her skis and knocked them down in the process. The impact injured
+            the ski patrol advisor.
+            </p>`,
+        "attention_check": "Robin had lots of prior skiing experience.<br><br>",
+        features: {
+            non_actions: [
+                ["being a girl", "is a girl", "been a girl"],
+                ["being 18 years old", "is 18 years old", "been 18 years old"],
+                ["being Native American", "is Native American", "been Native American"],
+                ["being red-haired", "is red-haired", "been red-haired"],
+                ["being cheerful", "was cheerful", "was cheerful"],
+                ["having a curious personality", "has a curious personality", "had a curious personality"],
+                ["being opinionated sometimes", "is opinionated sometimes", "was opinionated sometimes"],
+                ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
+            ],
+            actions: [
+                ["telling all her friends about it", "told all her friends about it", "told all her friends about it"],
+                ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
+                ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
+                ["losing control over her momentum and direction", "lost control over her momentum and direction", "lost control over her momentum and direction"],
+                ["crashing into the girls on her skis and knocking them down", "crashed into the girls on her skis and knocking them down", "crashed into the girls on her skis and knocking them down"]
+            ]
+        },
+        outcome: "injuring the ski patrol advisor",
+    },
+    {
+        name: "Robin_control",
+        image: "characters/Robin.png",
+        story: `<p>
+            &emsp;&emsp;
+            Robin is a Native American red-haired 18-year-old who is cheerful and
+            has a curious personality. They are opinionated sometimes and enjoy
+            browsing Twitter in their free time.
+            <br> &emsp;&emsp;
+            Robin embarked on a weekend skiing trip and told all their friends about it.
+            They were a beginner with limited experience and had never attempted a downhill
+            run before. Upon arrival at the ski skite, one of their trip companions--
+            a ski-patrol first aid advisor--recommended Robin do the beginners\'s slope first.
+            Robin obliged, but instead of taking the T-bar lift, they decided to walk up
+            part of the beginner\'s slope and began skiing down from there.
+            <br> &emsp;&emsp;
+            At the bottom of the slope, Robin encountered a sharp left turn. In attempting
+            to take the turn, they lost control over their momentum and direction. While losing
+            control, Robin spotted two girls in their trajectory, one being the ski-patrol advisor,
+            but Robin did not call out to the girls until Robin was almost upon them.
+            <br> &emsp;&emsp;
+            The two girls tried to get out of Robin's way, but it was too late; Robin crashed
+            into them on their skis and knocked them down in the process. The impact injured
+            the ski patrol advisor.
+            </p>`,
+        "attention_check": "Robin had lots of prior skiing experience.<br><br>",
+        features: {
+            non_actions: [
+                ["being Native American", "is Native American", "been Native American"],
+                ["being red-haired", "is red-haired", "been red-haired"],
+                ["being cheerful", "was cheerful", "was cheerful"],
+                ["having a curious personality", "has a curious personality", "had a curious personality"],
+                ["being opinionated sometimes", "is opinionated sometimes", "was opinionated sometimes"],
+                ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
+            ],
+            actions: [
+                ["telling all their friends about it", "told all their friends about it", "told all their friends about it"],
+                ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
+                ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
+                ["losing control over their momentum and direction", "lost control over their momentum and direction", "lost control over their momentum and direction"],
+                ["crashing into the girls on their skis and knocking them down", "crashed into the girls on their skis and knocking them down", "crashed into the girls on their skis and knocking them down"]
+            ]
+        },
+        outcome: "injuring the ski patrol advisor",
+    },
 ];
 
