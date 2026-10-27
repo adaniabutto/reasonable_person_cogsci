@@ -53,6 +53,15 @@
         }
     });
 
+    // -----------------------------------------------------
+    // pick one version of each protagonist's story
+    // -----------------------------------------------------
+    // trial_info.js lists every version as its own entry, named
+    // "<Protagonist>_<version>" (Jordan_8, Jordan_18_female, Kai_control, ...).
+    // Each participant gets one randomly chosen version per protagonist.
+    // To show specific versions instead (e.g. for reviewers), list them in the URL:
+    //   index.html?stories=Jordan_18_female,Kai_23
+    const requested_stories = (jsPsych.data.getURLVariable('stories') || '').split(',').filter(Boolean);
     const versions_by_protagonist = {};
     for (const t of trial_info) {
         const protagonist = t.name.split('_')[0];
@@ -62,13 +71,16 @@
     const selected_stories = Object.entries(versions_by_protagonist).map(([protagonist, versions]) => {
         const chosen = versions.find(t => requested_stories.includes(t.name))
             || jsPsych.randomization.sampleWithoutReplacement(versions, 1)[0];
+        // participants see the protagonist's name; the version is kept for the data
         return { ...chosen, name: protagonist, version: chosen.name };
     });
+    const version_of = Object.fromEntries(selected_stories.map(t => [t.name, t.version]));
 
     // -----------------------------------------------------
     // progress bar helper
     // -----------------------------------------------------
-    const progressIncrement = 1 / 35;
+    // 3 pages per story, plus intro and feedback
+    const progressIncrement = 1 / (selected_stories.length * 3 + 2);
 
     function updateProgress() {
         var prog = jsPsych.getProgressBarCompleted();
@@ -80,14 +92,14 @@
     // -----------------------------------------------------
     let preload_trial = {
         type: jsPsychPreload,
-        images: trial_info.map(t => t.image)
+        images: selected_stories.map(t => t.image)
     };
 
     // -----------------------------------------------------
     // trials
     // -----------------------------------------------------
     const trials = {
-        timeline_variables: trial_info,
+        timeline_variables: selected_stories,
         timeline: [
             {
                 type: jsPsychStory,
@@ -155,13 +167,14 @@
                         i,
                         response,
                         trialPage.name,
-                        story_order
+                        story_order,
+                        version_of[trialPage.name]
                     ].join(','));
                 }
                 story_order += 1;
             }
 
-            const header = 'id,attention_response,feature,feature_order,response,story_name,story_order';
+            const header = 'id,attention_response,feature,feature_order,response,story_name,story_order,story_version';
             const trials_csv = [header, ...rows].join('\n');
             console.log(trials_csv);
             return trials_csv;
@@ -185,10 +198,11 @@
                 `"${data.ethnicity || ""}"`,
                 time,
                 data.jury_eligible || "",
-                data.jury_served || ""
+                data.jury_served || "",
                 `"${data.hypothesis || ""}"`
             ].join(',');
             const header = 'id,feedback,age,gender,race,ethnicity,time,jury_eligible,jury_served,hypothesis';
+            const participant_csv = header + '\n' + participant;
             console.log(participant_csv);
             return participant_csv;
         }
@@ -201,7 +215,13 @@
     timeline.push(preload_trial);
     timeline.push({...intro, on_finish: updateProgress});
     timeline.push(trials);
-    timeline.push({...feedback_demographics, on_finish: updateProgress});
+    timeline.push({
+        ...feedback_demographics,
+        on_finish: (data) => {
+            feedback_demographics.on_finish(data);
+            updateProgress();
+        }
+    });
     timeline.push(save_trial_data);
     timeline.push(save_participant_data);
 
