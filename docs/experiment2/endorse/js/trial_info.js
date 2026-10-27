@@ -152,7 +152,7 @@ var trial_info = [
             the hall closet. There, she found the key to the gun cabinet in her father\'s
             jacket, which was hanging in the closet.
             Jordan curiously opened the cabinet and began playing with one of the pistols.
-            As she was holding the pistol, she accidentally discharged it and shot one of his friends
+            As she was holding the pistol, she accidentally discharged it and shot one of her friends
             in the shoulder. The friend was taken to the hospital for treatment of severe wounds.
             </p>`,
         "attention_check": "Jordan found a wallet in her father\'s jacket.<br><br>",
@@ -472,9 +472,9 @@ var trial_info = [
                 ["being 8 years old", "is 8 years old", "been 8 years old"],
                 ["being Native American", "is Native American", "been Native American"],
                 ["being red-haired", "is red-haired", "been red-haired"],
-                ["being cheerful", "was cheerful", "was cheerful"],
+                ["being cheerful", "is cheerful", "been cheerful"],
                 ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["being opinionated sometimes", "is opinionated sometimes", "was opinionated sometimes"],
+                ["being opinionated sometimes", "is opinionated sometimes", "been opinionated sometimes"],
                 ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
             ],
             actions: [
@@ -482,7 +482,7 @@ var trial_info = [
                 ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
                 ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
                 ["losing control over his momentum and direction", "lost control over his momentum and direction", "lost control over his momentum and direction"],
-                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down"]
+                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocked them down", "crashed into the girls on his skis and knocked them down"]
             ]
         },
         outcome: "injuring the ski patrol advisor",
@@ -519,9 +519,9 @@ var trial_info = [
                 ["being 13 years old", "is 13 years old", "been 13 years old"],
                 ["being Native American", "is Native American", "been Native American"],
                 ["being red-haired", "is red-haired", "been red-haired"],
-                ["being cheerful", "was cheerful", "was cheerful"],
+                ["being cheerful", "is cheerful", "been cheerful"],
                 ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["being opinionated sometimes", "is opinionated sometimes", "was opinionated sometimes"],
+                ["being opinionated sometimes", "is opinionated sometimes", "been opinionated sometimes"],
                 ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
             ],
             actions: [
@@ -529,7 +529,7 @@ var trial_info = [
                 ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
                 ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
                 ["losing control over his momentum and direction", "lost control over his momentum and direction", "lost control over his momentum and direction"],
-                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down"]
+                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocked them down", "crashed into the girls on his skis and knocked them down"]
             ]
         },
         outcome: "injuring the ski patrol advisor",
@@ -566,9 +566,9 @@ var trial_info = [
                 ["being 18 years old", "is 18 years old", "been 18 years old"],
                 ["being Native American", "is Native American", "been Native American"],
                 ["being red-haired", "is red-haired", "been red-haired"],
-                ["being cheerful", "was cheerful", "was cheerful"],
+                ["being cheerful", "is cheerful", "been cheerful"],
                 ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["being opinionated sometimes", "is opinionated sometimes", "was opinionated sometimes"],
+                ["being opinionated sometimes", "is opinionated sometimes", "been opinionated sometimes"],
                 ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
             ],
             actions: [
@@ -576,7 +576,7 @@ var trial_info = [
                 ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
                 ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
                 ["losing control over his momentum and direction", "lost control over his momentum and direction", "lost control over his momentum and direction"],
-                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocking them down"]
+                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocked them down", "crashed into the girls on his skis and knocked them down"]
             ]
         },
         outcome: "injuring the ski patrol advisor",
@@ -613,9 +613,9 @@ var trial_info = [
                 ["being 18 years old", "is 18 years old", "been 18 years old"],
                 ["being Native American", "is Native American", "been Native American"],
                 ["being red-haired", "is red-haired", "been red-haired"],
-                ["being cheerful", "was cheerful", "was cheerful"],
+                ["being cheerful", "is cheerful", "been cheerful"],
                 ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["being opinionated sometimes", "is opinionated sometimes", "was opinionated sometimes"],
+                ["being opinionated sometimes", "is opinionated sometimes", "been opinionated sometimes"],
                 ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
             ],
             actions: [
@@ -623,7 +623,7 @@ var trial_info = [
                 ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
                 ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
                 ["losing control over her momentum and direction", "lost control over her momentum and direction", "lost control over her momentum and direction"],
-                ["crashing into the girls on her skis and knocking them down", "crashed into the girls on her skis and knocking them down", "crashed into the girls on her skis and knocking them down"]
+                ["crashing into the girls on her skis and knocking them down", "crashed into the girls on her skis and knocked them down", "crashed into the girls on her skis and knocked them down"]
             ]
         },
         outcome: "injuring the ski patrol advisor",
@@ -658,9 +658,9 @@ var trial_info = [
             non_actions: [
                 ["being Native American", "is Native American", "been Native American"],
                 ["being red-haired", "is red-haired", "been red-haired"],
-                ["being cheerful", "was cheerful", "was cheerful"],
+                ["being cheerful", "is cheerful", "been cheerful"],
                 ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["being opinionated sometimes", "is opinionated sometimes", "was opinionated sometimes"],
+                ["being opinionated sometimes", "is opinionated sometimes", "been opinionated sometimes"],
                 ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
             ],
             actions: [
@@ -668,7 +668,7 @@ var trial_info = [
                 ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
                 ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
                 ["losing control over their momentum and direction", "lost control over their momentum and direction", "lost control over their momentum and direction"],
-                ["crashing into the girls on their skis and knocking them down", "crashed into the girls on their skis and knocking them down", "crashed into the girls on their skis and knocking them down"]
+                ["crashing into the girls on their skis and knocking them down", "crashed into the girls on their skis and knocked them down", "crashed into the girls on their skis and knocked them down"]
             ]
         },
         outcome: "injuring the ski patrol advisor",
