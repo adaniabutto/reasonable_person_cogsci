@@ -56,6 +56,18 @@
         }
     });
 
+    const versions_by_protagonist = {};
+    for (const t of trial_info) {
+        const protagonist = t.name.split('_')[0];
+        if (!versions_by_protagonist[protagonist]) versions_by_protagonist[protagonist] = [];
+        versions_by_protagonist[protagonist].push(t);
+    }
+    const selected_stories = Object.entries(versions_by_protagonist).map(([protagonist, versions]) => {
+        const chosen = versions.find(t => requested_stories.includes(t.name))
+            || jsPsych.randomization.sampleWithoutReplacement(versions, 1)[0];
+        return { ...chosen, name: protagonist, version: chosen.name };
+    });
+
     // -----------------------------------------------------
     // progress bar helper
     // -----------------------------------------------------
