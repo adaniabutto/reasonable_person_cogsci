@@ -673,5 +673,495 @@ var trial_info = [
         },
         outcome: "injuring the ski patrol advisor",
     },
+    {
+        name: "Blake_female",
+        image: "characters/Blake.png",
+        story: `<p>
+            &emsp;&emsp;
+            Blake is 38 years old and works as a software engineer.
+            She is White, has red hair, and is a timid but organized person.
+            Her technical skills allowed her to move out of his troubled family home early on,
+            and she has supported herself ever since.
+            In her free time, she enjoys composing music and oil painting.
+            <br> &emsp;&emsp;
+            Blake and her romantic partner Franklin, who is one year older, have been together for two years.
+            They recently moved in together. A year earlier, Franklin spent four months in jail for physically abusing Blake.
+            After that, they started going to couples therapy and for a while their relationship improved.
+            <br> &emsp;&emsp;
+            Recently, however, Franklin has been acting more violent towards Blake when drunk,
+            and on one occasion Blake went to the emergency room for bruises she suffered.
+            One night, Franklin came home in an extremely intoxicated state and began screaming
+            at Blake that he was going to kill her someday. Blake became very scared and
+            ran into their bedroom to hide. Franklin followed her and started hitting Blake.
+            Out of panic, Blake grabbed the loaded, licensed revolver that Franklin
+            kept under their bed and shot Franklin. Franklin died in the hospital three hours later.
+            </p>`,
+        "attention_check": "Blake and Franklin went to couples therapy together.<br><br>",
+        features: {
+            non_actions: [
+                ["being 38 years old", "is 38 years old", "been 38 years old"],
+                ["being female", "is female", "been female"],
+                ["being White", "is White", "been White"],
+                ["working as a software engineer", "works as a software engineer", "has worked as a software engineer"],
+                ["moving out of her troubled family home early on", "moves out of her troubled family home early on", "has moved out of her troubled family home early on"],
+                ["being red-haired", "is red-haired", "been red-haired"],
+                ["being timid", "is timid", "been timid"],
+                ["being organized", "is organized", "been organized"],
+                ["enjoying composing music", "enjoys composing music", "enjoyed composing music"],
+                ["enjoying oil painting", "enjoys oil painting", "enjoyed oil painting"],
+            ],
+            actions: [
+                ["starting going to couples therapy", "started going to couples therapy", "started going to couples therapy"],
+                ["going to the emergency room for bruises she suffered", "went to the emergency room for bruises she suffered", "went to the emergency room for bruises she suffered"],
+                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
+                ["grabbing the loaded, licensed revolver", "grabbed the loaded, licensed revolver", "grabbed the loaded, licensed revolver"],
+                ["shooting Franklin", "shot Franklin", "shot Franklin"]
+            ]
+        },
+        outcome: "dying in the hospital three hours later",
+    },
+    {
+        name: "Blake_male",
+        image: "characters/Blake.png",
+        story: `<p>
+            &emsp;&emsp;
+            Blake is 38 years old and works as a software engineer.
+            He is White, has red hair, and is a timid but organized person.
+            His technical skills allowed him to move out of his troubled family home early on,
+            and he has supported himself ever since.
+            In his free time, he enjoys composing music and oil painting.
+            <br> &emsp;&emsp;
+            Blake and his romantic partner Franklin, who is one year older, have been together for two years.
+            They recently moved in together. A year earlier, Franklin spent four months in jail for physically abusing Blake.
+            After that, they started going to couples therapy and for a while their relationship improved.
+            <br> &emsp;&emsp;
+            Recently, however, Franklin has been acting more violent towards Blake when drunk,
+            and on one occasion Blake went to the emergency room for bruises he suffered.
+            One night, Franklin came home in an extremely intoxicated state and began screaming
+            at Blake that he was going to kill him someday. Blake became very scared and
+            ran into their bedroom to hide. Franklin followed him and started hitting Blake.
+            Out of panic, Blake grabbed the loaded, licensed revolver that Franklin
+            kept under their bed and shot Franklin. Franklin died in the hospital three hours later.
+            </p>`,
+        "attention_check": "Blake and Franklin went to couples therapy together.<br><br>",
+        features: {
+            non_actions: [
+                ["being 38 years old", "is 38 years old", "been 38 years old"],
+                ["being male", "is male", "been male"],
+                ["being White", "is White", "been White"],
+                ["working as a software engineer", "works as a software engineer", "has worked as a software engineer"],
+                ["moving out of his troubled family home early on", "moves out of his troubled family home early on", "has moved out of his troubled family home early on"],
+                ["being red-haired", "is red-haired", "been red-haired"],
+                ["being timid", "is timid", "been timid"],
+                ["being organized", "is organized", "been organized"],
+                ["enjoying composing music", "enjoys composing music", "enjoyed composing music"],
+                ["enjoying oil painting", "enjoys oil painting", "enjoyed oil painting"],
+            ],
+            actions: [
+                ["starting going to couples therapy", "started going to couples therapy", "started going to couples therapy"],
+                ["going to the emergency room for bruises he suffered", "went to the emergency room for bruises he suffered", "went to the emergency room for bruises he suffered"],
+                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
+                ["grabbing the loaded, licensed revolver", "grabbed the loaded, licensed revolver", "grabbed the loaded, licensed revolver"],
+                ["shooting Franklin", "shot Franklin", "shot Franklin"]
+            ]
+        },
+        outcome: "dying in the hospital three hours later",
+    },
+        {
+        name: "Blake_control",
+        image: "characters/Blake.png",
+        story: `<p>
+            &emsp;&emsp;
+            Blake is 38 years old and works as a software engineer.
+            They are White, have red hair, and are timid but organized.
+            Their technical skills allowed them to move out of their troubled family home early on,
+            and they have supported themselves ever since.
+            In their free time, Blake enjoys composing music and oil painting.
+            <br> &emsp;&emsp;
+            Blake and their romantic partner Franklin, who is one year older, have been together for two years.
+            They recently moved in together. A year earlier, Franklin spent four months in jail for physically abusing Blake.
+            After that, they started going to couples therapy and for a while their relationship improved.
+            <br> &emsp;&emsp;
+            Recently, however, Franklin has been acting more violent towards Blake when drunk,
+            and on one occasion Blake went to the emergency room for bruises they suffered.
+            One night, Franklin came home in an extremely intoxicated state and began screaming
+            at Blake that he was going to kill Blake someday. Blake became very scared and
+            ran into their bedroom to hide. Franklin followed him and started hitting Blake.
+            Out of panic, Blake grabbed the loaded, licensed revolver that Franklin
+            kept under their bed and shot Franklin. Franklin died in the hospital three hours later.
+            </p>`,
+        "attention_check": "Blake and Franklin went to couples therapy together.<br><br>",
+        features: {
+            non_actions: [
+                ["being 38 years old", "is 38 years old", "been 38 years old"],
+                ["being White", "is White", "been White"],
+                ["working as a software engineer", "works as a software engineer", "has worked as a software engineer"],
+                ["moving out of their troubled family home early on", "moves out of their troubled family home early on", "has moved out of their troubled family home early on"],
+                ["being red-haired", "is red-haired", "been red-haired"],
+                ["being timid", "is timid", "been timid"],
+                ["being organized", "is organized", "been organized"],
+                ["enjoying composing music", "enjoys composing music", "enjoyed composing music"],
+                ["enjoying oil painting", "enjoys oil painting", "enjoyed oil painting"],
+            ],
+            actions: [
+                ["starting going to couples therapy", "started going to couples therapy", "started going to couples therapy"],
+                ["going to the emergency room for bruises he suffered", "went to the emergency room for bruises he suffered", "went to the emergency room for bruises he suffered"],
+                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
+                ["grabbing the loaded, licensed revolver", "grabbed the loaded, licensed revolver", "grabbed the loaded, licensed revolver"],
+                ["shooting Franklin", "shot Franklin", "shot Franklin"]
+            ]
+        },
+        outcome: "dying in the hospital three hours later",
+    },
+    {
+        name: "Alfred_white",
+        image: "characters/Alfred.png",
+        story: `<p>
+            &emsp;&emsp;
+            Alfred is a 68-year-old White patriotic veteran who was honorably discharged
+            and now lives alone in a quaint neighborhood in a large city.
+            He has been diagnosed with Post-Traumatic Stress Disorder (PTSD),
+            a mental health condition that can cause vivid flashbacks of a traumatic event.
+            Alfred enjoys fishing, Italian cuisine, and has a calm personality.
+            <br> &emsp;&emsp;
+            One evening, Alfred was riding the subway home after visiting a friend in a
+            different neighborhood. Oliver, an investment banker, was leaving work and boarded
+            the same subway a few stops later. Both people were quiet and did not interact with other passengers.
+            <br> &emsp;&emsp;
+            Alfred and Oliver got off at the same stop, which was underground. 
+            There was new road construction happening above the stop.
+            As Alfred stepped onto the subway platform, he heard loud drilling and yelling
+            above him. He panicked and suddenly physically attacked Oliver,
+            pinning him to the ground and punching him twice.
+            </p>`,
+        "attention_check": "Alfred and Oliver got off at different stops.<br><br>",
+        features: {
+            non_actions: [
+                ["being 68 years old", "is 68 years old", "been 68 years old"],
+                ["being male", "is male", "been male"],
+                ["being White", "is White", "been White"],
+                ["is a veteran", "is a veteran", "is a veteran"],
+                ["being diagnosed with PTSD", "aws diagnosed with PTSD", "been diagnosed with PTSD"],
+                ["living alone", "lives alone", "lived alone"],
+                ["being patriotic", "is patriotic", "been patriotic"],
+                ["enjoying fishing", "enjoys fishing", "enjoyed fishing"],
+                ["enjoying Italian cuisine", "enjoys Italian cuisine", "enjoyed Italian cuisine"],
+                ["having a calm personality", "has a calm personality", "has a calm personality"],
+            ],
+            actions: [
+                ["riding the subway home", "rode the subway home", "rode the subway home"],
+                ["being quiet and not interacting with other passengers", "were quiet and did not interact with other passengers", "were quiet and did not interact with other passengers"],
+                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
+                ["getting off at the same stop", "got off at the same stop", "got off at the same stop"],
+                ["physically attacking Oliver", "physically attacked Oliver", "physically attacked Oliver"]
+            ]
+        },
+        outcome: "pinning him on the ground and punching him twice",
+    },
+    {
+        name: "Alfred_black",
+        image: "characters/Alfred.png",
+        story: `<p>
+            &emsp;&emsp;
+            Alfred is a 68-year-old Black patriotic veteran who was honorably discharged
+            and now lives alone in a quaint neighborhood in a large city.
+            He has been diagnosed with Post-Traumatic Stress Disorder (PTSD),
+            a mental health condition that can cause vivid flashbacks of a traumatic event.
+            Alfred enjoys fishing, Italian cuisine, and has a calm personality.
+            <br> &emsp;&emsp;
+            One evening, Alfred was riding the subway home after visiting a friend in a
+            different neighborhood. Oliver, an investment banker, was leaving work and boarded
+            the same subway a few stops later. Both people were quiet and did not interact with other passengers.
+            <br> &emsp;&emsp;
+            Alfred and Oliver got off at the same stop, which was underground. 
+            There was new road construction happening above the stop.
+            As Alfred stepped onto the subway platform, he heard loud drilling and yelling
+            above him. He panicked and suddenly physically attacked Oliver,
+            pinning him to the ground and punching him twice.
+            </p>`,
+        "attention_check": "Alfred and Oliver got off at different stops.<br><br>",
+        features: {
+            non_actions: [
+                ["being 68 years old", "is 68 years old", "been 68 years old"],
+                ["being male", "is male", "been male"],
+                ["being Black", "is Black", "been Black"],
+                ["is a veteran", "is a veteran", "is a veteran"],
+                ["being diagnosed with PTSD", "aws diagnosed with PTSD", "been diagnosed with PTSD"],
+                ["living alone", "lives alone", "lived alone"],
+                ["being patriotic", "is patriotic", "been patriotic"],
+                ["enjoying fishing", "enjoys fishing", "enjoyed fishing"],
+                ["enjoying Italian cuisine", "enjoys Italian cuisine", "enjoyed Italian cuisine"],
+                ["having a calm personality", "has a calm personality", "has a calm personality"],
+            ],
+            actions: [
+                ["riding the subway home", "rode the subway home", "rode the subway home"],
+                ["being quiet and not interacting with other passengers", "were quiet and did not interact with other passengers", "were quiet and did not interact with other passengers"],
+                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
+                ["getting off at the same stop", "got off at the same stop", "got off at the same stop"],
+                ["physically attacking Oliver", "physically attacked Oliver", "physically attacked Oliver"]
+            ]
+        },
+        outcome: "pinning him on the ground and punching him twice",
+    },
+    {
+        name: "Alfred_multiracial",
+        image: "characters/Alfred.png",
+        story: `<p>
+            &emsp;&emsp;
+            Alfred is a 68-year-old multiracial, patriotic veteran who was honorably discharged
+            and now lives alone in a quaint neighborhood in a large city.
+            He has been diagnosed with Post-Traumatic Stress Disorder (PTSD),
+            a mental health condition that can cause vivid flashbacks of a traumatic event.
+            Alfred enjoys fishing, Italian cuisine, and has a calm personality.
+            <br> &emsp;&emsp;
+            One evening, Alfred was riding the subway home after visiting a friend in a
+            different neighborhood. Oliver, an investment banker, was leaving work and boarded
+            the same subway a few stops later. Both people were quiet and did not interact with other passengers.
+            <br> &emsp;&emsp;
+            Alfred and Oliver got off at the same stop, which was underground. 
+            There was new road construction happening above the stop.
+            As Alfred stepped onto the subway platform, he heard loud drilling and yelling
+            above him. He panicked and suddenly physically attacked Oliver,
+            pinning him to the ground and punching him twice.
+            </p>`,
+        "attention_check": "Alfred and Oliver got off at different stops.<br><br>",
+        features: {
+            non_actions: [
+                ["being 68 years old", "is 68 years old", "been 68 years old"],
+                ["being male", "is male", "been male"],
+                ["being multiracial", "is multiracial", "been multiracial"],
+                ["is a veteran", "is a veteran", "is a veteran"],
+                ["being diagnosed with PTSD", "aws diagnosed with PTSD", "been diagnosed with PTSD"],
+                ["living alone", "lives alone", "lived alone"],
+                ["being patriotic", "is patriotic", "been patriotic"],
+                ["enjoying fishing", "enjoys fishing", "enjoyed fishing"],
+                ["enjoying Italian cuisine", "enjoys Italian cuisine", "enjoyed Italian cuisine"],
+                ["having a calm personality", "has a calm personality", "has a calm personality"],
+            ],
+            actions: [
+                ["riding the subway home", "rode the subway home", "rode the subway home"],
+                ["being quiet and not interacting with other passengers", "were quiet and did not interact with other passengers", "were quiet and did not interact with other passengers"],
+                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
+                ["getting off at the same stop", "got off at the same stop", "got off at the same stop"],
+                ["physically attacking Oliver", "physically attacked Oliver", "physically attacked Oliver"]
+            ]
+        },
+        outcome: "pinning him on the ground and punching him twice",
+    },
+        {
+        name: "Alfred_control",
+        image: "characters/Alfred.png",
+        story: `<p>
+            &emsp;&emsp;
+            Alfred is a 68-year-old patriotic veteran who was honorably discharged
+            and now lives alone in a quaint neighborhood in a large city.
+            He has been diagnosed with Post-Traumatic Stress Disorder (PTSD),
+            a mental health condition that can cause vivid flashbacks of a traumatic event.
+            Alfred enjoys fishing, Italian cuisine, and has a calm personality.
+            <br> &emsp;&emsp;
+            One evening, Alfred was riding the subway home after visiting a friend in a
+            different neighborhood. Oliver, an investment banker, was leaving work and boarded
+            the same subway a few stops later. Both people were quiet and did not interact with other passengers.
+            <br> &emsp;&emsp;
+            Alfred and Oliver got off at the same stop, which was underground. 
+            There was new road construction happening above the stop.
+            As Alfred stepped onto the subway platform, he heard loud drilling and yelling
+            above him. He panicked and suddenly physically attacked Oliver,
+            pinning him to the ground and punching him twice.
+            </p>`,
+        "attention_check": "Alfred and Oliver got off at different stops.<br><br>",
+        features: {
+            non_actions: [
+                ["being 68 years old", "is 68 years old", "been 68 years old"],
+                ["being male", "is male", "been male"],
+                ["is a veteran", "is a veteran", "is a veteran"],
+                ["being diagnosed with PTSD", "aws diagnosed with PTSD", "been diagnosed with PTSD"],
+                ["living alone", "lives alone", "lived alone"],
+                ["being patriotic", "is patriotic", "been patriotic"],
+                ["enjoying fishing", "enjoys fishing", "enjoyed fishing"],
+                ["enjoying Italian cuisine", "enjoys Italian cuisine", "enjoyed Italian cuisine"],
+                ["having a calm personality", "has a calm personality", "has a calm personality"],
+            ],
+            actions: [
+                ["riding the subway home", "rode the subway home", "rode the subway home"],
+                ["being quiet and not interacting with other passengers", "were quiet and did not interact with other passengers", "were quiet and did not interact with other passengers"],
+                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
+                ["getting off at the same stop", "got off at the same stop", "got off at the same stop"],
+                ["physically attacking Oliver", "physically attacked Oliver", "physically attacked Oliver"]
+            ]
+        },
+        outcome: "pinning him on the ground and punching him twice",
+    },
+    {
+        name: "Jamie_asian",
+        image: "characters/Qian.png",
+        story: `<p>
+            &emsp;&emsp;
+            Jamie is a 27-year-old Asian male waiter in a small town.
+            He is hard-working and has a humorous personality, but can be stubborn sometimes.
+            He enjoys watching sports, listening to jazz music, and does not smoke.
+            <br> &emsp;&emsp;
+            One Friday night, Jamie was hanging out at the local bar with some cousins who were visiting from out of town.
+            They had several rounds of drinks over the course of two hours.
+            Wilson, a car mechanic who lives and works in the same small town,
+            was also at the bar that night and had been there for about an hour.
+            He approached Jamie's party and began saying racial slurs to them. 
+            <br> &emsp;&emsp;
+            Jamie was angered by Wilson\'s comments, but did not talk back to him at first.
+            Wilson then playfully punched Jamie while continuing to make derogatory comments.
+            At this point, Jamie got up and violently pushed Wilson, knocking him to the ground and causing him serious injury.
+            </p>`,
+        "attention_check": "Jamie brought his cousins to the bar.<br><br>",
+        features: {
+            non_actions: [
+                ["being 27 years old", "is 27 years old", "been 27 years old"],
+                ["being male", "is male", "been male"],
+                ["being Asian", "is Asian", "been Asian"],
+                ["is a waiter", "is a waiter", "is a waiter"],
+                ["does not smoke", "did not smoke", "did not smoke"],
+                ["being hard-working", "is hard-working", "been hard-working"],
+                ["being stubborn sometimes", "is stubborn sometimes", "been stubborn sometimes"],
+                ["having a humorous personality", "has a humorous personality", "has a humorous personality"],
+                ["enjoying watching sports", "enjoys watching sports", "enjoyed watching sports"],
+                ["enjoying listening to jazz music", "enjoys listening to jazz music", "enjoyed listening to jazz music"],
+            ],
+            actions: [
+                ["hanging out at the local bar with some cousins", "hung out at the local bar with some cousins", "hung out at the local bar with some cousins"],
+                ["having several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours"],
+                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "was angered by Wilson\'s comments"],
+                ["not talking back to Wilson at first", "did not talk back to Wilson at first", "did not talk back to Wilson at first"],
+                ["getting up and violently pushing Wilson", "got up and violently pushed Wilson", "got up and violently pushed Wilson"]
+            ]
+        },
+        outcome: "knocking him to the ground and causing serious injury",
+    },
+    {
+        name: "Jamie_white",
+        image: "characters/Qian.png",
+        story: `<p>
+            &emsp;&emsp;
+            Jamie is a 27-year-old White male waiter in a small town.
+            He is hard-working and has a humorous personality, but can be stubborn sometimes.
+            He enjoys watching sports, listening to jazz music, and does not smoke.
+            <br> &emsp;&emsp;
+            One Friday night, Jamie was hanging out at the local bar with some cousins who were visiting from out of town.
+            They had several rounds of drinks over the course of two hours.
+            Wilson, a car mechanic who lives and works in the same small town,
+            was also at the bar that night and had been there for about an hour.
+            He approached Jamie's party and began saying racial slurs to them. 
+            <br> &emsp;&emsp;
+            Jamie was angered by Wilson\'s comments, but did not talk back to him at first.
+            Wilson then playfully punched Jamie while continuing to make derogatory comments.
+            At this point, Jamie got up and violently pushed Wilson, knocking him to the ground and causing him serious injury.
+            </p>`,
+        "attention_check": "Jamie brought his cousins to the bar.<br><br>",
+        features: {
+            non_actions: [
+                ["being 27 years old", "is 27 years old", "been 27 years old"],
+                ["being male", "is male", "been male"],
+                ["being White", "is White", "been White"],
+                ["is a waiter", "is a waiter", "is a waiter"],
+                ["does not smoke", "did not smoke", "did not smoke"],
+                ["being hard-working", "is hard-working", "been hard-working"],
+                ["being stubborn sometimes", "is stubborn sometimes", "been stubborn sometimes"],
+                ["having a humorous personality", "has a humorous personality", "has a humorous personality"],
+                ["enjoying watching sports", "enjoys watching sports", "enjoyed watching sports"],
+                ["enjoying listening to jazz music", "enjoys listening to jazz music", "enjoyed listening to jazz music"],
+            ],
+            actions: [
+                ["hanging out at the local bar with some cousins", "hung out at the local bar with some cousins", "hung out at the local bar with some cousins"],
+                ["having several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours"],
+                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "was angered by Wilson\'s comments"],
+                ["not talking back to Wilson at first", "did not talk back to Wilson at first", "did not talk back to Wilson at first"],
+                ["getting up and violently pushing Wilson", "got up and violently pushed Wilson", "got up and violently pushed Wilson"]
+            ]
+        },
+        outcome: "knocking him to the ground and causing serious injury",
+    },
+    {
+        name: "Jamie_multiracial",
+        image: "characters/Qian.png",
+        story: `<p>
+            &emsp;&emsp;
+            Jamie is a 27-year-old multiracial male waiter in a small town.
+            He is hard-working and has a humorous personality, but can be stubborn sometimes.
+            He enjoys watching sports, listening to jazz music, and does not smoke.
+            <br> &emsp;&emsp;
+            One Friday night, Jamie was hanging out at the local bar with some cousins who were visiting from out of town.
+            They had several rounds of drinks over the course of two hours.
+            Wilson, a car mechanic who lives and works in the same small town,
+            was also at the bar that night and had been there for about an hour.
+            He approached Jamie's party and began saying racial slurs to them. 
+            <br> &emsp;&emsp;
+            Jamie was angered by Wilson\'s comments, but did not talk back to him at first.
+            Wilson then playfully punched Jamie while continuing to make derogatory comments.
+            At this point, Jamie got up and violently pushed Wilson, knocking him to the ground and causing him serious injury.
+            </p>`,
+        "attention_check": "Jamie brought his cousins to the bar.<br><br>",
+        features: {
+            non_actions: [
+                ["being 27 years old", "is 27 years old", "been 27 years old"],
+                ["being male", "is male", "been male"],
+                ["being multiracial", "is multiracial", "been multiracial"],
+                ["is a waiter", "is a waiter", "is a waiter"],
+                ["does not smoke", "did not smoke", "did not smoke"],
+                ["being hard-working", "is hard-working", "been hard-working"],
+                ["being stubborn sometimes", "is stubborn sometimes", "been stubborn sometimes"],
+                ["having a humorous personality", "has a humorous personality", "has a humorous personality"],
+                ["enjoying watching sports", "enjoys watching sports", "enjoyed watching sports"],
+                ["enjoying listening to jazz music", "enjoys listening to jazz music", "enjoyed listening to jazz music"],
+            ],
+            actions: [
+                ["hanging out at the local bar with some cousins", "hung out at the local bar with some cousins", "hung out at the local bar with some cousins"],
+                ["having several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours"],
+                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "was angered by Wilson\'s comments"],
+                ["not talking back to Wilson at first", "did not talk back to Wilson at first", "did not talk back to Wilson at first"],
+                ["getting up and violently pushing Wilson", "got up and violently pushed Wilson", "got up and violently pushed Wilson"]
+            ]
+        },
+        outcome: "knocking him to the ground and causing serious injury",
+    },
+    {
+        name: "Jamie_control",
+        image: "characters/Qian.png",
+        story: `<p>
+            &emsp;&emsp;
+            Jamie is a 27-year-old male waiter in a small town.
+            He is hard-working and has a humorous personality, but can be stubborn sometimes.
+            He enjoys watching sports, listening to jazz music, and does not smoke.
+            <br> &emsp;&emsp;
+            One Friday night, Jamie was hanging out at the local bar with some cousins who were visiting from out of town.
+            They had several rounds of drinks over the course of two hours.
+            Wilson, a car mechanic who lives and works in the same small town,
+            was also at the bar that night and had been there for about an hour.
+            He approached Jamie's party and began saying racial slurs to them. 
+            <br> &emsp;&emsp;
+            Jamie was angered by Wilson\'s comments, but did not talk back to him at first.
+            Wilson then playfully punched Jamie while continuing to make derogatory comments.
+            At this point, Jamie got up and violently pushed Wilson, knocking him to the ground and causing him serious injury.
+            </p>`,
+        "attention_check": "Jamie brought his cousins to the bar.<br><br>",
+        features: {
+            non_actions: [
+                ["being 27 years old", "is 27 years old", "been 27 years old"],
+                ["being male", "is male", "been male"],
+                ["is a waiter", "is a waiter", "is a waiter"],
+                ["does not smoke", "did not smoke", "did not smoke"],
+                ["being hard-working", "is hard-working", "been hard-working"],
+                ["being stubborn sometimes", "is stubborn sometimes", "been stubborn sometimes"],
+                ["having a humorous personality", "has a humorous personality", "has a humorous personality"],
+                ["enjoying watching sports", "enjoys watching sports", "enjoyed watching sports"],
+                ["enjoying listening to jazz music", "enjoys listening to jazz music", "enjoyed listening to jazz music"],
+            ],
+            actions: [
+                ["hanging out at the local bar with some cousins", "hung out at the local bar with some cousins", "hung out at the local bar with some cousins"],
+                ["having several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours"],
+                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "was angered by Wilson\'s comments"],
+                ["not talking back to Wilson at first", "did not talk back to Wilson at first", "did not talk back to Wilson at first"],
+                ["getting up and violently pushing Wilson", "got up and violently pushed Wilson", "got up and violently pushed Wilson"]
+            ]
+        },
+        outcome: "knocking him to the ground and causing serious injury",
+    },
 ];
 
