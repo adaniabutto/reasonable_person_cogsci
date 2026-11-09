@@ -1134,12 +1134,162 @@ There are 3 relevant features that vary within the vignettes:
 old, 26 years old, 27 years old, 32 years old, 34 years old, 43 years old, 45 years old)
 vs [senior *(*]{.underline}68 years old)
 
-## Child Story (Chris)
+## ALL Vignettes - 
+
+```{r}
+
+data.all =
+  data.rel %>%
+  filter(feature_type == "demographics") %>%
+  mutate(feature_type = factor(feature_type,
+                               levels = names(feature_type_colors))) %>%
+  arrange(feature_type, feature_key) %>%
+  mutate(feature_key = fct_rev(fct_inorder(feature_key)))
+
+```
+
+```{r fig.width = 14, fig.height = 7}
+
+library(tidytext)
+
+data.all %>%
+  filter(!is.na(response)) %>%
+  ggplot(aes(x = response,
+             y = reorder_within(feature_key, response, story, fun = mean),
+             color = feature_type)) +
+  stat_summary(fun.data = "mean_cl_boot", geom = "pointrange", 
+               orientation = "y",
+               size = .5,   
+               shape = 18) +
+  facet_wrap(~ story, scales = "free_y",
+             strip.position = "top") +
+  scale_y_reordered() +
+  scale_x_continuous(name = "Relevance rating",
+                     limits = c(1, 7),
+                     breaks = 1:7,
+                     labels = c("1", "", "",
+                                "4", "", "",
+                                "7")) +
+  scale_color_manual(values = feature_type_colors) +
+  theme(text = element_text(size = 20),
+        legend.position = "top",
+        axis.title.y = element_blank())
+
+ggsave(str_c(figures_dir, "relevance_ratings.png"),
+       width = 14, height = 7)
+
+```
+
+## Qian Vignette - RACE
+
+```{r}
+
+data.qian =
+  data.rel %>%
+  filter(story == "Qian") %>%
+  mutate(feature_type = factor(feature_type,
+                               levels = names(feature_type_colors))) %>%
+  arrange(feature_type, feature_key) %>%
+  mutate(feature_key = fct_rev(fct_inorder(feature_key)))
+
+```
+
+```{r}
+
+data.qian_plot =
+  data.qian %>% 
+  group_by(feature_key, feature_type) %>%
+  summarise(mean_rating = mean(response),
+            sd = sd(response))
+
+data.qian_plot
+
+```
+
+```{r fig.width = 9, fig.height = 8}
+
+ggplot(data = data.qian,
+       aes(x = feature_key,
+           y = response,
+           color = feature_type)) +
+  stat_summary(fun.data = "mean_cl_boot", geom = "pointrange", 
+               size = 1,   
+               shape = 18) +
+  # facet_wrap(~ feature_type, scales = 'free_y',
+  #            labeller = as_labeller(condition_labels),
+  #            strip.position = "top") +
+  scale_y_continuous(name = "Relevance rating",
+                     limits = c(1, 7),
+                     breaks = 1:7,
+                     labels = c("1", "", "",
+                                "4", "", "",
+                                "7")) +
+  scale_color_manual(values = feature_type_colors) +
+  coord_flip() + 
+  theme(text = element_text(size = 18),
+        legend.position = "top",
+        axis.title.y = element_blank())
+
+```
+
+## Nadia Vignette - GENDER
+
+```{r}
+
+data.nadia =
+  data.rel %>%
+  filter(story == "Nadia") %>%
+  mutate(feature_type = factor(feature_type,
+                               levels = names(feature_type_colors))) %>%
+  arrange(feature_type, feature_key) %>%
+  mutate(feature_key = fct_rev(fct_inorder(feature_key)))
+
+```
+
+```{r}
+
+data.nadia_plot =
+  data.nadia %>% 
+  group_by(feature_key, feature_type) %>%
+  summarise(mean_rating = mean(response),
+            sd = sd(response))
+
+data.nadia_plot
+
+```
+
+```{r fig.width = 10, fig.height = 8}
+
+ggplot(data = data.nadia,
+       aes(x = feature_key,
+           y = response,
+           color = feature_type)) +
+  stat_summary(fun.data = "mean_cl_boot", geom = "pointrange", 
+               size = 1,   
+               shape = 18) +
+  # facet_wrap(~ feature_type, scales = 'free_y',
+  #            labeller = as_labeller(condition_labels),
+  #            strip.position = "top") +
+  scale_y_continuous(name = "Relevance rating",
+                     limits = c(1, 7),
+                     breaks = 1:7,
+                     labels = c("1", "", "",
+                                "4", "", "",
+                                "7")) +
+  scale_color_manual(values = feature_type_colors) +
+  coord_flip() + 
+  theme(text = element_text(size = 18),
+        legend.position = "top",
+        axis.title.y = element_blank())
+
+```
+
+## Chris Vignette - AGE
 
 ```{r}
 
 data.chris =
-  data.ctrl %>%
+  data.rel %>%
   filter(story == "Chris") %>%
   mutate(feature_type = factor(feature_type,
                                levels = names(feature_type_colors))) %>%
@@ -1154,7 +1304,7 @@ Hmisc::describe(data.chris)
 
 ```
 
-## Controllability Plot (Figure 2)
+### Controllability Plot (Figure 2)
 
 ```{r}
 
@@ -1212,7 +1362,7 @@ ggplot(data = data.chris,
 
 ```
 
-## Overall Plot (Figure 3)
+### Overall Plot (Figure 3)
 
 ```{r}
 
@@ -1325,7 +1475,7 @@ chris_sel_panel = function(data, cond) {
 
 ```
 
-```{r}
+```{r fig.width = 11, fig.height = 5}
 
 legend_data = tibble(
   feature_type = factor(feature_types[2:4], levels = feature_types[2:4]),
@@ -1386,7 +1536,7 @@ ggsave(str_c(figures_dir, "example_chris.pdf"),
 
 ```
 
-## Model plot (Figure 4)
+### Model plot (Figure 4)
 
 For undo, same, and different conditions only.
 
