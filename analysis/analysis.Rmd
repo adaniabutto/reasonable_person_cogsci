@@ -1206,7 +1206,7 @@ data.qian_plot
 
 ```
 
-```{r fig.width = 9, fig.height = 8}
+```{r fig.width = 10, fig.height = 8}
 
 ggplot(data = data.qian,
        aes(x = feature_key,
@@ -1229,6 +1229,9 @@ ggplot(data = data.qian,
   theme(text = element_text(size = 18),
         legend.position = "top",
         axis.title.y = element_blank())
+
+ggsave(str_c(figures_dir, "QIAN_relevance_ratings.png"),
+       width = 10, height = 8)
 
 ```
 
@@ -1282,6 +1285,9 @@ ggplot(data = data.nadia,
         legend.position = "top",
         axis.title.y = element_blank())
 
+ggsave(str_c(figures_dir, "NADIA_relevance_ratings.png"),
+       width = 10, height = 8)
+
 ```
 
 ## Chris Vignette - AGE
@@ -1318,7 +1324,7 @@ data.chris_plot
 
 ```
 
-```{r fig.width = 9, fig.height = 8}
+```{r fig.width = 10, fig.height = 8}
 
 ggplot(data = data.chris,
        aes(x = feature_key,
@@ -1341,6 +1347,9 @@ ggplot(data = data.chris,
   theme(text = element_text(size = 18),
         legend.position = "top",
         axis.title.y = element_blank())
+
+ggsave(str_c(figures_dir, "CHRIS_relevance_ratings.png"),
+       width = 10, height = 8)
 
 # theme(text = element_text(size = 12),
   #       legend.position = 'inside',
