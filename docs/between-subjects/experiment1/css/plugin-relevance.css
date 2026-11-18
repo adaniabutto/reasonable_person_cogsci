@@ -1,0 +1,94 @@
+/* plugin-relevance.css, scoped to .measure-relevance so several measures can share one page.
+   (index.html adds the class to each relevance page via css_classes.) */
+.measure-relevance #story {
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.measure-relevance #story-character {
+    width: 130px;
+    float: left;
+    text-align: center;
+}
+
+.measure-relevance #story-character img {
+    width: 120px;
+    height: auto;
+}
+
+.measure-relevance #story-text {
+    margin-left: 160px;
+    text-align: left;
+    line-height: auto;
+    min-height: 280px;
+}
+
+.measure-relevance #question {
+    padding: 10px;
+    background-color: lightblue;
+    margin-bottom: 20px;
+}
+
+.measure-relevance #reminder {
+    color: red;
+    font-weight: bold;
+}
+
+.measure-relevance .feature-statement {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.measure-relevance .feature-opts {
+    list-style: none;
+    width: 60%;
+    max-width: 1000px;
+    margin: auto;
+    padding-bottom: 20px;
+    padding-inline-start: 0px;
+    display: block;
+}
+
+.measure-relevance .feature-opt-label {
+    font-size: 14px;
+    line-height: 0.9em;
+    color: #444;
+}
+
+.measure-relevance .feature-opts:before {
+    display: none !important;
+}
+
+.measure-relevance .feature-opts:last-of-type {
+    border-bottom: 0;
+}
+
+.measure-relevance .feature-opts ul {
+    padding-inline-start: 0px;
+}
+
+.measure-relevance .feature-opts li {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+}
+
+.measure-relevance .feature-opts li input[type=radio] {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 50%;
+    margin-left: -6px;
+}
+
+.measure-relevance #features::-webkit-scrollbar {
+    width: 10px;
+}
+
+.measure-relevance #features::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+}
+
+.measure-relevance #features::-webkit-scrollbar-thumb {
+    background-color: #666666;
+}

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title> Psychology Experiment </title>
+
+    <!-- CSS -->
+    <link href='css/jspsych.css' rel='stylesheet' type='text/css'></link>
+    <!-- each plugin's CSS is scoped to its measure (.measure-relevance, ...) so they don't clash -->
+    <link href='css/jquery-ui-edit.css' rel='stylesheet' type='text/css'></link>
+    <link href='css/plugin-same.css' rel='stylesheet' type='text/css'></link>
+    <link href='css/plugin-different.css' rel='stylesheet' type='text/css'></link>
+    <link href='css/plugin-endorse.css' rel='stylesheet' type='text/css'></link>
+
+    <!-- JS libraries -->
+    <script src='js/jquery.min.js'></script>
+    <script src='js/jquery-ui.min.js'></script>
+    <script src='js/range-slider-pips.js'></script>
+    <script src='js/timeme.min.js'></script>
+
+    <!-- jsPsych -->
+    <script src='js/jspsych.js'></script>
+    <script src='js/plugin-preload.js'></script>
+    <script src='js/plugin-html-button-response.js'></script>
+    <script src='js/plugin-survey-html-form.js'></script>
+    <script src='js/plugin-survey-text.js'></script>
+    <script src='js/plugin-pipe.min.js'></script>
+
+    <!-- My plugins/pages -->
+    <script src="js/plugin-story.js"></script>
+    <script src="js/plugin-same.js"></script>
+    <script src="js/plugin-different.js"></script>
+    <script src="js/plugin-endorse.js"></script>
+
+    <script src='js/intro.js'></script>
+    <script src='js/feedback-demographics.js'></script>
+    <script src='js/trial_info.js'></script>
+
+</head>
+
+<body></body>
+<script>
+
+    // =====================================================
+    // settings
+    // =====================================================
+
+    // DataPipe experiment ID. Leave '' to skip saving to DataPipe (e.g. when piloting).
+    const experiment_id = '';
+
+    // Download the participant's two CSV files (trials + participant) at the end.
+    const SAVE_LOCALLY = true;
+
+    // Measures in this experiment
+    const MEASURES = ['same', 'different', 'endorse'];
+
+    // How many measures each participant answers: one measure per participant, for every story (between-subject)
+    const MEASURES_PER_PARTICIPANT = 1;
+
+    // Which measure a participant gets: balanced across participants through DataPipe when
+    // experiment_id is set and condition assignment is enabled in the DataPipe dashboard
+    // with 3 conditions; otherwise random. ?measures=endorse in the URL forces one.
+
+    // With several measures per participant: true = one random order per participant
+    // (the same for every story); false = the order listed in MEASURES.
+    const RANDOMIZE_MEASURE_ORDER = true;
+
+    // For testing or reviewers, the URL can choose measures and story versions:
+    //   index.html?measures=normality,relevance&stories=Jordan_8,Blake_control
+
+    // =====================================================
+
+    TimeMe.initialize({
+        currentPageName: 'page',
+        idleTimeoutInSeconds: 15
+    });
+
+    // -----------------------------------------------------
+    // initialize jspsych
+    // -----------------------------------------------------
+    var jsPsych = initJsPsych({
+        show_progress_bar: true,
+        auto_update_progress_bar: false,
+        on_finish: finishStudy
+    });
+
+    const prolific_id = jsPsych.data.getURLVariable('PROLIFIC_PID');
+    // without a Prolific ID (e.g. local pilots), use a random ID so files don't overwrite each other
+    const participant_id = prolific_id || ('local-' + jsPsych.randomization.randomID(8));
+
+    // quote a CSV value, escaping any quotes inside it
+    const csv = (value) => '"' + String(value ?? '').replace(/"/g, '""') + '"';
+
+    // -----------------------------------------------------
+    // pick one version of each protagonist's story
+    // -----------------------------------------------------
+    // trial_info.js lists every version as its own entry, named
+    // "<Protagonist>_<version>" (Jordan_8, Blake_control, ...).
+    // Each participant gets one randomly chosen version per protagonist.
+    const requested_stories = (jsPsych.data.getURLVariable('stories') || '').split(',').filter(Boolean);
+    const versions_by_protagonist = {};
+    for (const t of trial_info) {
+        const protagonist = t.name.split('_')[0];
+        if (!versions_by_protagonist[protagonist]) versions_by_protagonist[protagonist] = [];
+        versions_by_protagonist[protagonist].push(t);
+    }
+    const selected_stories = Object.entries(versions_by_protagonist).map(([protagonist, versions]) => {
+        const chosen = versions.find(t => requested_stories.includes(t.name))
+            || jsPsych.randomization.sampleWithoutReplacement(versions, 1)[0];
+        return {
+            ...chosen,
+            // participants see the protagonist's name; the version is kept for the data
+            name: protagonist,
+            version: chosen.name,
+            // endorse shows the person features as phrases ("a reasonable person who is White")
+            person_features: chosen.person_features || chosen.features.non_actions.map(f => 'person who ' + f[1]),
+        };
+    });
+    const version_of = Object.fromEntries(selected_stories.map(t => [t.name, t.version]));
+
+    // -----------------------------------------------------
+    // which measures this participant answers, in which order
+    // -----------------------------------------------------
+    let measure_order = [];
+    let measure_assignment = '';   // how the measures were chosen: all / datapipe / random / url
+
+    async function chooseMeasures() {
+        const requested = (jsPsych.data.getURLVariable('measures') || '').split(',')
+            .filter(m => MEASURES.includes(m));
+        if (requested.length) {
+            return [requested, 'url'];
+        }
+        if (MEASURES_PER_PARTICIPANT >= MEASURES.length) {
+            return [RANDOMIZE_MEASURE_ORDER ? jsPsych.randomization.shuffle(MEASURES) : MEASURES.slice(), 'all'];
+        }
+        // one measure per participant: balanced through DataPipe if available
+        if (MEASURES_PER_PARTICIPANT === 1 && experiment_id) {
+            try {
+                const condition = await jsPsychPipe.getCondition(experiment_id);
+                if (Number.isInteger(condition)) {
+                    return [[MEASURES[condition % MEASURES.length]], 'datapipe'];
+                }
+            } catch (err) {
+                console.warn('DataPipe condition assignment failed; using random assignment.', err);
+            }
+        }
+        return [jsPsych.randomization.sampleWithoutReplacement(MEASURES, MEASURES_PER_PARTICIPANT), 'random'];
+    }
+
+    // the plugin for each measure, and which story field holds its features
+    const MEASURE_PLUGINS = {
+        same:            { type: jsPsychSame, features: 'features' },
+        different:       { type: jsPsychDifferent, features: 'features' },
+        endorse:         { type: jsPsychEndorse, features: 'person_features' },
+    };
+
+    // -----------------------------------------------------
+    // data files
+    // -----------------------------------------------------
+    // One row per feature per measure per story.
+    // response: 0-6 rating (relevance, controllability, normality),
+    //           1 = selected / 0 = not selected (same, different), 0-100 slider (endorse)
+    function trialsCSV() {
+        const rows = [];
+        const story_names = [];
+        const measure_pages = jsPsych.data.get().values().filter(t => MEASURES.includes(t.trial_type));
+
+        for (const trialPage of measure_pages) {
+            if (!story_names.includes(trialPage.name)) story_names.push(trialPage.name);
+
+            // attention check response for this story
+            let attention_response = '';
+            for (const attentionCheckPage of jsPsych.data.get().filter({ task: "attention_check", name: trialPage.name }).values()) {
+                attention_response = attentionCheckPage.response;
+            }
+
+            // each plugin stores its features and responses differently
+            let items = [];
+            if (['relevance', 'controllability', 'normality'].includes(trialPage.trial_type)) {
+                items = trialPage.question_order.map(index => [trialPage.questions[index], trialPage.response['Q' + index]]);
+            } else if (['same', 'different'].includes(trialPage.trial_type)) {
+                items = trialPage.exp_questions.map(feature => [feature, trialPage.feature_selected.includes(feature) ? 1 : 0]);
+            } else if (trialPage.trial_type === 'endorse') {
+                items = trialPage.question_order.map(index => [trialPage.features[index], trialPage.response[index]]);
+            }
+
+            items.forEach(([feature, response], i) => {
+                rows.push([
+                    participant_id,
+                    attention_response,
+                    csv(feature),
+                    i,
+                    response,
+                    trialPage.name,
+                    story_names.indexOf(trialPage.name),
+                    version_of[trialPage.name],
+                    trialPage.trial_type,
+                    trialPage.measure_position
+                ].join(','));
+            });
+        }
+
+        const header = 'id,attention_response,feature,feature_order,response,story_name,story_order,' +
+            'story_version,measure,measure_order';
+        return [header, ...rows].join('\n');
+    }
+
+    function participantCSV() {
+        const time = TimeMe.getTimeOnPageInSeconds('page');
+        const data = jsPsych.data.get().filter({trial_type: 'survey-html-form'}).values()[0]['response'];
+        const participant = [
+            participant_id,
+            csv(data.feedback),
+            data.age || "",
+            data.gender || "",
+            data.race || "",
+            csv(data.ethnicity),
+            time,
+            data.jury_eligible || "",
+            data.jury_served || "",
+            csv(data.hypothesis),
+            measure_order.join('|'),
+            measure_assignment
+        ].join(',');
+        const header = 'id,feedback,age,gender,race,ethnicity,time,jury_eligible,jury_served,hypothesis,' +
+            'measure_order,measure_assignment';
+        return header + '\n' + participant;
+    }
+
+    const trials_filename = `${participant_id}_trials.csv`;
+    const participant_filename = `${participant_id}_participant.csv`;
+
+    // local download at the end of the study
+    function downloadCSV(filename, text) {
+        const url = URL.createObjectURL(new Blob([text], { type: 'text/csv' }));
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        return url;
+    }
+
+    function finishStudy() {
+        let html = '<div style="margin: auto;"> <p> Thank you for participating in this experiment! </p>';
+        if (SAVE_LOCALLY) {
+            const files = [[trials_filename, trialsCSV()], [participant_filename, participantCSV()]];
+            const links = files.map(([filename, text]) => {
+                const url = downloadCSV(filename, text);
+                return `<a href="${url}" download="${filename}">${filename}</a>`;
+            });
+            html += '<p style="font-size: 0.9em;"> Your data files have been downloaded.' +
+                ' If they did not download, use these links: <br>' + links.join('<br>') + '</p>';
+        }
+        $('#jspsych-content').html(html + '</div>');
+    }
+
+    // -----------------------------------------------------
+    // build and run the timeline (after the measures are chosen)
+    // -----------------------------------------------------
+    async function runExperiment() {
+        [measure_order, measure_assignment] = await chooseMeasures();
+        jsPsych.data.addProperties({ participant_id: participant_id, measure_order: measure_order.join('|') });
+
+        // progress bar: per story, story + attention check + one page per measure; plus intro and feedback
+        const progressIncrement = 1 / (selected_stories.length * (2 + measure_order.length) + 2);
+        function updateProgress() {
+            var prog = jsPsych.getProgressBarCompleted();
+            jsPsych.setProgressBar(prog + progressIncrement);
+        }
+
+        const preload_trial = {
+            type: jsPsychPreload,
+            images: selected_stories.map(t => t.image)
+                .concat(measure_order.includes('endorse') ? ['images/jury.png', 'images/thought.png'] : [])
+        };
+
+        const measure_trials = measure_order.map((measure, position) => ({
+            type: MEASURE_PLUGINS[measure].type,
+            name: jsPsych.timelineVariable('name'),
+            image: jsPsych.timelineVariable('image'),
+            story: jsPsych.timelineVariable('story'),
+            outcome: jsPsych.timelineVariable('outcome'),
+            features: jsPsych.timelineVariable(MEASURE_PLUGINS[measure].features),
+            css_classes: ['measure-' + measure],
+            data: { measure: measure, measure_position: position },
+            on_finish: updateProgress
+        }));
+
+        const trials = {
+            timeline_variables: selected_stories,
+            timeline: [
+                {
+                    type: jsPsychStory,
+                    name: jsPsych.timelineVariable('name'),
+                    image: jsPsych.timelineVariable('image'),
+                    story: jsPsych.timelineVariable('story'),
+                    css_classes: ['measure-' + measure_order[0]],   // story page in the measure's original layout
+                    on_finish: updateProgress
+                },
+                {
+                    type: jsPsychHtmlButtonResponse,
+                    stimulus: jsPsych.timelineVariable('attention_check'),
+                    choices: ['True', 'False'],
+                    data: {
+                        task: "attention_check",
+                        name: jsPsych.timelineVariable('name')
+                    },
+                    margin_vertical: "20px",
+                    on_finish: updateProgress
+                },
+                ...measure_trials,
+            ],
+            randomize_order: true,
+        };
+
+        // DataPipe saving (only if experiment_id is set)
+        const save_trial_data = {
+            type: jsPsychPipe,
+            action: 'save',
+            experiment_id: experiment_id,
+            filename: trials_filename,
+            data_string: trialsCSV
+        };
+        const save_participant_data = {
+            type: jsPsychPipe,
+            action: 'save',
+            experiment_id: experiment_id,
+            filename: participant_filename,
+            data_string: participantCSV
+        };
+
+        let timeline = [];
+        timeline.push(preload_trial);
+        timeline.push({...getIntro(measure_order), on_finish: updateProgress});
+        timeline.push(trials);
+        timeline.push({
+            ...feedback_demographics,
+            on_finish: (data) => {
+                feedback_demographics.on_finish(data);
+                updateProgress();
+            }
+        });
+        if (experiment_id) {
+            timeline.push(save_trial_data);
+            timeline.push(save_participant_data);
+        }
+
+        jsPsych.run(timeline);
+    }
+
+    runExperiment();
+
+</script>
+
+</html>
