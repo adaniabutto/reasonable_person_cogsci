@@ -1,1167 +1,523 @@
+// Each trial_info entry holds one story version (3 stories total, with 3-4 versions each).
+// Each entry is named "protagonist_[version]" (e.g., "Jordan_8", "Blake_female")
+// The index.html file (one dir up) then groups the story entries by story,
+// showing each participant just *one* version per protagonist (Blake, Jamie, Jordan).
+// This file contains only the story text; protagonist images are stored in the /characters dir.
+
 var trial_info = [
+    // Story 1: Blake (female vs male vs control // same-sex vs different-sex marriage); originally "Nadia" in Wu et al. (2026)
+    // All story features except for the protagonist names were preserved.
+    // I also changed the graphic depicting the protagonist to match the new story.
+    // In some parts of the story, I exchanged pronouns with protagonist names for clarity.
     {
-        name: "Jordan_8",
-        image: "characters/Jordan.png",
-        story: `<p>
-            &emsp;&emsp;
-            Jordan is an 8-year-old who is about 5 feet tall, White, and has an average IQ.
-            He has a curious personality, enjoys playing hide-and-seek as well as
-            swimming, and he also has a peanut allergy.
-            <br> &emsp;&emsp;
-            Jordan admires his father a lot.
-            His father is an avid recreational deer hunter who owns several hunting guns.
-            All of the guns are kept in a locked cabinet, and Jordan\'s father usually
-            keeps the key on himself.
-            <br> &emsp;&emsp;
-            One day, Jordan invited friends over to his home to play hide-and-seek and hid in
-            the hall closet. There, he found the key to the gun cabinet in his father\'s
-            jacket, which was hanging in the closet.
-            Jordan curiously opened the cabinet and began playing with one of the pistols.
-            As he was holding the pistol, he accidentally discharged it and shot one of his friends
-            in the shoulder. The friend was taken to the hospital for treatment of severe wounds.
-            </p>`,
-        "attention_check": "Jordan found a wallet in his father\'s jacket.<br><br>",
-        features: {
-            non_actions: [
-                ["being a boy", "is a boy", "been a boy"],
-                ["being 8 years old", "is 8 years old", "been 8 years old"],
-                ["being White", "is White", "been White"],
-                ["being about 5 feet tall", "is about 5 feet tall", "been about 5 feet tall"],
-                ["having an average IQ", "has an average IQ", "had an average IQ"],
-                ["enjoying playing hide-and-seek", "enjoys playing hide-and-seek", "enjoyed playing hide-and-seek"],
-                ["enjoying swimming", "enjoys swimming", "enjoyed swimming"],
-                ["admiring his father", "admires his father", "admired his father"],
-                ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["having a peanut allergy", "has a peanut allergy", "had a peanut allergy"]
-            ],
-            actions: [
-                ["inviting friends over to play", "invited friends over to play", "invited friends over to play"],
-                ["hiding in the hall closet", "hid in the hall closet", "hid in the hall closet"],
-                ["finding the key in his father\'s jacket pocket", "found the key in his father\'s jacket pocket", "found the key in their father\'s jacket pocket"],
-                ["opening the gun cabinet with the key", "opened the gun cabinet with the key", "opened the gun cabinet with the key"],
-                ["picking up a pistol to play with", "picked up a pistol to play with", "picked up a pistol to play with"]
-            ]
-        },
-        outcome: "his friend's wounds",
-    },
-    {
-        name: "Jordan_13",
-        image: "characters/Jordan.png",
-        story: `<p>
-            &emsp;&emsp;
-            Jordan is a 13-year-old who is about 5 feet tall, White, and has an average IQ.
-            He has a curious personality, enjoys playing hide-and-seek as well as
-            swimming, and he also has a peanut allergy.
-            <br> &emsp;&emsp;
-            Jordan admires his father a lot.
-            His father is an avid recreational deer hunter who owns several hunting guns.
-            All of the guns are kept in a locked cabinet, and Jordan\'s father usually
-            keeps the key on himself.
-            <br> &emsp;&emsp;
-            One day, Jordan invited friends over to his home to play hide-and-seek and hid in
-            the hall closet. There, he found the key to the gun cabinet in his father\'s
-            jacket, which was hanging in the closet.
-            Jordan curiously opened the cabinet and began playing with one of the pistols.
-            As he was holding the pistol, he accidentally discharged it and shot one of his friends
-            in the shoulder. The friend was taken to the hospital for treatment of severe wounds.
-            </p>`,
-        "attention_check": "Jordan found a wallet in his father\'s jacket.<br><br>",
-        features: {
-            non_actions: [
-                ["being a boy", "is a boy", "been a boy"],
-                ["being 13 years old", "is 13 years old", "been 13 years old"],
-                ["being White", "is White", "been White"],
-                ["being about 5 feet tall", "is about 5 feet tall", "been about 5 feet tall"],
-                ["having an average IQ", "has an average IQ", "had an average IQ"],
-                ["enjoying playing hide-and-seek", "enjoys playing hide-and-seek", "enjoyed playing hide-and-seek"],
-                ["enjoying swimming", "enjoys swimming", "enjoyed swimming"],
-                ["admiring his father", "admires his father", "admired his father"],
-                ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["having a peanut allergy", "has a peanut allergy", "had a peanut allergy"]
-            ],
-            actions: [
-                ["inviting friends over to play", "invited friends over to play", "invited friends over to play"],
-                ["hiding in the hall closet", "hid in the hall closet", "hid in the hall closet"],
-                ["finding the key in his father\'s jacket pocket", "found the key in his father\'s jacket pocket", "found the key in their father\'s jacket pocket"],
-                ["opening the gun cabinet with the key", "opened the gun cabinet with the key", "opened the gun cabinet with the key"],
-                ["picking up a pistol to play with", "picked up a pistol to play with", "picked up a pistol to play with"]
-            ]
-        },
-        outcome: "his friend's wounds",
-    },
-    {
-        name: "Jordan_18",
-        image: "characters/Jordan.png",
-        story: `<p>
-            &emsp;&emsp;
-            Jordan is a 18-year-old who is about 5 feet tall, White, and has an average IQ.
-            He has a curious personality, enjoys playing hide-and-seek as well as
-            swimming, and he also has a peanut allergy.
-            <br> &emsp;&emsp;
-            Jordan admires his father a lot.
-            His father is an avid recreational deer hunter who owns several hunting guns.
-            All of the guns are kept in a locked cabinet, and Jordan\'s father usually
-            keeps the key on himself.
-            <br> &emsp;&emsp;
-            One day, Jordan invited friends over to his home to play hide-and-seek and hid in
-            the hall closet. There, he found the key to the gun cabinet in his father\'s
-            jacket, which was hanging in the closet.
-            Jordan curiously opened the cabinet and began playing with one of the pistols.
-            As he was holding the pistol, he accidentally discharged it and shot one of his friends
-            in the shoulder. The friend was taken to the hospital for treatment of severe wounds.
-            </p>`,
-        "attention_check": "Jordan found a wallet in his father\'s jacket.<br><br>",
-        features: {
-            non_actions: [
-                ["being a boy", "is a boy", "been a boy"],
-                ["being 18 years old", "is 18 years old", "been 18 years old"],
-                ["being White", "is White", "been White"],
-                ["being about 5 feet tall", "is about 5 feet tall", "been about 5 feet tall"],
-                ["having an average IQ", "has an average IQ", "had an average IQ"],
-                ["enjoying playing hide-and-seek", "enjoys playing hide-and-seek", "enjoyed playing hide-and-seek"],
-                ["enjoying swimming", "enjoys swimming", "enjoyed swimming"],
-                ["admiring his father", "admires his father", "admired his father"],
-                ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["having a peanut allergy", "has a peanut allergy", "had a peanut allergy"]
-            ],
-            actions: [
-                ["inviting friends over to play", "invited friends over to play", "invited friends over to play"],
-                ["hiding in the hall closet", "hid in the hall closet", "hid in the hall closet"],
-                ["finding the key in his father\'s jacket pocket", "found the key in his father\'s jacket pocket", "found the key in their father\'s jacket pocket"],
-                ["opening the gun cabinet with the key", "opened the gun cabinet with the key", "opened the gun cabinet with the key"],
-                ["picking up a pistol to play with", "picked up a pistol to play with", "picked up a pistol to play with"]
-            ]
-        },
-        outcome: "his friend's wounds",
-    },
-    {
-        name: "Jordan_18_female",
-        image: "characters/Jordan.png",
-        story: `<p>
-            &emsp;&emsp;
-            Jordan is a 18-year-old who is about 5 feet tall, White, and has an average IQ.
-            She has a curious personality, enjoys playing hide-and-seek as well as
-            swimming, and she also has a peanut allergy.
-            <br> &emsp;&emsp;
-            Jordan admires her father a lot.
-            Her father is an avid recreational deer hunter who owns several hunting guns.
-            All of the guns are kept in a locked cabinet, and Jordan\'s father usually
-            keeps the key on himself.
-            <br> &emsp;&emsp;
-            One day, Jordan invited friends over to her home to play hide-and-seek and hid in
-            the hall closet. There, she found the key to the gun cabinet in her father\'s
-            jacket, which was hanging in the closet.
-            Jordan curiously opened the cabinet and began playing with one of the pistols.
-            As she was holding the pistol, she accidentally discharged it and shot one of her friends
-            in the shoulder. The friend was taken to the hospital for treatment of severe wounds.
-            </p>`,
-        "attention_check": "Jordan found a wallet in her father\'s jacket.<br><br>",
-        features: {
-            non_actions: [
-                ["being a girl", "is a girl", "been a girl"],
-                ["being 18 years old", "is 18 years old", "been 18 years old"],
-                ["being White", "is White", "been White"],
-                ["being about 5 feet tall", "is about 5 feet tall", "been about 5 feet tall"],
-                ["having an average IQ", "has an average IQ", "had an average IQ"],
-                ["enjoying playing hide-and-seek", "enjoys playing hide-and-seek", "enjoyed playing hide-and-seek"],
-                ["enjoying swimming", "enjoys swimming", "enjoyed swimming"],
-                ["admiring her father", "admires her father", "admired her father"],
-                ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["having a peanut allergy", "has a peanut allergy", "had a peanut allergy"]
-            ],
-            actions: [
-                ["inviting friends over to play", "invited friends over to play", "invited friends over to play"],
-                ["hiding in the hall closet", "hid in the hall closet", "hid in the hall closet"],
-                ["finding the key in her father\'s jacket pocket", "found the key in her father\'s jacket pocket", "found the key in her father\'s jacket pocket"],
-                ["opening the gun cabinet with the key", "opened the gun cabinet with the key", "opened the gun cabinet with the key"],
-                ["picking up a pistol to play with", "picked up a pistol to play with", "picked up a pistol to play with"]
-            ]
-        },
-        outcome: "her friend's wounds",
-    },
-        {
-        name: "Jordan_control",
-        image: "characters/Jordan.png",
-        story: `<p>
-            &emsp;&emsp;
-            Jordan is White, about 5 feet tall, and has an average IQ.
-            They have a curious personality, enjoy playing hide-and-seek as well as
-            swimming, and also have a peanut allergy.
-            <br> &emsp;&emsp;
-            Jordan admires their father a lot.
-            Their father is an avid recreational deer hunter who owns several hunting guns.
-            All of the guns are kept in a locked cabinet, and Jordan\'s father usually
-            keeps the key on himself.
-            <br> &emsp;&emsp;
-            One day, Jordan invited friends over to their home to play hide-and-seek and hid in
-            the hall closet. There, they found the key to the gun cabinet in their father\'s
-            jacket, which was hanging in the closet.
-            Jordan curiously opened the cabinet and began playing with one of the pistols.
-            As they were holding the pistol, they accidentally discharged it and shot one of their friends
-            in the shoulder. The friend was taken to the hospital for treatment of severe wounds.
-            </p>`,
-        "attention_check": "Jordan found a wallet in their father\'s jacket.<br><br>",
-        features: {
-            non_actions: [
-                ["being White", "is White", "been White"],
-                ["being about 5 feet tall", "is about 5 feet tall", "been about 5 feet tall"],
-                ["having an average IQ", "has an average IQ", "had an average IQ"],
-                ["enjoying playing hide-and-seek", "enjoys playing hide-and-seek", "enjoyed playing hide-and-seek"],
-                ["enjoying swimming", "enjoys swimming", "enjoyed swimming"],
-                ["admiring their father", "admires their father", "admired their father"],
-                ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["having a peanut allergy", "has a peanut allergy", "had a peanut allergy"]
-            ],
-            actions: [
-                ["inviting friends over to play", "invited friends over to play", "invited friends over to play"],
-                ["hiding in the hall closet", "hid in the hall closet", "hid in the hall closet"],
-                ["finding the key in their father\'s jacket pocket", "found the key in their father\'s jacket pocket", "found the key in their father\'s jacket pocket"],
-                ["opening the gun cabinet with the key", "opened the gun cabinet with the key", "opened the gun cabinet with the key"],
-                ["picking up a pistol to play with", "picked up a pistol to play with", "picked up a pistol to play with"]
-            ]
-        },
-        outcome: "their friend's wounds",
-    },
-{
-        name: "Kai_13",
-        image: "characters/Kai.png",
-        story: `<p>
-            &emsp;&emsp;
-            Kai is an Asian 13-year-old who enjoys reading science fiction and has a calm personality.
-            She is Christian, asthmatic, and an organized person who interacts well with children.
-            <br> &emsp;&emsp;
-            Kai occasionally does some babysitting for people who live in her neighborhood;
-            one weekend, people who had recently purchased a house in the neighborhood asked
-            Kai to babysit for them. On the first weekend night, Kai was filling up the bathtub to
-            give the child a bath before bedtime when her phone started ringing.
-            <br> &emsp;&emsp;
-            Kai left the bathroom to pick up the call, which was from her boyfriend. She told him that
-            she could not talk but he told her he was breaking up with her. She then talked to him for
-            5 minutes and sat for a couple of minutes afterward.
-            <br> &emsp;&emsp;
-            When she went to get the child, she found that she had climbed in the bathtub. She took the
-            child out of the tub and immediately called 911 but the child had already drowned and was dead.
-            </p>`,
-        "attention_check": "Kai left the bathroom to pick up the call.<br><br>",
-        features: {
-            non_actions: [
-                ["being a girl", "is a girl", "been a girl"],
-                ["being 13 years old", "is 13 years old", "been 13 years old"],
-                ["being Asian", "is Asian", "been Asian"],
-                ["being asthmatic", "is asthmatic", "been asthmatic"],
-                ["being Christian", "is Christian", "been Christian"],
-                ["enjoying reading science fiction", "enjoys reading science fiction", "enjoyed reading science fiction"],
-                ["occasionally doing some babysitting", "occasionally does some babysitting", "had occasionally done some babysitting"],
-                ["interacting well with children", "interacts well with children", "interacted well with children"],
-                ["having a calm personality", "has a calm personality", "had a calm personality"],
-                ["being organized", "is organized", "been organized"]
-            ],
-            actions: [
-                ["filling up the bathtub to give the child a bath", "filled up the bathtub to give the child a bath", "filled up the bathtub to give the child a bath"],
-                ["leaving the bathroom to pick up the call", "left the bathroom to pick up the call", "left the bathroom to pick up the call"],
-                ["talking to her boyfriend for 5 minutes and sat for a couple of minutes afterward", "talked to her boyfriend for 5 minutes and sat for a couple of minutes afterward", "talked to her boyfriend for 5 minutes and sat for a couple of minutes afterward"],
-                ["taking the child out of the tub", "took the child out of the tub", "took the child out of the tub"],
-                ["immediately calling 911", "immediately called 911", "immediately called 911"]
-            ]
-        },
-        outcome: "the child drowned and was dead",
-    },
-    {
-        name: "Kai_18",
-        image: "characters/Kai.png",
-        story: `<p>
-            &emsp;&emsp;
-            Kai is an Asian 18-year-old who enjoys reading science fiction and has a calm personality.
-            She is Christian, asthmatic, and an organized person who interacts well with children.
-            <br> &emsp;&emsp;
-            Kai occasionally does some babysitting for people who live in her neighborhood;
-            one weekend, people who had recently purchased a house in the neighborhood asked
-            Kai to babysit for them. On the first weekend night, Kai was filling up the bathtub to
-            give the child a bath before bedtime when her phone started ringing.
-            <br> &emsp;&emsp;
-            Kai left the bathroom to pick up the call, which was from her boyfriend. She told him that
-            she could not talk but he told her he was breaking up with her. She then talked to him for
-            5 minutes and sat for a couple of minutes afterward.
-            <br> &emsp;&emsp;
-            When she went to get the child, she found that she had climbed in the bathtub. She took the
-            child out of the tub and immediately called 911 but the child had already drowned and was dead.
-            </p>`,
-        "attention_check": "Kai left the bathroom to pick up the call.<br><br>",
-        features: {
-            non_actions: [
-                ["being a girl", "is a girl", "been a girl"],
-                ["being 18 years old", "is 18 years old", "been 18 years old"],
-                ["being Asian", "is Asian", "been Asian"],
-                ["being asthmatic", "is asthmatic", "been asthmatic"],
-                ["being Christian", "is Christian", "been Christian"],
-                ["enjoying reading science fiction", "enjoys reading science fiction", "enjoyed reading science fiction"],
-                ["occasionally doing some babysitting", "occasionally does some babysitting", "had occasionally done some babysitting"],
-                ["interacting well with children", "interacts well with children", "interacted well with children"],
-                ["having a calm personality", "has a calm personality", "had a calm personality"],
-                ["being organized", "is organized", "been organized"]
-            ],
-            actions: [
-                ["filling up the bathtub to give the child a bath", "filled up the bathtub to give the child a bath", "filled up the bathtub to give the child a bath"],
-                ["leaving the bathroom to pick up the call", "left the bathroom to pick up the call", "left the bathroom to pick up the call"],
-                ["talking to her boyfriend for 5 minutes and sat for a couple of minutes afterward", "talked to her boyfriend for 5 minutes and sat for a couple of minutes afterward", "talked to her boyfriend for 5 minutes and sat for a couple of minutes afterward"],
-                ["taking the child out of the tub", "took the child out of the tub", "took the child out of the tub"],
-                ["immediately calling 911", "immediately called 911", "immediately called 911"]
-            ]
-        },
-        outcome: "the child drowned and was dead",
-    },
-        {
-        name: "Kai_23",
-        image: "characters/Kai.png",
-        story: `<p>
-            &emsp;&emsp;
-            Kai is an Asian 23-year-old who enjoys reading science fiction and has a calm personality.
-            She is Christian, asthmatic, and an organized person who interacts well with children.
-            <br> &emsp;&emsp;
-            Kai occasionally does some babysitting for people who live in her neighborhood;
-            one weekend, people who had recently purchased a house in the neighborhood asked
-            Kai to babysit for them. On the first weekend night, Kai was filling up the bathtub to
-            give the child a bath before bedtime when her phone started ringing.
-            <br> &emsp;&emsp;
-            Kai left the bathroom to pick up the call, which was from her boyfriend. She told her boyfriend that
-            she could not talk but he told her he was breaking up with her. She then talked to him for
-            5 minutes and sat for a couple of minutes afterward.
-            <br> &emsp;&emsp;
-            When she went to get the child, she found that they had climbed in the bathtub. She took the
-            child out of the tub and immediately called 911 but the child had already drowned and was dead.
-            </p>`,
-        "attention_check": "Kai left the bathroom to pick up the call.<br><br>",
-        features: {
-            non_actions: [
-                ["being a girl", "is a girl", "been a girl"],
-                ["being 23 years old", "is 23 years old", "been 23 years old"],
-                ["being Asian", "is Asian", "been Asian"],
-                ["being asthmatic", "is asthmatic", "been asthmatic"],
-                ["being Christian", "is Christian", "been Christian"],
-                ["enjoying reading science fiction", "enjoys reading science fiction", "enjoyed reading science fiction"],
-                ["occasionally doing some babysitting", "occasionally does some babysitting", "had occasionally done some babysitting"],
-                ["interacting well with children", "interacts well with children", "interacted well with children"],
-                ["having a calm personality", "has a calm personality", "had a calm personality"],
-                ["being organized", "is organized", "been organized"]
-            ],
-            actions: [
-                ["filling up the bathtub to give the child a bath", "filled up the bathtub to give the child a bath", "filled up the bathtub to give the child a bath"],
-                ["leaving the bathroom to pick up the call", "left the bathroom to pick up the call", "left the bathroom to pick up the call"],
-                ["talking to her boyfriend for 5 minutes and sat for a couple of minutes afterward", "talked to her boyfriend for 5 minutes and sat for a couple of minutes afterward", "talked to her boyfriend for 5 minutes and sat for a couple of minutes afterward"],
-                ["taking the child out of the tub", "took the child out of the tub", "took the child out of the tub"],
-                ["immediately calling 911", "immediately called 911", "immediately called 911"]
-            ]
-        },
-        outcome: "the child drowned and was dead",
-    },
-    {
-        name: "Kai_18_male",
-        image: "characters/Kai.png",
-        story: `<p>
-            &emsp;&emsp;
-            Kai is an Asian 18-year-old who enjoys reading science fiction and has a calm personality.
-            He is Christian, asthmatic, and an organized person who interacts well with children.
-            <br> &emsp;&emsp;
-            Kai occasionally does some babysitting for people who live in his neighborhood;
-            one weekend, people who had recently purchased a house in the neighborhood asked
-            Kai to babysit for them. On the first weekend night, Kai was filling up the bathtub to
-            give the child a bath before bedtime when her phone started ringing.
-            <br> &emsp;&emsp;
-            Kai left the bathroom to pick up the call, which was from his girlfriend. He told his girlfriend that
-            he could not talk but she told him she was breaking up with him. He then talked to her for
-            5 minutes and sat for a couple of minutes afterward.
-            <br> &emsp;&emsp;
-            When he went to get the child, he found that they had climbed in the bathtub. He took the
-            child out of the tub and immediately called 911 but the child had already drowned and was dead.
-            </p>`,
-        "attention_check": "Kai left the bathroom to pick up the call.<br><br>",
-        features: {
-            non_actions: [
-                ["being a boy", "is a boy", "been a boy"],
-                ["being 18 years old", "is 18 years old", "been 18 years old"],
-                ["being Asian", "is Asian", "been Asian"],
-                ["being asthmatic", "is asthmatic", "been asthmatic"],
-                ["being Christian", "is Christian", "been Christian"],
-                ["enjoying reading science fiction", "enjoys reading science fiction", "enjoyed reading science fiction"],
-                ["occasionally doing some babysitting", "occasionally does some babysitting", "had occasionally done some babysitting"],
-                ["interacting well with children", "interacts well with children", "interacted well with children"],
-                ["having a calm personality", "has a calm personality", "had a calm personality"],
-                ["being organized", "is organized", "been organized"]
-            ],
-            actions: [
-                ["filling up the bathtub to give the child a bath", "filled up the bathtub to give the child a bath", "filled up the bathtub to give the child a bath"],
-                ["leaving the bathroom to pick up the call", "left the bathroom to pick up the call", "left the bathroom to pick up the call"],
-                ["talking to his girlfriend for 5 minutes and sat for a couple of minutes afterward", "talked to his girlfriend for 5 minutes and sat for a couple of minutes afterward", "talked to his girlfriend for 5 minutes and sat for a couple of minutes afterward"],
-                ["taking the child out of the tub", "took the child out of the tub", "took the child out of the tub"],
-                ["immediately calling 911", "immediately called 911", "immediately called 911"]
-            ]
-        },
-        outcome: "the child drowned and was dead",
-    },
-    {
-        name: "Kai_control",
-        image: "characters/Kai.png",
-        story: `<p>
-            &emsp;&emsp;
-            Kai enjoys reading science fiction and has a calm personality.
-            They are Asian, Christian, asthmatic, and an organized person who interacts well with children.
-            <br> &emsp;&emsp;
-            Kai occasionally does some babysitting for people who live in their neighborhood;
-            one weekend, people who had recently purchased a house in the neighborhood asked
-            Kai to babysit for them. On the first weekend night, Kai was filling up the bathtub to
-            give the child a bath before bedtime when their phone started ringing.
-            <br> &emsp;&emsp;
-            Kai left the bathroom to pick up the call, which was from their girlfriend. Kai told their girlfriend
-            that they could not talk, but the girlfriend told Kai she was breaking up with them.
-            Kai then talked to her for 5 minutes and sat for a couple of minutes afterward.
-            <br> &emsp;&emsp;
-            When Kai went to get the child, they found that the child had climbed in the bathtub. They took the
-            child out of the tub and immediately called 911 but the child had already drowned and was dead.
-            </p>`,
-        "attention_check": "Kai left the bathroom to pick up the call.<br><br>",
-        features: {
-            non_actions: [
-                ["being Asian", "is Asian", "been Asian"],
-                ["being asthmatic", "is asthmatic", "been asthmatic"],
-                ["being Christian", "is Christian", "been Christian"],
-                ["enjoying reading science fiction", "enjoys reading science fiction", "enjoyed reading science fiction"],
-                ["occasionally doing some babysitting", "occasionally does some babysitting", "had occasionally done some babysitting"],
-                ["interacting well with children", "interacts well with children", "interacted well with children"],
-                ["having a calm personality", "has a calm personality", "had a calm personality"],
-                ["being organized", "is organized", "been organized"]
-            ],
-            actions: [
-                ["filling up the bathtub to give the child a bath", "filled up the bathtub to give the child a bath", "filled up the bathtub to give the child a bath"],
-                ["leaving the bathroom to pick up the call", "left the bathroom to pick up the call", "left the bathroom to pick up the call"],
-                ["talking to their girlfriend for 5 minutes and sat for a couple of minutes afterward", "talked to their girlfriend for 5 minutes and sat for a couple of minutes afterward", "talked to their girlfriend for 5 minutes and sat for a couple of minutes afterward"],
-                ["taking the child out of the tub", "took the child out of the tub", "took the child out of the tub"],
-                ["immediately calling 911", "immediately called 911", "immediately called 911"]
-            ]
-        },
-        outcome: "the child drowned and was dead",
-    },
-    {
-        name: "Robin_8",
-        image: "characters/Robin.png",
-        story: `<p>
-            &emsp;&emsp;
-            Robin is a Native American 8-year-old red-haired boy who is cheerful and
-            has a curious personality. He is opinionated sometimes and enjoys
-            browsing Twitter in his free time.
-            <br> &emsp;&emsp;
-            Robin embarked on a weekend skiing trip and told all his friends about it.
-            He was a beginner with limited experience and had never attempted a downhill
-            run before. Upon arrival at the ski skite, one of his trip companions--
-            a ski-patrol first aid advisor--recommended he do the beginners\'s slope first.
-            Robn obliged, but instead of taking the T-bar lift, he decided to walk up
-            part of the beginner\'s slope and began skiing down from there.
-            <br> &emsp;&emsp;
-            At the bottom of the slope, Robin encountered a sharp left turn. In attempting
-            to take the turn, he lost control over his momentum and direction. While losing
-            control, Robin spotted two girls in his trajectory, one being his ski-patrol advisor,
-            but Robin did not call out to the girls until he was almost upon them
-            <br> &emsp;&emsp;
-            The two girls tried to get out of Robin's way, but it was too late; Robin crashed
-            into them on his skis and knocked them down in the process. The impact injured
-            the ski patrol advisor.
-            </p>`,
-        "attention_check": "Robin had lots of prior skiing experience.<br><br>",
-        features: {
-            non_actions: [
-                ["being a boy", "is a boy", "been a boy"],
-                ["being 8 years old", "is 8 years old", "been 8 years old"],
-                ["being Native American", "is Native American", "been Native American"],
-                ["being red-haired", "is red-haired", "been red-haired"],
-                ["being cheerful", "is cheerful", "been cheerful"],
-                ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["being opinionated sometimes", "is opinionated sometimes", "been opinionated sometimes"],
-                ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
-            ],
-            actions: [
-                ["telling all his friends about it", "told all his friends about it", "told all his friends about it"],
-                ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
-                ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
-                ["losing control over his momentum and direction", "lost control over his momentum and direction", "lost control over his momentum and direction"],
-                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocked them down", "crashed into the girls on his skis and knocked them down"]
-            ]
-        },
-        outcome: "injuring the ski patrol advisor",
-    },
-    {
-        name: "Robin_13",
-        image: "characters/Robin.png",
-        story: `<p>
-            &emsp;&emsp;
-            Robin is a Native American 13-year-old red-haired boy who is cheerful and
-            has a curious personality. He is opinionated sometimes and enjoys
-            browsing Twitter in his free time.
-            <br> &emsp;&emsp;
-            Robin embarked on a weekend skiing trip and told all his friends about it.
-            He was a beginner with limited experience and had never attempted a downhill
-            run before. Upon arrival at the ski skite, one of his trip companions--
-            a ski-patrol first aid advisor--recommended he do the beginners\'s slope first.
-            Robn obliged, but instead of taking the T-bar lift, he decided to walk up
-            part of the beginner\'s slope and began skiing down from there.
-            <br> &emsp;&emsp;
-            At the bottom of the slope, Robin encountered a sharp left turn. In attempting
-            to take the turn, he lost control over his momentum and direction. While losing
-            control, Robin spotted two girls in his trajectory, one being his ski-patrol advisor,
-            but Robin did not call out to the girls until he was almost upon them
-            <br> &emsp;&emsp;
-            The two girls tried to get out of Robin's way, but it was too late; Robin crashed
-            into them on his skis and knocked them down in the process. The impact injured
-            the ski patrol advisor.
-            </p>`,
-        "attention_check": "Robin had lots of prior skiing experience.<br><br>",
-        features: {
-            non_actions: [
-                ["being a boy", "is a boy", "been a boy"],
-                ["being 13 years old", "is 13 years old", "been 13 years old"],
-                ["being Native American", "is Native American", "been Native American"],
-                ["being red-haired", "is red-haired", "been red-haired"],
-                ["being cheerful", "is cheerful", "been cheerful"],
-                ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["being opinionated sometimes", "is opinionated sometimes", "been opinionated sometimes"],
-                ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
-            ],
-            actions: [
-                ["telling all his friends about it", "told all his friends about it", "told all his friends about it"],
-                ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
-                ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
-                ["losing control over his momentum and direction", "lost control over his momentum and direction", "lost control over his momentum and direction"],
-                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocked them down", "crashed into the girls on his skis and knocked them down"]
-            ]
-        },
-        outcome: "injuring the ski patrol advisor",
-    },
-    {
-        name: "Robin_18",
-        image: "characters/Robin.png",
-        story: `<p>
-            &emsp;&emsp;
-            Robin is a Native American 18-year-old red-haired boy who is cheerful and
-            has a curious personality. He is opinionated sometimes and enjoys
-            browsing Twitter in his free time.
-            <br> &emsp;&emsp;
-            Robin embarked on a weekend skiing trip and told all his friends about it.
-            He was a beginner with limited experience and had never attempted a downhill
-            run before. Upon arrival at the ski skite, one of his trip companions--
-            a ski-patrol first aid advisor--recommended he do the beginners\'s slope first.
-            Robn obliged, but instead of taking the T-bar lift, he decided to walk up
-            part of the beginner\'s slope and began skiing down from there.
-            <br> &emsp;&emsp;
-            At the bottom of the slope, Robin encountered a sharp left turn. In attempting
-            to take the turn, he lost control over his momentum and direction. While losing
-            control, Robin spotted two girls in his trajectory, one being his ski-patrol advisor,
-            but Robin did not call out to the girls until he was almost upon them
-            <br> &emsp;&emsp;
-            The two girls tried to get out of Robin's way, but it was too late; Robin crashed
-            into them on his skis and knocked them down in the process. The impact injured
-            the ski patrol advisor.
-            </p>`,
-        "attention_check": "Robin had lots of prior skiing experience.<br><br>",
-        features: {
-            non_actions: [
-                ["being a boy", "is a boy", "been a boy"],
-                ["being 18 years old", "is 18 years old", "been 18 years old"],
-                ["being Native American", "is Native American", "been Native American"],
-                ["being red-haired", "is red-haired", "been red-haired"],
-                ["being cheerful", "is cheerful", "been cheerful"],
-                ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["being opinionated sometimes", "is opinionated sometimes", "been opinionated sometimes"],
-                ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
-            ],
-            actions: [
-                ["telling all his friends about it", "told all his friends about it", "told all his friends about it"],
-                ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
-                ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
-                ["losing control over his momentum and direction", "lost control over his momentum and direction", "lost control over his momentum and direction"],
-                ["crashing into the girls on his skis and knocking them down", "crashed into the girls on his skis and knocked them down", "crashed into the girls on his skis and knocked them down"]
-            ]
-        },
-        outcome: "injuring the ski patrol advisor",
-    },
-    {
-        name: "Robin_18_female",
-        image: "characters/Robin.png",
-        story: `<p>
-            &emsp;&emsp;
-            Robin is a Native American 18-year-old red-haired girl who is cheerful and
-            has a curious personality. She is opinionated sometimes and enjoys
-            browsing Twitter in her free time.
-            <br> &emsp;&emsp;
-            Robin embarked on a weekend skiing trip and told all her friends about it.
-            She was a beginner with limited experience and had never attempted a downhill
-            run before. Upon arrival at the ski skite, one of her trip companions--
-            a ski-patrol first aid advisor--recommended she do the beginners\'s slope first.
-            Robn obliged, but instead of taking the T-bar lift, she decided to walk up
-            part of the beginner\'s slope and began skiing down from there.
-            <br> &emsp;&emsp;
-            At the bottom of the slope, Robin encountered a sharp left turn. In attempting
-            to take the turn, she lost control over her momentum and direction. While losing
-            control, Robin spotted two girls in her trajectory, one being her ski-patrol advisor,
-            but Robin did not call out to the girls until she was almost upon them.
-            <br> &emsp;&emsp;
-            The two girls tried to get out of Robin's way, but it was too late; Robin crashed
-            into them on her skis and knocked them down in the process. The impact injured
-            the ski patrol advisor.
-            </p>`,
-        "attention_check": "Robin had lots of prior skiing experience.<br><br>",
-        features: {
-            non_actions: [
-                ["being a girl", "is a girl", "been a girl"],
-                ["being 18 years old", "is 18 years old", "been 18 years old"],
-                ["being Native American", "is Native American", "been Native American"],
-                ["being red-haired", "is red-haired", "been red-haired"],
-                ["being cheerful", "is cheerful", "been cheerful"],
-                ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["being opinionated sometimes", "is opinionated sometimes", "been opinionated sometimes"],
-                ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
-            ],
-            actions: [
-                ["telling all her friends about it", "told all her friends about it", "told all her friends about it"],
-                ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
-                ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
-                ["losing control over her momentum and direction", "lost control over her momentum and direction", "lost control over her momentum and direction"],
-                ["crashing into the girls on her skis and knocking them down", "crashed into the girls on her skis and knocked them down", "crashed into the girls on her skis and knocked them down"]
-            ]
-        },
-        outcome: "injuring the ski patrol advisor",
-    },
-    {
-        name: "Robin_control",
-        image: "characters/Robin.png",
-        story: `<p>
-            &emsp;&emsp;
-            Robin is a Native American red-haired 18-year-old who is cheerful and
-            has a curious personality. They are opinionated sometimes and enjoy
-            browsing Twitter in their free time.
-            <br> &emsp;&emsp;
-            Robin embarked on a weekend skiing trip and told all their friends about it.
-            They were a beginner with limited experience and had never attempted a downhill
-            run before. Upon arrival at the ski skite, one of their trip companions--
-            a ski-patrol first aid advisor--recommended Robin do the beginners\'s slope first.
-            Robin obliged, but instead of taking the T-bar lift, they decided to walk up
-            part of the beginner\'s slope and began skiing down from there.
-            <br> &emsp;&emsp;
-            At the bottom of the slope, Robin encountered a sharp left turn. In attempting
-            to take the turn, they lost control over their momentum and direction. While losing
-            control, Robin spotted two girls in their trajectory, one being the ski-patrol advisor,
-            but Robin did not call out to the girls until Robin was almost upon them.
-            <br> &emsp;&emsp;
-            The two girls tried to get out of Robin's way, but it was too late; Robin crashed
-            into them on their skis and knocked them down in the process. The impact injured
-            the ski patrol advisor.
-            </p>`,
-        "attention_check": "Robin had lots of prior skiing experience.<br><br>",
-        features: {
-            non_actions: [
-                ["being Native American", "is Native American", "been Native American"],
-                ["being red-haired", "is red-haired", "been red-haired"],
-                ["being cheerful", "is cheerful", "been cheerful"],
-                ["having a curious personality", "has a curious personality", "had a curious personality"],
-                ["being opinionated sometimes", "is opinionated sometimes", "been opinionated sometimes"],
-                ["enjoying browsing Twitter", "enjoys browsing Twitter", "enjoyed browsing Twitter"],
-            ],
-            actions: [
-                ["telling all their friends about it", "told all their friends about it", "told all their friends about it"],
-                ["never attempting a downhill run before", "never attempted a downhill run before", "never attempted a downhill run before"],
-                ["deciding to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope", "decided to walk up part of the beginner\'s slope"],
-                ["losing control over their momentum and direction", "lost control over their momentum and direction", "lost control over their momentum and direction"],
-                ["crashing into the girls on their skis and knocking them down", "crashed into the girls on their skis and knocked them down", "crashed into the girls on their skis and knocked them down"]
-            ]
-        },
-        outcome: "injuring the ski patrol advisor",
-    },
-    {
-        name: "Blake_female",
+        // Version 1: Blake is *FEMALE* with husband (matches original story)
+        name: "Blake_female_with-husband",
         image: "characters/Blake.png",
         story: `<p>
             &emsp;&emsp;
-            Blake is 38 years old and works as a software engineer.
-            She is White, has red hair, and is a timid but organized person.
-            Her technical skills allowed her to move out of his troubled family home early on,
-            and she has supported herself ever since.
-            In her free time, she enjoys composing music and oil painting.
+            Blake is a 34-year-old White woman who works as a software engineer.
+            She has red hair and is a timid but organized person.
+            She enjoys collecting vinyl records and oil painting.
             <br> &emsp;&emsp;
-            Blake and her romantic partner Franklin, who is one year older, have been together for two years.
-            They recently moved in together. A year earlier, Franklin spent four months in jail for physically abusing Blake.
+            Blake and her husband Cameron have been married for five years.
+            Two years ago, Cameron spent four months in jail for physically abusing Blake.
             After that, they started going to couples therapy and for a while their relationship improved.
             <br> &emsp;&emsp;
-            Recently, however, Franklin has been acting more violent towards Blake when drunk,
+            Recently, however, Cameron has been acting more violent towards Blake when drunk,
             and on one occasion Blake went to the emergency room for bruises she suffered.
-            One night, Franklin came home in an extremely intoxicated state and began screaming
-            at Blake that he was going to kill her someday. Blake became very scared and
-            ran into their bedroom to hide. Franklin followed her and started hitting Blake.
-            Out of panic, Blake grabbed the loaded, licensed revolver that Franklin
-            kept under their bed and shot Franklin. Franklin died in the hospital three hours later.
+            One night, Cameron came home in an extremely intoxicated state and began screaming
+            at Blake that he was going to kill Blake someday.
+            Blake became very scared and ran into their bedroom to hide.
+            Cameron followed Blake and started hitting her.
+            Out of panic, Blake grabbed the loaded, licensed revolver that Cameron kept
+            under the bed and shot Cameron. Cameron died in the hospital three hours later.
             </p>`,
-        "attention_check": "Blake and Franklin went to couples therapy together.<br><br>",
+            "attention_check": "Blake previously suffered physical abuse in her marriage.<br><br>",
         features: {
             non_actions: [
-                ["being 38 years old", "is 38 years old", "been 38 years old"],
                 ["being female", "is female", "been female"],
+                ["being 34 years old", "is 34 years old", "been 34 years old"],
                 ["being White", "is White", "been White"],
-                ["working as a software engineer", "works as a software engineer", "has worked as a software engineer"],
-                ["moving out of her troubled family home early on", "moves out of her troubled family home early on", "has moved out of her troubled family home early on"],
-                ["being red-haired", "is red-haired", "been red-haired"],
-                ["being timid", "is timid", "been timid"],
-                ["being organized", "is organized", "been organized"],
-                ["enjoying composing music", "enjoys composing music", "enjoyed composing music"],
+                ["having red hair", "has red hair", "had red hair"],
+                ["being a software engineer", "is a software engineer", "been a software engineer"],
+                ["collecting vinyl records", "collects vinyl records", "collected vinyl records"],
                 ["enjoying oil painting", "enjoys oil painting", "enjoyed oil painting"],
+                ["being a timid person", "is a timid person", "been a timid person"],
+                ["being an organized person", "is an organized person", "been an organized person"],
+                ["attending couples therapy years ago", "attended couples therapy years ago", "attended couples therapy years ago"]
             ],
             actions: [
-                ["starting going to couples therapy", "started going to couples therapy", "started going to couples therapy"],
-                ["going to the emergency room for bruises she suffered", "went to the emergency room for bruises she suffered", "went to the emergency room for bruises she suffered"],
-                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
-                ["grabbing the loaded, licensed revolver", "grabbed the loaded, licensed revolver", "grabbed the loaded, licensed revolver"],
-                ["shooting Franklin", "shot Franklin", "shot Franklin"]
+                ["going to the emergency room for bruises", "went to the emergency room for bruises", "gone to the emergency room for bruises"],
+                ["not seeking help after the emergency room incident", "did not seek help after the emergency room incident", "not sought help after the emergency room incident"],
+                ["being scared when Cameron screamed", "was scared when Cameron screamed", "been scared when Cameron screamed"],
+                ["grabbing the revolver", "grabbed the revolver", "grabbed the revolver"],
+                ["shooting Cameron with the revolver", "shot Cameron with the revolver", "shot Cameron with the revolver"]
             ]
         },
-        outcome: "dying in the hospital three hours later",
+        outcome: "Cameron\'s death",
     },
     {
-        name: "Blake_male",
+        // Version 2: Blake is *MALE* with husband (diverges from original story)
+        name: "Blake_male_with-husband",
         image: "characters/Blake.png",
         story: `<p>
             &emsp;&emsp;
-            Blake is 38 years old and works as a software engineer.
-            He is White, has red hair, and is a timid but organized person.
-            His technical skills allowed him to move out of his troubled family home early on,
-            and he has supported himself ever since.
-            In his free time, he enjoys composing music and oil painting.
+            Blake is a 34-year-old White man who works as a software engineer.
+            He has red hair and is a timid but organized person.
+            He enjoys collecting vinyl records and oil painting.
             <br> &emsp;&emsp;
-            Blake and his romantic partner Franklin, who is one year older, have been together for two years.
-            They recently moved in together. A year earlier, Franklin spent four months in jail for physically abusing Blake.
+            Blake and his husband Cameron have been married for five years.
+            Two years ago, Cameron spent four months in jail for physically abusing Blake.
             After that, they started going to couples therapy and for a while their relationship improved.
             <br> &emsp;&emsp;
-            Recently, however, Franklin has been acting more violent towards Blake when drunk,
+            Recently, however, Cameron has been acting more violent towards Blake when drunk,
             and on one occasion Blake went to the emergency room for bruises he suffered.
-            One night, Franklin came home in an extremely intoxicated state and began screaming
-            at Blake that he was going to kill him someday. Blake became very scared and
-            ran into their bedroom to hide. Franklin followed him and started hitting Blake.
-            Out of panic, Blake grabbed the loaded, licensed revolver that Franklin
-            kept under their bed and shot Franklin. Franklin died in the hospital three hours later.
+            One night, Cameron came home in an extremely intoxicated state and began screaming
+            at Blake that he was going to kill Blake someday.
+            Blake became very scared and ran into their bedroom to hide.
+            Cameron followed Blake and started hitting him.
+            Out of panic, Blake grabbed the loaded, licensed revolver that Cameron kept
+            under the bed and shot Cameron. Cameron died in the hospital three hours later.
             </p>`,
-        "attention_check": "Blake and Franklin went to couples therapy together.<br><br>",
+            "attention_check": "Blake previously suffered physical abuse in his marriage.<br><br>",
         features: {
             non_actions: [
-                ["being 38 years old", "is 38 years old", "been 38 years old"],
                 ["being male", "is male", "been male"],
+                ["being 34 years old", "is 34 years old", "been 34 years old"],
                 ["being White", "is White", "been White"],
-                ["working as a software engineer", "works as a software engineer", "has worked as a software engineer"],
-                ["moving out of his troubled family home early on", "moves out of his troubled family home early on", "has moved out of his troubled family home early on"],
-                ["being red-haired", "is red-haired", "been red-haired"],
-                ["being timid", "is timid", "been timid"],
-                ["being organized", "is organized", "been organized"],
-                ["enjoying composing music", "enjoys composing music", "enjoyed composing music"],
+                ["having red hair", "has red hair", "had red hair"],
+                ["being a software engineer", "is a software engineer", "been a software engineer"],
+                ["collecting vinyl records", "collects vinyl records", "collected vinyl records"],
                 ["enjoying oil painting", "enjoys oil painting", "enjoyed oil painting"],
+                ["being a timid person", "is a timid person", "been a timid person"],
+                ["being an organized person", "is an organized person", "been an organized person"],
+                ["attending couples therapy years ago", "attended couples therapy years ago", "attended couples therapy years ago"]
             ],
             actions: [
-                ["starting going to couples therapy", "started going to couples therapy", "started going to couples therapy"],
-                ["going to the emergency room for bruises he suffered", "went to the emergency room for bruises he suffered", "went to the emergency room for bruises he suffered"],
-                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
-                ["grabbing the loaded, licensed revolver", "grabbed the loaded, licensed revolver", "grabbed the loaded, licensed revolver"],
-                ["shooting Franklin", "shot Franklin", "shot Franklin"]
+                ["going to the emergency room for bruises", "went to the emergency room for bruises", "gone to the emergency room for bruises"],
+                ["not seeking help after the emergency room incident", "did not seek help after the emergency room incident", "not sought help after the emergency room incident"],
+                ["being scared when Cameron screamed", "was scared when Cameron screamed", "been scared when Cameron screamed"],
+                ["grabbing the revolver", "grabbed the revolver", "grabbed the revolver"],
+                ["shooting Cameron with the revolver", "shot Cameron with the revolver", "shot Cameron with the revolver"]
             ]
         },
-        outcome: "dying in the hospital three hours later",
+        outcome: "Cameron\'s death",
     },
-        {
+    {
+        // Version 3: Blake is *MALE* with wife (diverges from original story)
+        name: "Blake_male_with-wife",
+        image: "characters/Blake.png",
+        story: `<p>
+            &emsp;&emsp;
+            Blake is a 34-year-old White man who works as a software engineer.
+            He has red hair and is a timid but organized person.
+            He enjoys collecting vinyl records and oil painting.
+            <br> &emsp;&emsp;
+            Blake and his wife Cameron have been married for five years.
+            Two years ago, Cameron spent four months in jail for physically abusing Blake.
+            After that, they started going to couples therapy and for a while their relationship improved.
+            <br> &emsp;&emsp;
+            Recently, however, Cameron has been acting more violent towards Blake when drunk,
+            and on one occasion Blake went to the emergency room for bruises he suffered.
+            One night, Cameron came home in an extremely intoxicated state and began screaming
+            at Blake that she was going to kill Blake someday.
+            Blake became very scared and ran into their bedroom to hide.
+            Cameron followed Blake and started hitting him.
+            Out of panic, Blake grabbed the loaded, licensed revolver that Cameron kept
+            under the bed and shot Cameron. Cameron died in the hospital three hours later.
+            </p>`,
+            "attention_check": "Blake previously suffered physical abuse in his marriage.<br><br>",
+        features: {
+            non_actions: [
+                ["being male", "is male", "been male"],
+                ["being 34 years old", "is 34 years old", "been 34 years old"],
+                ["being White", "is White", "been White"],
+                ["having red hair", "has red hair", "had red hair"],
+                ["being a software engineer", "is a software engineer", "been a software engineer"],
+                ["collecting vinyl records", "collects vinyl records", "collected vinyl records"],
+                ["enjoying oil painting", "enjoys oil painting", "enjoyed oil painting"],
+                ["being a timid person", "is a timid person", "been a timid person"],
+                ["being an organized person", "is an organized person", "been an organized person"],
+                ["attending couples therapy years ago", "attended couples therapy years ago", "attended couples therapy years ago"]
+            ],
+            actions: [
+                ["going to the emergency room for bruises", "went to the emergency room for bruises", "gone to the emergency room for bruises"],
+                ["not seeking help after the emergency room incident", "did not seek help after the emergency room incident", "not sought help after the emergency room incident"],
+                ["being scared when Cameron screamed", "was scared when Cameron screamed", "been scared when Cameron screamed"],
+                ["grabbing the revolver", "grabbed the revolver", "grabbed the revolver"],
+                ["shooting Cameron with the revolver", "shot Cameron with the revolver", "shot Cameron with the revolver"]
+            ]
+        },
+        outcome: "Cameron\'s death",
+    },
+    {
+        // Version 4: Blake and Cameron's gender are omitted
         name: "Blake_control",
         image: "characters/Blake.png",
         story: `<p>
             &emsp;&emsp;
-            Blake is 38 years old and works as a software engineer.
-            They are White, have red hair, and are timid but organized.
-            Their technical skills allowed them to move out of their troubled family home early on,
-            and they have supported themselves ever since.
-            In their free time, Blake enjoys composing music and oil painting.
+            Blake is 34 years old, White, and works as a software engineer.
+            They have red hair and are a timid but organized person.
+            Blake enjoys collecting vinyl records and oil painting.
             <br> &emsp;&emsp;
-            Blake and their romantic partner Franklin, who is one year older, have been together for two years.
-            They recently moved in together. A year earlier, Franklin spent four months in jail for physically abusing Blake.
+            Blake and their partner Cameron have been married for five years.
+            Two years ago, Cameron spent four months in jail for physically abusing Blake.
             After that, they started going to couples therapy and for a while their relationship improved.
             <br> &emsp;&emsp;
-            Recently, however, Franklin has been acting more violent towards Blake when drunk,
+            Recently, however, Cameron has been acting more violent towards Blake when drunk,
             and on one occasion Blake went to the emergency room for bruises they suffered.
-            One night, Franklin came home in an extremely intoxicated state and began screaming
-            at Blake that he was going to kill Blake someday. Blake became very scared and
-            ran into their bedroom to hide. Franklin followed him and started hitting Blake.
-            Out of panic, Blake grabbed the loaded, licensed revolver that Franklin
-            kept under their bed and shot Franklin. Franklin died in the hospital three hours later.
+            One night, Cameron came home in an extremely intoxicated state and began screaming
+            at Blake that they were going to kill Blake someday.
+            Blake became very scared and ran into their bedroom to hide.
+            Cameron followed and started hitting Blake.
+            Out of panic, Blake grabbed the loaded, licensed revolver that Cameron kept
+            under the bed and shot Cameron. Cameron died in the hospital three hours later.
             </p>`,
-        "attention_check": "Blake and Franklin went to couples therapy together.<br><br>",
+            "attention_check": "Blake previously suffered physical abuse in their marriage.<br><br>",
         features: {
             non_actions: [
-                ["being 38 years old", "is 38 years old", "been 38 years old"],
+                ["being 34 years old", "is 34 years old", "been 34 years old"],
                 ["being White", "is White", "been White"],
-                ["working as a software engineer", "works as a software engineer", "has worked as a software engineer"],
-                ["moving out of their troubled family home early on", "moves out of their troubled family home early on", "has moved out of their troubled family home early on"],
-                ["being red-haired", "is red-haired", "been red-haired"],
-                ["being timid", "is timid", "been timid"],
-                ["being organized", "is organized", "been organized"],
-                ["enjoying composing music", "enjoys composing music", "enjoyed composing music"],
+                ["having red hair", "has red hair", "had red hair"],
+                ["being a software engineer", "is a software engineer", "been a software engineer"],
+                ["collecting vinyl records", "collects vinyl records", "collected vinyl records"],
                 ["enjoying oil painting", "enjoys oil painting", "enjoyed oil painting"],
+                ["being a timid person", "is a timid person", "been a timid person"],
+                ["being an organized person", "is an organized person", "been an organized person"],
+                ["attending couples therapy years ago", "attended couples therapy years ago", "attended couples therapy years ago"]
             ],
             actions: [
-                ["starting going to couples therapy", "started going to couples therapy", "started going to couples therapy"],
-                ["going to the emergency room for bruises he suffered", "went to the emergency room for bruises he suffered", "went to the emergency room for bruises he suffered"],
-                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
-                ["grabbing the loaded, licensed revolver", "grabbed the loaded, licensed revolver", "grabbed the loaded, licensed revolver"],
-                ["shooting Franklin", "shot Franklin", "shot Franklin"]
+                ["going to the emergency room for bruises", "went to the emergency room for bruises", "gone to the emergency room for bruises"],
+                ["not seeking help after the emergency room incident", "did not seek help after the emergency room incident", "not sought help after the emergency room incident"],
+                ["being scared when Cameron screamed", "was scared when Cameron screamed", "been scared when Cameron screamed"],
+                ["grabbing the revolver", "grabbed the revolver", "grabbed the revolver"],
+                ["shooting Cameron with the revolver", "shot Cameron with the revolver", "shot Cameron with the revolver"]
             ]
         },
-        outcome: "dying in the hospital three hours later",
+        outcome: "Cameron\'s death",
     },
+    // Story 2: Jamie (Asian vs White vs control); originally "Qian" in Wu et al. (2026)
+    // All story features except for the protagonist names were preserved.
+    // In some parts of the story, I exchanged pronouns with protagonist names for clarity.
     {
-        name: "Alfred_white",
-        image: "characters/Alfred.png",
-        story: `<p>
-            &emsp;&emsp;
-            Alfred is a 68-year-old White patriotic veteran who was honorably discharged
-            and now lives alone in a quaint neighborhood in a large city.
-            He has been diagnosed with Post-Traumatic Stress Disorder (PTSD),
-            a mental health condition that can cause vivid flashbacks of a traumatic event.
-            Alfred enjoys fishing, Italian cuisine, and has a calm personality.
-            <br> &emsp;&emsp;
-            One evening, Alfred was riding the subway home after visiting a friend in a
-            different neighborhood. Oliver, an investment banker, was leaving work and boarded
-            the same subway a few stops later. Both people were quiet and did not interact with other passengers.
-            <br> &emsp;&emsp;
-            Alfred and Oliver got off at the same stop, which was underground. 
-            There was new road construction happening above the stop.
-            As Alfred stepped onto the subway platform, he heard loud drilling and yelling
-            above him. He panicked and suddenly physically attacked Oliver,
-            pinning him to the ground and punching him twice.
-            </p>`,
-        "attention_check": "Alfred and Oliver got off at different stops.<br><br>",
-        features: {
-            non_actions: [
-                ["being 68 years old", "is 68 years old", "been 68 years old"],
-                ["being male", "is male", "been male"],
-                ["being White", "is White", "been White"],
-                ["is a veteran", "is a veteran", "is a veteran"],
-                ["being diagnosed with PTSD", "aws diagnosed with PTSD", "been diagnosed with PTSD"],
-                ["living alone", "lives alone", "lived alone"],
-                ["being patriotic", "is patriotic", "been patriotic"],
-                ["enjoying fishing", "enjoys fishing", "enjoyed fishing"],
-                ["enjoying Italian cuisine", "enjoys Italian cuisine", "enjoyed Italian cuisine"],
-                ["having a calm personality", "has a calm personality", "has a calm personality"],
-            ],
-            actions: [
-                ["riding the subway home", "rode the subway home", "rode the subway home"],
-                ["being quiet and not interacting with other passengers", "were quiet and did not interact with other passengers", "were quiet and did not interact with other passengers"],
-                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
-                ["getting off at the same stop", "got off at the same stop", "got off at the same stop"],
-                ["physically attacking Oliver", "physically attacked Oliver", "physically attacked Oliver"]
-            ]
-        },
-        outcome: "pinning him on the ground and punching him twice",
-    },
-    {
-        name: "Alfred_black",
-        image: "characters/Alfred.png",
-        story: `<p>
-            &emsp;&emsp;
-            Alfred is a 68-year-old Black patriotic veteran who was honorably discharged
-            and now lives alone in a quaint neighborhood in a large city.
-            He has been diagnosed with Post-Traumatic Stress Disorder (PTSD),
-            a mental health condition that can cause vivid flashbacks of a traumatic event.
-            Alfred enjoys fishing, Italian cuisine, and has a calm personality.
-            <br> &emsp;&emsp;
-            One evening, Alfred was riding the subway home after visiting a friend in a
-            different neighborhood. Oliver, an investment banker, was leaving work and boarded
-            the same subway a few stops later. Both people were quiet and did not interact with other passengers.
-            <br> &emsp;&emsp;
-            Alfred and Oliver got off at the same stop, which was underground. 
-            There was new road construction happening above the stop.
-            As Alfred stepped onto the subway platform, he heard loud drilling and yelling
-            above him. He panicked and suddenly physically attacked Oliver,
-            pinning him to the ground and punching him twice.
-            </p>`,
-        "attention_check": "Alfred and Oliver got off at different stops.<br><br>",
-        features: {
-            non_actions: [
-                ["being 68 years old", "is 68 years old", "been 68 years old"],
-                ["being male", "is male", "been male"],
-                ["being Black", "is Black", "been Black"],
-                ["is a veteran", "is a veteran", "is a veteran"],
-                ["being diagnosed with PTSD", "aws diagnosed with PTSD", "been diagnosed with PTSD"],
-                ["living alone", "lives alone", "lived alone"],
-                ["being patriotic", "is patriotic", "been patriotic"],
-                ["enjoying fishing", "enjoys fishing", "enjoyed fishing"],
-                ["enjoying Italian cuisine", "enjoys Italian cuisine", "enjoyed Italian cuisine"],
-                ["having a calm personality", "has a calm personality", "has a calm personality"],
-            ],
-            actions: [
-                ["riding the subway home", "rode the subway home", "rode the subway home"],
-                ["being quiet and not interacting with other passengers", "were quiet and did not interact with other passengers", "were quiet and did not interact with other passengers"],
-                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
-                ["getting off at the same stop", "got off at the same stop", "got off at the same stop"],
-                ["physically attacking Oliver", "physically attacked Oliver", "physically attacked Oliver"]
-            ]
-        },
-        outcome: "pinning him on the ground and punching him twice",
-    },
-    {
-        name: "Alfred_multiracial",
-        image: "characters/Alfred.png",
-        story: `<p>
-            &emsp;&emsp;
-            Alfred is a 68-year-old multiracial, patriotic veteran who was honorably discharged
-            and now lives alone in a quaint neighborhood in a large city.
-            He has been diagnosed with Post-Traumatic Stress Disorder (PTSD),
-            a mental health condition that can cause vivid flashbacks of a traumatic event.
-            Alfred enjoys fishing, Italian cuisine, and has a calm personality.
-            <br> &emsp;&emsp;
-            One evening, Alfred was riding the subway home after visiting a friend in a
-            different neighborhood. Oliver, an investment banker, was leaving work and boarded
-            the same subway a few stops later. Both people were quiet and did not interact with other passengers.
-            <br> &emsp;&emsp;
-            Alfred and Oliver got off at the same stop, which was underground. 
-            There was new road construction happening above the stop.
-            As Alfred stepped onto the subway platform, he heard loud drilling and yelling
-            above him. He panicked and suddenly physically attacked Oliver,
-            pinning him to the ground and punching him twice.
-            </p>`,
-        "attention_check": "Alfred and Oliver got off at different stops.<br><br>",
-        features: {
-            non_actions: [
-                ["being 68 years old", "is 68 years old", "been 68 years old"],
-                ["being male", "is male", "been male"],
-                ["being multiracial", "is multiracial", "been multiracial"],
-                ["is a veteran", "is a veteran", "is a veteran"],
-                ["being diagnosed with PTSD", "aws diagnosed with PTSD", "been diagnosed with PTSD"],
-                ["living alone", "lives alone", "lived alone"],
-                ["being patriotic", "is patriotic", "been patriotic"],
-                ["enjoying fishing", "enjoys fishing", "enjoyed fishing"],
-                ["enjoying Italian cuisine", "enjoys Italian cuisine", "enjoyed Italian cuisine"],
-                ["having a calm personality", "has a calm personality", "has a calm personality"],
-            ],
-            actions: [
-                ["riding the subway home", "rode the subway home", "rode the subway home"],
-                ["being quiet and not interacting with other passengers", "were quiet and did not interact with other passengers", "were quiet and did not interact with other passengers"],
-                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
-                ["getting off at the same stop", "got off at the same stop", "got off at the same stop"],
-                ["physically attacking Oliver", "physically attacked Oliver", "physically attacked Oliver"]
-            ]
-        },
-        outcome: "pinning him on the ground and punching him twice",
-    },
-        {
-        name: "Alfred_control",
-        image: "characters/Alfred.png",
-        story: `<p>
-            &emsp;&emsp;
-            Alfred is a 68-year-old patriotic veteran who was honorably discharged
-            and now lives alone in a quaint neighborhood in a large city.
-            He has been diagnosed with Post-Traumatic Stress Disorder (PTSD),
-            a mental health condition that can cause vivid flashbacks of a traumatic event.
-            Alfred enjoys fishing, Italian cuisine, and has a calm personality.
-            <br> &emsp;&emsp;
-            One evening, Alfred was riding the subway home after visiting a friend in a
-            different neighborhood. Oliver, an investment banker, was leaving work and boarded
-            the same subway a few stops later. Both people were quiet and did not interact with other passengers.
-            <br> &emsp;&emsp;
-            Alfred and Oliver got off at the same stop, which was underground. 
-            There was new road construction happening above the stop.
-            As Alfred stepped onto the subway platform, he heard loud drilling and yelling
-            above him. He panicked and suddenly physically attacked Oliver,
-            pinning him to the ground and punching him twice.
-            </p>`,
-        "attention_check": "Alfred and Oliver got off at different stops.<br><br>",
-        features: {
-            non_actions: [
-                ["being 68 years old", "is 68 years old", "been 68 years old"],
-                ["being male", "is male", "been male"],
-                ["is a veteran", "is a veteran", "is a veteran"],
-                ["being diagnosed with PTSD", "aws diagnosed with PTSD", "been diagnosed with PTSD"],
-                ["living alone", "lives alone", "lived alone"],
-                ["being patriotic", "is patriotic", "been patriotic"],
-                ["enjoying fishing", "enjoys fishing", "enjoyed fishing"],
-                ["enjoying Italian cuisine", "enjoys Italian cuisine", "enjoyed Italian cuisine"],
-                ["having a calm personality", "has a calm personality", "has a calm personality"],
-            ],
-            actions: [
-                ["riding the subway home", "rode the subway home", "rode the subway home"],
-                ["being quiet and not interacting with other passengers", "were quiet and did not interact with other passengers", "were quiet and did not interact with other passengers"],
-                ["becoming very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide", "became very scared and running into their bedroom to hide"],
-                ["getting off at the same stop", "got off at the same stop", "got off at the same stop"],
-                ["physically attacking Oliver", "physically attacked Oliver", "physically attacked Oliver"]
-            ]
-        },
-        outcome: "pinning him on the ground and punching him twice",
-    },
-    {
+        // Version 1: Jamie is *ASIAN* (matches original story)
         name: "Jamie_asian",
-        image: "characters/Qian.png",
+        image: "characters/Jamie.png",
         story: `<p>
             &emsp;&emsp;
             Jamie is a 27-year-old Asian male waiter in a small town.
             He is hard-working and has a humorous personality, but can be stubborn sometimes.
             He enjoys watching sports, listening to jazz music, and does not smoke.
             <br> &emsp;&emsp;
-            One Friday night, Jamie was hanging out at the local bar with some cousins who were visiting from out of town.
+            One Friday night, Jamie was hanging out at the local bar with some cousins
+            who were visiting from out of town.
             They had several rounds of drinks over the course of two hours.
             Wilson, a car mechanic who lives and works in the same small town,
             was also at the bar that night and had been there for about an hour.
-            He approached Jamie's party and began saying racial slurs to them. 
-            <br> &emsp;&emsp;
-            Jamie was angered by Wilson\'s comments, but did not talk back to him at first.
+            He approached Jamie\'s party and began saying racial slurs to them.
+            Jamie was angered by Wilson's comments, but did not talk back to Wilson at first.
             Wilson then playfully punched Jamie while continuing to make derogatory comments.
-            At this point, Jamie got up and violently pushed Wilson, knocking him to the ground and causing him serious injury.
+            Jamie suddenly got up and violently pushed Wilson, knocking him to the ground
+            and causing him serious injury.
             </p>`,
-        "attention_check": "Jamie brought his cousins to the bar.<br><br>",
+        "attention_check": "Jamie was hanging out at the local bar.<br><br>",       
         features: {
             non_actions: [
-                ["being 27 years old", "is 27 years old", "been 27 years old"],
                 ["being male", "is male", "been male"],
+                ["being 27 years old", "is 27 years old", "been 27 years old"],
                 ["being Asian", "is Asian", "been Asian"],
-                ["is a waiter", "is a waiter", "is a waiter"],
-                ["does not smoke", "did not smoke", "did not smoke"],
-                ["being hard-working", "is hard-working", "been hard-working"],
-                ["being stubborn sometimes", "is stubborn sometimes", "been stubborn sometimes"],
-                ["having a humorous personality", "has a humorous personality", "has a humorous personality"],
+                ["being a restaurant waiter", "is a restaurant waiter", "been a restaurant waiter"],
+                ["not smoking", "does not smoke", "not smoked"],
                 ["enjoying watching sports", "enjoys watching sports", "enjoyed watching sports"],
-                ["enjoying listening to jazz music", "enjoys listening to jazz music", "enjoyed listening to jazz music"],
+                ["enjoying jazz music", "enjoys jazz music", "enjoyed jazz music"],
+                ["having a humorous personality", "has a humorous personality", "had a humorous personality"],
+                ["being stubborn sometimes", "can be stubborn sometimes", "been stubborn sometimes"],
+                ["being hard-working", "is hard-working", "been hard-working"]
             ],
             actions: [
-                ["hanging out at the local bar with some cousins", "hung out at the local bar with some cousins", "hung out at the local bar with some cousins"],
-                ["having several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours"],
-                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "was angered by Wilson\'s comments"],
-                ["not talking back to Wilson at first", "did not talk back to Wilson at first", "did not talk back to Wilson at first"],
-                ["getting up and violently pushing Wilson", "got up and violently pushed Wilson", "got up and violently pushed Wilson"]
+                ["hanging out at the local bar with cousins", "hung out at the local bar with cousins", "hung out at the local bar with cousins"],
+                ["having several drinks over the course of two hours", "had several drinks over the course of two hours", "had several drinks over the course of two hours"],
+                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "been angered by Wilson\'s comments"],
+                ["not talking back to Wilson", "did not talk back to Wilson", "not talked back to Wilson"],
+                ["pushing Wilson to the ground", "pushed Wilson to the ground", "pushed Wilson to the ground"]
             ]
         },
-        outcome: "knocking him to the ground and causing serious injury",
+        outcome: "Wilson\'s injury",
     },
     {
+        // Version 2: Jamie is *WHITE* (diverges from original story)
         name: "Jamie_white",
-        image: "characters/Qian.png",
+        image: "characters/Jamie.png",
         story: `<p>
             &emsp;&emsp;
             Jamie is a 27-year-old White male waiter in a small town.
             He is hard-working and has a humorous personality, but can be stubborn sometimes.
             He enjoys watching sports, listening to jazz music, and does not smoke.
             <br> &emsp;&emsp;
-            One Friday night, Jamie was hanging out at the local bar with some cousins who were visiting from out of town.
+            One Friday night, Jamie was hanging out at the local bar with some cousins
+            who were visiting from out of town.
             They had several rounds of drinks over the course of two hours.
             Wilson, a car mechanic who lives and works in the same small town,
             was also at the bar that night and had been there for about an hour.
-            He approached Jamie's party and began saying racial slurs to them. 
-            <br> &emsp;&emsp;
-            Jamie was angered by Wilson\'s comments, but did not talk back to him at first.
+            He approached Jamie\'s party and began saying racial slurs to them.
+            Jamie was angered by Wilson's comments, but did not talk back to Wilson at first.
             Wilson then playfully punched Jamie while continuing to make derogatory comments.
-            At this point, Jamie got up and violently pushed Wilson, knocking him to the ground and causing him serious injury.
+            Jamie suddenly got up and violently pushed Wilson, knocking him to the ground
+            and causing him serious injury.
             </p>`,
-        "attention_check": "Jamie brought his cousins to the bar.<br><br>",
+        "attention_check": "Jamie was hanging out at the local bar.<br><br>",       
         features: {
             non_actions: [
-                ["being 27 years old", "is 27 years old", "been 27 years old"],
                 ["being male", "is male", "been male"],
+                ["being 27 years old", "is 27 years old", "been 27 years old"],
                 ["being White", "is White", "been White"],
-                ["is a waiter", "is a waiter", "is a waiter"],
-                ["does not smoke", "did not smoke", "did not smoke"],
-                ["being hard-working", "is hard-working", "been hard-working"],
-                ["being stubborn sometimes", "is stubborn sometimes", "been stubborn sometimes"],
-                ["having a humorous personality", "has a humorous personality", "has a humorous personality"],
+                ["being a restaurant waiter", "is a restaurant waiter", "been a restaurant waiter"],
+                ["not smoking", "does not smoke", "not smoked"],
                 ["enjoying watching sports", "enjoys watching sports", "enjoyed watching sports"],
-                ["enjoying listening to jazz music", "enjoys listening to jazz music", "enjoyed listening to jazz music"],
+                ["enjoying jazz music", "enjoys jazz music", "enjoyed jazz music"],
+                ["having a humorous personality", "has a humorous personality", "had a humorous personality"],
+                ["being stubborn sometimes", "can be stubborn sometimes", "been stubborn sometimes"],
+                ["being hard-working", "is hard-working", "been hard-working"]
             ],
             actions: [
-                ["hanging out at the local bar with some cousins", "hung out at the local bar with some cousins", "hung out at the local bar with some cousins"],
-                ["having several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours"],
-                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "was angered by Wilson\'s comments"],
-                ["not talking back to Wilson at first", "did not talk back to Wilson at first", "did not talk back to Wilson at first"],
-                ["getting up and violently pushing Wilson", "got up and violently pushed Wilson", "got up and violently pushed Wilson"]
+                ["hanging out at the local bar with cousins", "hung out at the local bar with cousins", "hung out at the local bar with cousins"],
+                ["having several drinks over the course of two hours", "had several drinks over the course of two hours", "had several drinks over the course of two hours"],
+                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "been angered by Wilson\'s comments"],
+                ["not talking back to Wilson", "did not talk back to Wilson", "not talked back to Wilson"],
+                ["pushing Wilson to the ground", "pushed Wilson to the ground", "pushed Wilson to the ground"]
             ]
         },
-        outcome: "knocking him to the ground and causing serious injury",
+        outcome: "Wilson\'s injury",
     },
     {
-        name: "Jamie_multiracial",
-        image: "characters/Qian.png",
-        story: `<p>
-            &emsp;&emsp;
-            Jamie is a 27-year-old multiracial male waiter in a small town.
-            He is hard-working and has a humorous personality, but can be stubborn sometimes.
-            He enjoys watching sports, listening to jazz music, and does not smoke.
-            <br> &emsp;&emsp;
-            One Friday night, Jamie was hanging out at the local bar with some cousins who were visiting from out of town.
-            They had several rounds of drinks over the course of two hours.
-            Wilson, a car mechanic who lives and works in the same small town,
-            was also at the bar that night and had been there for about an hour.
-            He approached Jamie's party and began saying racial slurs to them. 
-            <br> &emsp;&emsp;
-            Jamie was angered by Wilson\'s comments, but did not talk back to him at first.
-            Wilson then playfully punched Jamie while continuing to make derogatory comments.
-            At this point, Jamie got up and violently pushed Wilson, knocking him to the ground and causing him serious injury.
-            </p>`,
-        "attention_check": "Jamie brought his cousins to the bar.<br><br>",
-        features: {
-            non_actions: [
-                ["being 27 years old", "is 27 years old", "been 27 years old"],
-                ["being male", "is male", "been male"],
-                ["being multiracial", "is multiracial", "been multiracial"],
-                ["is a waiter", "is a waiter", "is a waiter"],
-                ["does not smoke", "did not smoke", "did not smoke"],
-                ["being hard-working", "is hard-working", "been hard-working"],
-                ["being stubborn sometimes", "is stubborn sometimes", "been stubborn sometimes"],
-                ["having a humorous personality", "has a humorous personality", "has a humorous personality"],
-                ["enjoying watching sports", "enjoys watching sports", "enjoyed watching sports"],
-                ["enjoying listening to jazz music", "enjoys listening to jazz music", "enjoyed listening to jazz music"],
-            ],
-            actions: [
-                ["hanging out at the local bar with some cousins", "hung out at the local bar with some cousins", "hung out at the local bar with some cousins"],
-                ["having several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours"],
-                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "was angered by Wilson\'s comments"],
-                ["not talking back to Wilson at first", "did not talk back to Wilson at first", "did not talk back to Wilson at first"],
-                ["getting up and violently pushing Wilson", "got up and violently pushed Wilson", "got up and violently pushed Wilson"]
-            ]
-        },
-        outcome: "knocking him to the ground and causing serious injury",
-    },
-    {
+        // Version 3: Race information is omitted (diverges from original story)
         name: "Jamie_control",
-        image: "characters/Qian.png",
+        image: "characters/Jamie.png",
         story: `<p>
             &emsp;&emsp;
             Jamie is a 27-year-old male waiter in a small town.
             He is hard-working and has a humorous personality, but can be stubborn sometimes.
             He enjoys watching sports, listening to jazz music, and does not smoke.
             <br> &emsp;&emsp;
-            One Friday night, Jamie was hanging out at the local bar with some cousins who were visiting from out of town.
+            One Friday night, Jamie was hanging out at the local bar with some cousins
+            who were visiting from out of town.
             They had several rounds of drinks over the course of two hours.
             Wilson, a car mechanic who lives and works in the same small town,
             was also at the bar that night and had been there for about an hour.
-            He approached Jamie's party and began saying racial slurs to them. 
-            <br> &emsp;&emsp;
-            Jamie was angered by Wilson\'s comments, but did not talk back to him at first.
+            He approached Jamie\'s party and began saying racial slurs to them.
+            Jamie was angered by Wilson's comments, but did not talk back to Wilson at first.
             Wilson then playfully punched Jamie while continuing to make derogatory comments.
-            At this point, Jamie got up and violently pushed Wilson, knocking him to the ground and causing him serious injury.
+            Jamie suddenly got up and violently pushed Wilson, knocking him to the ground
+            and causing him serious injury.
             </p>`,
-        "attention_check": "Jamie brought his cousins to the bar.<br><br>",
+        "attention_check": "Jamie was hanging out at the local bar.<br><br>",       
         features: {
             non_actions: [
-                ["being 27 years old", "is 27 years old", "been 27 years old"],
                 ["being male", "is male", "been male"],
-                ["is a waiter", "is a waiter", "is a waiter"],
-                ["does not smoke", "did not smoke", "did not smoke"],
-                ["being hard-working", "is hard-working", "been hard-working"],
-                ["being stubborn sometimes", "is stubborn sometimes", "been stubborn sometimes"],
-                ["having a humorous personality", "has a humorous personality", "has a humorous personality"],
+                ["being 27 years old", "is 27 years old", "been 27 years old"],
+                ["being a restaurant waiter", "is a restaurant waiter", "been a restaurant waiter"],
+                ["not smoking", "does not smoke", "not smoked"],
                 ["enjoying watching sports", "enjoys watching sports", "enjoyed watching sports"],
-                ["enjoying listening to jazz music", "enjoys listening to jazz music", "enjoyed listening to jazz music"],
+                ["enjoying jazz music", "enjoys jazz music", "enjoyed jazz music"],
+                ["having a humorous personality", "has a humorous personality", "had a humorous personality"],
+                ["being stubborn sometimes", "can be stubborn sometimes", "been stubborn sometimes"],
+                ["being hard-working", "is hard-working", "been hard-working"]
             ],
             actions: [
-                ["hanging out at the local bar with some cousins", "hung out at the local bar with some cousins", "hung out at the local bar with some cousins"],
-                ["having several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours", "had several rounds of drinks over the course of two hours"],
-                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "was angered by Wilson\'s comments"],
-                ["not talking back to Wilson at first", "did not talk back to Wilson at first", "did not talk back to Wilson at first"],
-                ["getting up and violently pushing Wilson", "got up and violently pushed Wilson", "got up and violently pushed Wilson"]
+                ["hanging out at the local bar with cousins", "hung out at the local bar with cousins", "hung out at the local bar with cousins"],
+                ["having several drinks over the course of two hours", "had several drinks over the course of two hours", "had several drinks over the course of two hours"],
+                ["being angered by Wilson\'s comments", "was angered by Wilson\'s comments", "been angered by Wilson\'s comments"],
+                ["not talking back to Wilson", "did not talk back to Wilson", "not talked back to Wilson"],
+                ["pushing Wilson to the ground", "pushed Wilson to the ground", "pushed Wilson to the ground"]
             ]
         },
-        outcome: "knocking him to the ground and causing serious injury",
+        outcome: "Wilson\'s injury",
+    },
+    // Story 3: Jordan (8 vs 13 vs 18 years old vs control); originally "Chris" in Wu et al. (2026)
+    // All story features except for the protagonist's height (originally weight) and name were preserved.
+    // I also changed the graphic depicting the protaognist to match the new story.
+    {
+        // Version 1: Jordan is *8*
+        name: "Jordan_8",
+        image: "characters/Jordan.png",
+        story: `<p>
+            &emsp;&emsp;
+            Jordan is an 8-year-old White boy who is about 5 feet tall and has an average IQ.
+            He has a curious personality, enjoys playing hide-and-seek as well as
+            swimming, and is a picky eater.
+            <br> &emsp;&emsp;
+            Jordan admires his father a lot.
+            His father is an avid recreational deer hunter who owns several hunting guns.
+            All of the guns are kept in a locked cabinet, and Jordan\'s father usually
+            keeps the key on himself.
+            <br> &emsp;&emsp;
+            One day, Jordan was playing hide-and-seek with friends at home and hid in
+            the hall closet. There, he found the key to the gun cabinet in his father\'s
+            jacket, which was hanging in the closet.
+            Jordan curiously opened the cabinet and began playing with one of the pistols.
+            As he was holding the pistol, he accidentally discharged it and shot one of his friends
+            in the shoulder. The friend was taken to the hospital for treatment of severe wounds.
+            </p>`,
+            "attention_check": "Jordan found a wallet in his father\'s jacket.<br><br>",
+            features: {
+                non_actions: [
+                    ["being male", "is male", "been male"],
+                    ["being 8 years old", "is 8 years old", "been 8 years old"],
+                    ["being White", "is White", "been White"],
+                    ["being about 5 feet tall", "is about 5 feet tall", "been about 5 feet tall"],
+                    ["having an average IQ", "has an average IQ", "had an average IQ"],
+                    ["enjoying playing hide-and-seek", "enjoys playing hide-and-seek", "enjoyed playing hide-and-seek"],
+                    ["enjoying swimming", "enjoys swimming", "enjoyed swimming"],
+                    ["admiring his father", "admires his father", "admired his father"],
+                    ["having a curious personality", "has a curious personality", "had a curious personality"],
+                    ["being a picky eater", "is a picky eater", "been a picky eater"]
+            ],
+            actions: [
+                ["inviting friends over to play", "invited friends over to play", "invited friends over to play"],
+                ["hiding in the hall closet", "hid in the hall closet", "hid in the hall closet"],
+                ["finding the key in his father\'s jacket pocket", "found the key in his father\'s jacket pocket", "found the key in their father\'s jacket pocket"],
+                ["opening the gun cabinet with the key", "opened the gun cabinet with the key", "opened the gun cabinet with the key"],
+                ["picking up a pistol to play with", "picked up a pistol to play with", "picked up a pistol to play with"]
+            ]
+        },
+        outcome: "his friend's wounds",
+    },
+    {
+        // Version 2: Jordan is *13*
+        name: "Jordan_13",
+        image: "characters/Jordan.png",
+        story: `<p>
+            &emsp;&emsp;
+            Jordan is a 13-year-old White boy who is about 5 feet tall and has an average IQ.
+            He has a curious personality, enjoys playing hide-and-seek as well as
+            swimming, and is a picky eater.
+            <br> &emsp;&emsp;
+            Jordan admires his father a lot.
+            His father is an avid recreational deer hunter who owns several hunting guns.
+            All of the guns are kept in a locked cabinet, and Jordan\'s father usually
+            keeps the key on himself.
+            <br> &emsp;&emsp;
+            One day, Jordan was playing hide-and-seek with friends at home and hid in
+            the hall closet. There, he found the key to the gun cabinet in his father\'s
+            jacket, which was hanging in the closet.
+            Jordan curiously opened the cabinet and began playing with one of the pistols.
+            As he was holding the pistol, he accidentally discharged it and shot one of his friends
+            in the shoulder. The friend was taken to the hospital for treatment of severe wounds.
+            </p>`,
+            "attention_check": "Jordan found a wallet in his father\'s jacket.<br><br>",
+            features: {
+                non_actions: [
+                    ["being male", "is male", "been male"],
+                    ["being 13 years old", "is 13 years old", "been 13 years old"],
+                    ["being White", "is White", "been White"],
+                    ["being about 5 feet tall", "is about 5 feet tall", "been about 5 feet tall"],
+                    ["having an average IQ", "has an average IQ", "had an average IQ"],
+                    ["enjoying playing hide-and-seek", "enjoys playing hide-and-seek", "enjoyed playing hide-and-seek"],
+                    ["enjoying swimming", "enjoys swimming", "enjoyed swimming"],
+                    ["admiring his father", "admires his father", "admired his father"],
+                    ["having a curious personality", "has a curious personality", "had a curious personality"],
+                    ["being a picky eater", "is a picky eater", "been a picky eater"]
+            ],
+            actions: [
+                ["inviting friends over to play", "invited friends over to play", "invited friends over to play"],
+                ["hiding in the hall closet", "hid in the hall closet", "hid in the hall closet"],
+                ["finding the key in his father\'s jacket pocket", "found the key in his father\'s jacket pocket", "found the key in their father\'s jacket pocket"],
+                ["opening the gun cabinet with the key", "opened the gun cabinet with the key", "opened the gun cabinet with the key"],
+                ["picking up a pistol to play with", "picked up a pistol to play with", "picked up a pistol to play with"]
+            ]
+        },
+        outcome: "his friend's wounds",
+    },
+    {
+        // Version 3: Jordan is *18*
+        name: "Jordan_18",
+        image: "characters/Jordan.png",
+        story: `<p>
+            &emsp;&emsp;
+            Jordan is an 18-year-old White boy who is about 5 feet tall and has an average IQ.
+            He has a curious personality, enjoys playing hide-and-seek as well as
+            swimming, and is a picky eater.
+            <br> &emsp;&emsp;
+            Jordan admires his father a lot.
+            His father is an avid recreational deer hunter who owns several hunting guns.
+            All of the guns are kept in a locked cabinet, and Jordan\'s father usually
+            keeps the key on himself.
+            <br> &emsp;&emsp;
+            One day, Jordan was playing hide-and-seek with friends at home and hid in
+            the hall closet. There, he found the key to the gun cabinet in his father\'s
+            jacket, which was hanging in the closet.
+            Jordan curiously opened the cabinet and began playing with one of the pistols.
+            As he was holding the pistol, he accidentally discharged it and shot one of his friends
+            in the shoulder. The friend was taken to the hospital for treatment of severe wounds.
+            </p>`,
+            "attention_check": "Jordan found a wallet in his father\'s jacket.<br><br>",
+            features: {
+                non_actions: [
+                    ["being male", "is male", "been male"],
+                    ["being 18 years old", "is 18 years old", "been 18 years old"],
+                    ["being White", "is White", "been White"],
+                    ["being about 5 feet tall", "is about 5 feet tall", "been about 5 feet tall"],
+                    ["having an average IQ", "has an average IQ", "had an average IQ"],
+                    ["enjoying playing hide-and-seek", "enjoys playing hide-and-seek", "enjoyed playing hide-and-seek"],
+                    ["enjoying swimming", "enjoys swimming", "enjoyed swimming"],
+                    ["admiring his father", "admires his father", "admired his father"],
+                    ["having a curious personality", "has a curious personality", "had a curious personality"],
+                    ["being a picky eater", "is a picky eater", "been a picky eater"]
+            ],
+            actions: [
+                ["inviting friends over to play", "invited friends over to play", "invited friends over to play"],
+                ["hiding in the hall closet", "hid in the hall closet", "hid in the hall closet"],
+                ["finding the key in his father\'s jacket pocket", "found the key in his father\'s jacket pocket", "found the key in their father\'s jacket pocket"],
+                ["opening the gun cabinet with the key", "opened the gun cabinet with the key", "opened the gun cabinet with the key"],
+                ["picking up a pistol to play with", "picked up a pistol to play with", "picked up a pistol to play with"]
+            ]
+        },
+        outcome: "his friend's wounds",
+    },
+    {
+        // Version 4: Age information is omitted (control)
+        name: "Jordan_control",
+        image: "characters/Jordan.png",
+        story: `<p>
+            &emsp;&emsp;
+            Jordan is White, about 5 feet tall, and has an average IQ.
+            He has a curious personality, enjoys playing hide-and-seek as well as
+            swimming, and is a picky eater.
+            <br> &emsp;&emsp;
+            Jordan admires his father a lot.
+            His father is an avid recreational deer hunter who owns several hunting guns.
+            All of the guns are kept in a locked cabinet, and Jordan\'s father usually
+            keeps the key on himself.
+            <br> &emsp;&emsp;
+            One day, Jordan was playing hide-and-seek with friends at home and hid in
+            the hall closet. There, he found the key to the gun cabinet in his father\'s
+            jacket, which was hanging in the closet.
+            Jordan curiously opened the cabinet and began playing with one of the pistols.
+            As he was holding the pistol, he accidentally discharged it and shot one of his friends
+            in the shoulder. The friend was taken to the hospital for treatment of severe wounds.
+            </p>`,
+            "attention_check": "Jordan found a wallet in his father\'s jacket.<br><br>",
+            features: {
+                non_actions: [
+                    ["being male", "is male", "been male"],
+                    ["being White", "is White", "been White"],
+                    ["being about 5 feet tall", "is about 5 feet tall", "been about 5 feet tall"],
+                    ["having an average IQ", "has an average IQ", "had an average IQ"],
+                    ["enjoying playing hide-and-seek", "enjoys playing hide-and-seek", "enjoyed playing hide-and-seek"],
+                    ["enjoying swimming", "enjoys swimming", "enjoyed swimming"],
+                    ["admiring his father", "admires his father", "admired his father"],
+                    ["having a curious personality", "has a curious personality", "had a curious personality"],
+                    ["being a picky eater", "is a picky eater", "been a picky eater"]
+            ],
+            actions: [
+                ["inviting friends over to play", "invited friends over to play", "invited friends over to play"],
+                ["hiding in the hall closet", "hid in the hall closet", "hid in the hall closet"],
+                ["finding the key in his father\'s jacket pocket", "found the key in his father\'s jacket pocket", "found the key in their father\'s jacket pocket"],
+                ["opening the gun cabinet with the key", "opened the gun cabinet with the key", "opened the gun cabinet with the key"],
+                ["picking up a pistol to play with", "picked up a pistol to play with", "picked up a pistol to play with"]
+            ]
+        },
+        outcome: "his friend's wounds",
     },
 ];
 
