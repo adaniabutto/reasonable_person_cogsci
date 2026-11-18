@@ -5,3 +5,5 @@
 .DS_Store
 /docs_share
 docs.zip
+/dist
+/node_modules

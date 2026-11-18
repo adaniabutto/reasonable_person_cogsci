@@ -1,0 +1,8 @@
+{
+  "name": "reasonable-person-experiments",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "dev": "node scripts/build-site.mjs && npx --yes serve@14 dist -l 3000"
+  }
+}
