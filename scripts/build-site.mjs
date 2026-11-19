@@ -8,14 +8,13 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const dist = path.join(root, 'dist')
 
 const routes = [
-  ['docs/fully within-subjets', 'within-subjects'],
-  ['docs/new between-subjects/experiment1/relevance', 'between-subjects/experiment1/relevance'],
-  ['docs/new between-subjects/experiment1/controllability', 'between-subjects/experiment1/controllability'],
-  ['docs/new between-subjects/experiment1/normality', 'between-subjects/experiment1/normality'],
-  ['docs/new between-subjects/experiment2/same', 'between-subjects/experiment2/same'],
-  ['docs/new between-subjects/experiment2/different', 'between-subjects/experiment2/different'],
-  ['docs/new between-subjects/experiment2/endorse', 'between-subjects/experiment2/endorse'],
-]
+  ['experiment1/relevance', 'experiment1/relevance'],
+  ['experiment1/controllability', 'experiment1/controllability'],
+  ['experiment1/normality', 'experiment1/normality'],
+  ['experiment2/same', 'experiment2/same'],
+  ['experiment2/different', 'experiment2/different'],
+  ['experiment2/endorse', 'experiment2/endorse'],
+].map(([from, to]) => [path.join('docs/fully between-subjects', from), to])
 
 const skip = (src) => !/(^|\/)\.DS_Store$/.test(src)
 
