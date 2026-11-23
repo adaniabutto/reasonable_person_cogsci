@@ -31,17 +31,36 @@
     h2 { font-size: 20px; margin: 0; }
     section > p { margin: 0; color: var(--muted); font-size: 15px; }
     ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-    @media (min-width: 600px) { ul.grid { grid-template-columns: 1fr 1fr 1fr; } }
+    @media (min-width: 720px) { ul.grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .card span { overflow-wrap: anywhere; }
     a.card {
       display: flex; flex-direction: column; gap: 2px;
       padding: 16px 18px; background: var(--surface); border-radius: 10px;
       border: 1px solid #e3e6eb; color: inherit; text-decoration: none;
-      transition: border-color .15s, transform .15s;
+      box-shadow: 0 0 0 1px rgba(140, 21, 21, .08), 0 2px 14px rgba(140, 21, 21, .12);
+      transition: border-color .15s, transform .15s, box-shadow .15s;
     }
-    a.card:hover, a.card:focus-visible { border-color: var(--accent); transform: translateY(-1px); }
+    a.card:hover, a.card:focus-visible {
+      border-color: var(--accent); transform: translateY(-1px);
+      box-shadow: 0 0 0 1px rgba(140, 21, 21, .35), 0 4px 22px rgba(140, 21, 21, .28);
+    }
     a.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .card strong { font-size: 16px; }
     .card span { font-size: 14px; color: var(--muted); }
+    .card .cta {
+      margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--accent);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .card .cta::after { content: "\2192"; transition: transform .15s; }
+    a.card:hover .cta::after, a.card:focus-visible .cta::after { transform: translateX(3px); }
+    @media (prefers-reduced-motion: no-preference) {
+      a.card { animation: glow 3.2s ease-in-out infinite; }
+      a.card:hover, a.card:focus-visible { animation: none; }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 0 1px rgba(140, 21, 21, .08), 0 2px 12px rgba(140, 21, 21, .10); }
+      50% { box-shadow: 0 0 0 1px rgba(140, 21, 21, .18), 0 2px 20px rgba(140, 21, 21, .22); }
+    }
     .group-label { font-size: 14px; font-weight: 600; color: var(--muted); margin: 6px 0 0; }
     figure.design { margin: 14px 0 0; display: flex; flex-direction: column; gap: 8px; }
     figure.design img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid #e3e6eb; background: var(--surface); }
@@ -67,15 +86,15 @@
       <p>For piloting purposes, every measure/'experiment' has its own URL; the actual study will send subjects directly (and only) to the cell assigned to them.</p>
       <p class="group-label">First set of measures (as in Experiment 1)</p>
       <ul class="grid">
-        <li><a class="card" href="/experiment1/relevance/"><strong>Relevance</strong><span>/experiment1/relevance/</span></a></li>
-        <li><a class="card" href="/experiment1/controllability/"><strong>Controllability</strong><span>/experiment1/controllability/</span></a></li>
-        <li><a class="card" href="/experiment1/normality/"><strong>Normality</strong><span>/experiment1/normality/</span></a></li>
+        <li><a class="card" href="/experiment1/relevance/"><strong>Relevance</strong><span>/experiment1/relevance/</span><span class="cta">Click to open</span></a></li>
+        <li><a class="card" href="/experiment1/controllability/"><strong>Controllability</strong><span>/experiment1/controllability/</span><span class="cta">Click to open</span></a></li>
+        <li><a class="card" href="/experiment1/normality/"><strong>Normality</strong><span>/experiment1/normality/</span><span class="cta">Click to open</span></a></li>
       </ul>
       <p class="group-label">Second set of measures (as in Experiment 2, but excluding 'Undo')</p>
       <ul class="grid">
-        <li><a class="card" href="/experiment2/same/"><strong>Same</strong><span>/experiment2/same/</span></a></li>
-        <li><a class="card" href="/experiment2/different/"><strong>Different</strong><span>/experiment2/different/</span></a></li>
-        <li><a class="card" href="/experiment2/endorse/"><strong>Endorse</strong><span>/experiment2/endorse/</span></a></li>
+        <li><a class="card" href="/experiment2/same/"><strong>Same</strong><span>/experiment2/same/</span><span class="cta">Click to open</span></a></li>
+        <li><a class="card" href="/experiment2/different/"><strong>Different</strong><span>/experiment2/different/</span><span class="cta">Click to open</span></a></li>
+        <li><a class="card" href="/experiment2/endorse/"><strong>Endorse</strong><span>/experiment2/endorse/</span><span class="cta">Click to open</span></a></li>
       </ul>
       <figure class="design">
         <a href="/study_design.pdf" target="_blank" rel="noopener">
