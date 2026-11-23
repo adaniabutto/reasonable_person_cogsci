@@ -43,6 +43,10 @@
     .card strong { font-size: 16px; }
     .card span { font-size: 14px; color: var(--muted); }
     .group-label { font-size: 14px; font-weight: 600; color: var(--muted); margin: 6px 0 0; }
+    figure.design { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    figure.design img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid #e3e6eb; background: var(--surface); }
+    figure.design figcaption { font-size: 14px; color: var(--muted); }
+    figure.design figcaption a { color: var(--accent); }
     footer { font-size: 14px; color: var(--muted); }
     footer a { color: var(--accent); }
   </style>
@@ -57,6 +61,12 @@
 
     <section aria-labelledby="between">
       <h2 id="between">Fully between-subjects</h2>
+      <figure class="design">
+        <a href="/study_design.pdf" target="_blank" rel="noopener">
+          <img src="/study_design.png" width="3334" height="2867" alt="Study design diagram: participants read three stories (Blake, Jamie, Jordan) in random order, each in one of three versions varying gender, race, or age respectively. Each participant answers one of six measures: Experiment 1 relevance, controllability, and normality on 7-point scales; Experiment 2 same and different feature selection, and endorse on a 0 to 100 slider. Procedure: introduction, then for each story read one version, attention check, and measure page, followed by feedback and demographics.">
+        </a>
+        <figcaption>Study design overview. <a href="/study_design.pdf" target="_blank" rel="noopener">Open as PDF</a></figcaption>
+      </figure>
       <p>Each participant completes all three stories, but only one out the six measures (relevance, normality, controllability, same, different, endorse). Every measure/'experiment' has its own URL.</p>
       <p>Each story has three different versions, whereby each subject only sees one of them.</p>
       <p class="group-label">First set of measures (as in Experiment 1)</p>
